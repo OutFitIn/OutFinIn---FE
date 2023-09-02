@@ -16,3 +16,7 @@ export const sub_screen = styled.div`
   overflow-x: hidden;
   height: calc(100vh - 98px);
 `;
+
+export const screen_join = styled.div`
+  padding-top: 117px;
+`
