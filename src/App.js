@@ -1,12 +1,12 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import './App.css';
+import Modechoice from "./pages/mode_choice";
 
 function App() {
   return (
     <div>
       <Router>
         <Routes>
-            <Route/>
+            <Route path="/" element={<Modechoice/>}/>
         </Routes>
       </Router>
     </div>
