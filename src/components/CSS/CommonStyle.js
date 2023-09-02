@@ -18,5 +18,5 @@ export const sub_screen = styled.div`
 `;
 
 export const screen_join = styled.div`
-  padding-top: 117px;
+  padding-top: 85px;
 `
