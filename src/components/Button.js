@@ -4,16 +4,21 @@ import styled from 'styled-components';
 
 const Btn = styled.button`
     display: flex;
+    position: fixed;
     width: 354px;
     height: 60px;
     padding: 5px 10px;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
     border-radius: 20px;
     background: #D8D9DA;
     border: 1px solid #D8D9DA;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.08px;
+    position : absolute;
+    bottom : 37px;
 `
 
 const Button = (props) => {
