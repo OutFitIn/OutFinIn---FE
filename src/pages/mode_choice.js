@@ -1,13 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
 import * as frame from '../components/CSS/CommonStyle';
+import Button from '../components/Button';
 
-let total
 const Modechoice = () =>{
     return(
         <div>
             <frame.totalframe>
-                <frame.screen_component></frame.screen_component>
+                <frame.screen_component>
+                    <Button content={'다음'} />
+                </frame.screen_component>
             </frame.totalframe>
         </div>
     )
