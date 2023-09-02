@@ -10,3 +10,9 @@ export const totalframe = styled.div`
 export const screen_component = styled.div`
   padding: 0px 18px;
 `;
+
+export const sub_screen = styled.div`
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: calc(100vh - 98px);
+`;
