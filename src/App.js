@@ -1,14 +1,12 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import ModeChoice from "./pages/ModeChoice";
-import Main from "./pages/Main";
-
+import { ModeChoice, MainPage } from "./pages";
 function App() {
   return (
     <div>
       <Router>
         <Routes>
             <Route path="/" element={<ModeChoice/>}/>
-            <Route path="/main" element={<Main/>}/>
+            <Route path="/main" element={<MainPage/>}/>
         </Routes>
       </Router>
     </div>

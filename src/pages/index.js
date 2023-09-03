@@ -1,4 +1,4 @@
-import Main from './main';
-import Modechoice from './mode_choice';
+import MainPage from './MainPage';
+import ModeChoice from './ModeChoice';
 
-export {Main,Modechoice};
+export { MainPage, ModeChoice };
