@@ -21,7 +21,7 @@ const Btn = styled.button`
     bottom : 37px;
 `
 
-const Button_bottom = (props) => {
+const ButtonBottom = (props) => {
     return (
         <Btn>
             {props.content}
@@ -29,4 +29,4 @@ const Button_bottom = (props) => {
     );
 };
 
-export default Button_bottom;
+export default ButtonBottom;

@@ -13,7 +13,7 @@ const Question = styled.div`
     line-height: normal;
 `
 
-const Question_mode = (props) => {
+const QuestionMode = (props) => {
     return (
         <div>
             <QuestionContainer>
@@ -25,4 +25,4 @@ const Question_mode = (props) => {
     )
 };
 
-export default Question_mode;
+export default QuestionMode;

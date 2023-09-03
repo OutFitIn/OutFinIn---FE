@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import * as navigation from "./NavigationStyle";
+import * as n from "./NavigationStyle";
 import {AiFillHome} from 'react-icons/ai';
 import {AiOutlineSearch} from "react-icons/ai";
 import {BsFillChatDotsFill, BsFillPersonFill} from 'react-icons/bs';
@@ -11,43 +11,43 @@ const Navigation = (props) => {
         setSelectIcon(icon)
     }
     return(
-        <navigation.total_navigation>
+        <n.TotalNavigation>
             {/* 홈 */}
-            <navigation.sub_navigation 
+            <n.SubNavigation 
                 marginRight='45px'
                 isSelected={selectIcon === 'Home'}
                 onClick={() => changeIcon('Home')}
                 >
                 <AiFillHome size='35'/>
-                <navigation.icon_text>홈</navigation.icon_text>
-            </navigation.sub_navigation>
+                <n.IconText>홈</n.IconText>
+            </n.SubNavigation>
             {/* 검색 */}
-            <navigation.sub_navigation
+            <n.SubNavigation
                 marginRight='45px'
                 isSelected={selectIcon === 'search'}
                 onClick={() => changeIcon('search')}
                 >
                 <AiOutlineSearch size='35'/>
-                <navigation.icon_text>검색</navigation.icon_text>
-            </navigation.sub_navigation>
+                <n.IconText>검색</n.IconText>
+            </n.SubNavigation>
             {/* 채팅 */}
-            <navigation.sub_navigation
+            <n.SubNavigation
                 marginRight='45px'
                 isSelected={selectIcon === 'chat'}
                 onClick={() => changeIcon('chat')}
                 >
                 <BsFillChatDotsFill size='30'/>
-                <navigation.icon_text>채팅</navigation.icon_text>
-            </navigation.sub_navigation>
+                <n.IconText>채팅</n.IconText>
+            </n.SubNavigation>
             {/* 마이 */}
-            <navigation.sub_navigation 
+            <n.SubNavigation 
                 isSelected={selectIcon === 'mypage'}
                 onClick={() => changeIcon('mypage')}
             >
                 <BsFillPersonFill size='35'/>
-                <navigation.icon_text>마이</navigation.icon_text>
-            </navigation.sub_navigation>
-        </navigation.total_navigation>
+                <n.IconText>마이</n.IconText>
+            </n.SubNavigation>
+        </n.TotalNavigation>
     )
 }
 export default Navigation;

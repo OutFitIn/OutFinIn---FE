@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const total_navigation = styled.div`
+export const TotalNavigation = styled.div`
     display:flex;
     padding: 17px 40px 51px 40px;
     width: 310px;
@@ -9,7 +9,7 @@ export const total_navigation = styled.div`
     bottom: 0;
 `
 
-export const sub_navigation = styled.div`
+export const SubNavigation = styled.div`
     display:flex;
     flex-direction:column;
     color: ${(props) => (props.isSelected ? '#000' : '#C4C4C4')};
@@ -23,6 +23,6 @@ export const sub_navigation = styled.div`
     margin-right: ${props => props.marginRight};
 `
 
-export const icon_text = styled.div`
+export const IconText = styled.div`
     margin-top:5px;
 `

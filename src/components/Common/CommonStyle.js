@@ -1,22 +1,22 @@
 import styled from "styled-components";
 
-export const totalframe = styled.div`
+export const Totalframe = styled.div`
   width: 390px;
   height: 100vh;
   border: 1px solid #eceeef;
   margin: 0 auto;
 `;
 
-export const screen_component = styled.div`
+export const ScreenComponent = styled.div`
   padding: 0px 18px;
 `;
 
-export const sub_screen = styled.div`
+export const SubScreen = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   height: calc(100vh - 98px);
 `;
 
-export const screen_join = styled.div`
+export const ScreenJoin = styled.div`
   padding-top: 85px;
 `

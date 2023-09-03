@@ -10,12 +10,12 @@ const BtnContainer = styled.div`
 const Btn = styled.div`
     width: 25px;
     height: 25px;
-    background: black;
     border-radius: 15px;
     margin-right: 10px;
+    background: ${(props) => (props.isSelected ? '#000' : '#C4C4C4')};
 `
 
-const Btn_in = styled.div`
+const BtnIn = styled.div`
     color: #FFF;
     padding: 4px;
     text-align: center;
@@ -26,16 +26,16 @@ const Btn_in = styled.div`
     font-weight: 700;
 `
 
-const Button_numbers = (props) => {
+const ButtonNumbers = (props) => {
     return (
         <BtnContainer>
-            <Btn>
-                <Btn_in>
+            <Btn isSelected={props.isSelected}>
+                <BtnIn>
                     {props.content}
-                </Btn_in>
+                </BtnIn>
             </Btn>
         </BtnContainer>
     );
 };
 
-export default Button_numbers;
+export default ButtonNumbers;

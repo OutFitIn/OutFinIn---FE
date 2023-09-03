@@ -1,15 +1,15 @@
 import React from "react";
 import Navigation from "../components/Navigation/Navigation";
-import * as frame from "../components/CSS/CommonStyle";
+import * as f from "../components/Common/CommonStyle";
 
 const Main = () => {
   return (
-    <frame.totalframe>
-      <frame.sub_screen>
-        <frame.screen_component></frame.screen_component>
+    <f.Totalframe>
+      <f.SubScreen>
+        <f.ScreenComponent></f.ScreenComponent>
         <Navigation />
-      </frame.sub_screen>
-    </frame.totalframe>
+      </f.SubScreen>
+    </f.Totalframe>
   );
 };
 
