@@ -5,6 +5,7 @@ export const Totalframe = styled.div`
   height: 100vh;
   border: 1px solid #eceeef;
   margin: 0 auto;
+  overflow-y: auto;
 `;
 
 export const ScreenComponent = styled.div`

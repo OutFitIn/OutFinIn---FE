@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import * as f from '../../components/Common/CommonStyle';
 
 const BodyBox = styled.div`
+    color: ${(props) => (props.active ? '#FFF' : '#DCD9DD')};
+    background: ${(props) => (props.active ? '#100069' : '#fff')};
     box-sizing: border-box;
     height: 125px;
     border-radius: 11px;
     border: 1px solid #E4E1EC;
-    background: #FFF;
     padding: 24px 0px 29px 32px;
     margin-bottom: ${(props) => (props.bodyName == '스트레이트' || props.bodyName == '웨이브'? '1.42vh' : '0px')}
 `
@@ -17,7 +18,6 @@ const BodyImg = styled.img`
 `
 
 const BodyName = styled.div`
-    color: #DCD9DD;
     font-size: 16px;
     font-weight: 700;
     letter-spacing: 0.08px;
@@ -25,7 +25,6 @@ const BodyName = styled.div`
 `
 
 const BodyDescribe = styled.div`
-    color: #DCD9DD;
     font-size: 14px;
     font-weight: 400;
     line-height: normal;
@@ -35,7 +34,7 @@ const BodyDescribe = styled.div`
 
 const BodyTpye = (props) => {
     const ChangeBoxColor = () => {
-        props.bodyName == '스트레이트' ? props.choose(1) : props.bodyName == '웨이브' ? props.choose(1) : props.choose(2)
+        props.bodyName == '스트레이트' ? props.choose(1) : props.bodyName == '웨이브' ? props.choose(2) : props.choose(3)
     }
     
     return (

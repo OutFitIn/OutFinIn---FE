@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 const Btn = styled.button`
     display: flex;
-    position: fixed;
     width: 354px;
     height: 60px;
     padding: 5px 10px;
@@ -17,8 +16,7 @@ const Btn = styled.button`
     font-weight: 700;
     line-height: normal;
     letter-spacing: 0.08px;
-    position : absolute;
-    bottom : 37px;
+    margin-bottom:37px;
 `
 
 const ButtonBottom = (props) => {
