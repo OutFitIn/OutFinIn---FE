@@ -8,6 +8,7 @@ import BodyTpye from "../../components/Join/BodyType";
 import bodyStraight from '../../assets/img/bodyStraight.svg';
 import bodyWave from '../../assets/img/bodyWave.svg';
 import bodyNatural from '../../assets/img/bodyNatural.svg';
+import GetInfo from "../../components/Join/GetInfo";
 
 const BodyTypeText = styled.div`
     color: #E4E1EC;
@@ -15,11 +16,46 @@ const BodyTypeText = styled.div`
     font-weight: 700;
     letter-spacing: 0.175px;
     margin-bottom: 14px;
+    margin-top: 3.21vh;
+`
+
+const Male = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 85px;
+    height: 38px;
+    background-color: ${(props) => (props.selected ? '#100069' : '#fff')};
+    border: 1px solid #C8C5D0;
+    border-right: 0px solid #fff;
+    border-radius: 10px 0px 0px 11px;
+    color: #E4E1EC;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.175px;
+`
+
+const Female = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 85px;
+    height: 38px;
+    background-color: ${(props) => (props.selected ? '#100069' : '#fff')};
+    border: 1px solid #C8C5D0;
+    border-left: 0px solid #fff;
+    border-radius: 0px 10px 11px 0px;
+    color: #E4E1EC;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.175px;
 `
 const UserInfo = () => {
     const [straight,setStraight] = useState(false);
     const [wave,setWave] = useState(false);
     const [natural,setNatural] = useState(false);
+    const [male, setMale] = useState(false);
+    const [female, setFemale] = useState(false);
 
     const choose = (x) => {
         if(x == 1){
@@ -36,6 +72,16 @@ const UserInfo = () => {
             setNatural(true);
         }
     }
+
+    const changeGender = (g) => {
+        if (g === 1) {
+            setMale(true);
+            setFemale(false);
+        } else if (g === 2) {
+            setMale(false);
+            setFemale(true);
+        }
+    }
     return(
         <f.Totalframe>
             <f.ScreenComponent>
@@ -46,6 +92,21 @@ const UserInfo = () => {
                     <ButtonNumbers content={4}/>
                     <ButtonNumbers content={5}/>
                     <QuestionMode content={'더 정확한 추천을 위해 회원님의 \n 정보를 수집하고 있어요'} />
+                    {/* 개인정보 입력 */}
+                    <f.Flex>
+                        <GetInfo infoName={'닉네임'}/>
+                        <Male 
+                            onClick={() => changeGender(1)}
+                            selected={male}>남</Male>
+                        <Female 
+                            onClick={() => changeGender(2)}
+                            selected={female}>여</Female>
+                    </f.Flex>
+                    <f.Flex>
+                        <GetInfo infoName={'키'}/>
+                        <GetInfo infoName={'체중'}/>
+                    </f.Flex>
+
                     {/* 체형 선택 */}
                     <BodyTypeText>체형</BodyTypeText>
                     <BodyTpye
