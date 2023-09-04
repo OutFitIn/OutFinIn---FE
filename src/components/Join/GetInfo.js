@@ -14,15 +14,21 @@ const InputInfos = styled.div`
 `;
 
 const InputInfo = styled.input`
-    width: 134px;
+    width: 39px;
     border: none;
     outline: none;
+
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        display: none;
+    }
 `;
+
 const GetInfo = (props) => {
     return(
-        <f.Flex>
-            <InputInfos infoName={props.infoName}>{props.infoName}</InputInfos>
-        </f.Flex>
+        <InputInfos infoName={props.infoName}>{props.infoName}
+            <InputInfo></InputInfo>
+        </InputInfos>
     )
 }
 export default GetInfo;
