@@ -8,7 +8,7 @@ import QuestionMode from '../../components/Join/QuestionModeBox';
 import ExplOfQues from "../../components/Join/ExplOfQues";
 import GetStyleBox from "../../components/Join/GetStyleBox";
 
-const CoInfoGetStyle = () => {
+const GetStyle = () => {
     const [selectedStyles, setSelectedStyles] = useState([]);
     const styleOptions = [
         '미니멀',
@@ -60,8 +60,8 @@ const CoInfoGetStyle = () => {
                         </StyleBoxContainer>
                         
                         
-                        
-                        <Link to="../">
+                        {/*여기 수정!! 사용자인 경우에는 UserGetRecommend로 이동해야함. */}
+                        <Link to="../couploadmainpicture" style={{ textDecoration: 'none' }}>
                             <ButtonBottom content={'다음'} />
                         </Link>
                     </f.ScreenJoin>
@@ -75,4 +75,4 @@ const StyleBoxContainer = styled.div`
     margin: 0 auto;
 `
 
-export default CoInfoGetStyle;
+export default GetStyle;

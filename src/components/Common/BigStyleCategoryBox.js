@@ -23,7 +23,7 @@ const Content = styled.div`
 
 const BigStyleCategoryBox = (props) => {
     return (
-        <Box isSelected={props.isSelected}>
+        <Box isSelected={props.isSelected} onClick={props.onClick}>
             <Content isSelected={props.isSelected}>
                 {props.content}
             </Content>

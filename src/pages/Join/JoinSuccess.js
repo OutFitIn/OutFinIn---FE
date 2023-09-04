@@ -1,30 +1,14 @@
 import React,{ useState } from "react";
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
 import * as f from '../../components/Common/CommonStyle';
 import ButtonBottom from '../../components/Common/ButtonBottom';
 import ButtonNumbers from '../../components/Join/NumbersButton';
 import QuestionMode from '../../components/Join/QuestionModeBox';
-import { Link } from "react-router-dom";
 
-const BodyTypeText = styled.div`
-    color: #E4E1EC;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.175px;
-    margin-bottom: 14px;
-`
-const CoInfoGetProfile = () => {
-    const [bodyStraights,setBodyStraight] = useState(false);
-    const [bodyWaves,setbodyWave] = useState(false);
-    const [bodyNaturals,setbodyNatural] = useState(false);
 
-    const choose = (x) => {
-        if(x == 1){
-            setBodyStraight(true);
-            setbodyWave(false);
-            setbodyNatural(false)
-        }
-    }
+const JoinSuccess = () => {
+
     return(
         <f.Totalframe>
             <f.SubScreen>
@@ -35,8 +19,11 @@ const CoInfoGetProfile = () => {
                         <ButtonNumbers content={3}/>
                         <ButtonNumbers content={4}/>
                         <ButtonNumbers content={5}/>
-                        <QuestionMode content={'코디네이터 님의\n 프로필을 작성해주세요'} marginBottom={'25px'}/>
-                        <Link to="../getstyle">
+                        {/*여기 수정. 코디네이터냐, 사용자냐에 따라*/}
+                        <QuestionMode content={'회원가입이 완료 되었습니다!\n 오늘도 예쁜 코디 부탁드려요'} marginBottom={'2.96vh'}/>
+
+
+                        <Link to="../main" style={{ textDecoration: 'none' }}>
                             <ButtonBottom content={'다음'} />
                         </Link>
                     </f.ScreenJoin>
@@ -45,4 +32,4 @@ const CoInfoGetProfile = () => {
         </f.Totalframe>
     )
 }
-export default CoInfoGetProfile;
+export default JoinSuccess;

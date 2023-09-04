@@ -1,5 +1,6 @@
 import React,{ useState } from "react";
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
 import * as f from '../../components/Common/CommonStyle';
 import ButtonBottom from '../../components/Common/ButtonBottom';
 import ButtonNumbers from '../../components/Join/NumbersButton';
@@ -91,7 +92,7 @@ const UserInfo = () => {
                     <ButtonNumbers content={3}/>
                     <ButtonNumbers content={4}/>
                     <ButtonNumbers content={5}/>
-                    <QuestionMode content={'더 정확한 추천을 위해 회원님의 \n 정보를 수집하고 있어요'} />
+                    <QuestionMode content={'더 정확한 추천을 위해 회원님의 \n 정보를 수집하고 있어요'} marginBottom={'2.87vh'}/>
                     {/* 개인정보 입력 */}
                     <f.Flex>
                         <GetInfo infoName={'닉네임'}/>
@@ -127,8 +128,10 @@ const UserInfo = () => {
                         choose={choose}
                         selected={natural}
                         bodyDescribe={'목이 가늘고 긴 편 둥글고 얇은 어깨\n상반신 보다 하반신 볼륨이 발달'}/>
+                        <Link to="../getstyle" style={{ textDecoration: 'none' }}>
+                            <ButtonBottom content={'다음'} />
+                        </Link>
                 </f.ScreenJoin>
-                <ButtonBottom content={'다음'} />
             </f.ScreenComponent>
         </f.Totalframe>
     )

@@ -17,6 +17,7 @@ const Btn = styled.button`
     line-height: normal;
     letter-spacing: 0.08px;
     margin-bottom:37px;
+    text-decoration: none;
 `
 
 const ButtonBottom = (props) => {

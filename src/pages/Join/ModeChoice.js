@@ -47,7 +47,7 @@ const ModeChoice = () =>{
                         choose={choose}
                         selected={user}
                         describe={'옷 고르기 힘들때 코디네이터에게 도움을 요청해보세요'}/>
-                        <Link to="./coinfogetprofile">
+                        <Link to={coordinate ? "./coinfo" : "./userinfo"} style={{ textDecoration: 'none' }}>
                             <ButtonBottom content={'다음'} />
                         </Link>
                 </f.ScreenComponent>
