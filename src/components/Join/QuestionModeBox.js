@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const QuestionContainer = styled.div`
     margin-top: 27px;
-    margin-bottom: 42px;
+    margin-bottom: ${props => props.marginBottom};
 `
 const Question = styled.div`
     color: #000;
@@ -17,7 +17,7 @@ const Question = styled.div`
 const QuestionMode = (props) => {
     return (
         <div>
-            <QuestionContainer>
+            <QuestionContainer marginBottom={props.marginBottom}>
                 <Question>
                     {props.content}
                 </Question>

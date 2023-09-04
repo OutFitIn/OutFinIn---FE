@@ -4,6 +4,7 @@ import ButtonBottom from '../../components/Common/ButtonBottom';
 import ButtonNumbers from '../../components/Join/NumbersButton';
 import QuestionMode from '../../components/Join/QuestionModeBox';
 import BoxMode from '../../components/Join/BoxMode';
+import { Link } from 'react-router-dom';
 
 const ModeChoice = () =>{
     const [number, setNumber] = useState('1');
@@ -34,8 +35,7 @@ const ModeChoice = () =>{
                         <ButtonNumbers content={3} isSelected={number === '3'} onClick={() => changeNumber('3')} />
                         <ButtonNumbers content={4} isSelected={number === '4'} onClick={() => changeNumber('4')} />
                         <ButtonNumbers content={5} isSelected={number === '5'} onClick={() => changeNumber('5')} />
-                        <QuestionMode content={'어떤 모드로 시작할까요?'} />
-                        <ButtonBottom content={'다음'} />
+                        <QuestionMode content={'어떤 모드로 시작할까요?'} marginBottom={'42px'}/>
                     </f.ScreenJoin>
                     <BoxMode
                         mode={'코디네이터 모드'} 
@@ -47,6 +47,9 @@ const ModeChoice = () =>{
                         choose={choose}
                         selected={user}
                         describe={'옷 고르기 힘들때 코디네이터에게 도움을 요청해보세요'}/>
+                        <Link to="./coinfogetprofile">
+                            <ButtonBottom content={'다음'} />
+                        </Link>
                 </f.ScreenComponent>
             </f.Totalframe>
         </div>

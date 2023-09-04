@@ -29,7 +29,7 @@ const BtnIn = styled.div`
 const ButtonNumbers = (props) => {
     return (
         <BtnContainer>
-            <Btn isSelected={props.isSelected}>
+            <Btn isSelected={props.isSelected} onClick={props.onClick}>
                 <BtnIn>
                     {props.content}
                 </BtnIn>
