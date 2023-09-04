@@ -14,9 +14,13 @@ export const ScreenComponent = styled.div`
 export const SubScreen = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
-  height: calc(100vh - 98px);
+  height: calc(100vh - 88px);
 `;
 
 export const ScreenJoin = styled.div`
   padding-top: 85px;
+`
+
+export const Flex = styled.div`
+  display:flex;
 `

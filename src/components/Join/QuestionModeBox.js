@@ -11,6 +11,7 @@ const Question = styled.div`
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    white-space: pre-line;
 `
 
 const QuestionMode = (props) => {
