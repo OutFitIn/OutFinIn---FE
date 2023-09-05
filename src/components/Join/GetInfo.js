@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import * as f from '../Common/CommonStyle'
 const InputInfos = styled.div`
     display: flex;
+    justify-content: space-between;
     width: 157px;
     color: #E4E1EC;
     border-bottom: 1px solid #C8C5D0;
@@ -14,20 +15,42 @@ const InputInfos = styled.div`
 `;
 
 const InputInfo = styled.input`
-    width: 39px;
+    width: ${(props)=>(props.infoName == '닉네임' ? '52px' : '35px')};
     border: none;
     outline: none;
-
+    text-align: right;
+    color: #000;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.175px;
     &::-webkit-inner-spin-button {
         -webkit-appearance: none;
         display: none;
     }
 `;
 
+const Unit = styled.div`
+    color: ${(props) => props.active ? '#000' : '#E4E1EC'};
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.175px;
+`;
+
+const InputUnit = styled.div`
+    display:flex;
+`;
 const GetInfo = (props) => {
+    const [inputValue, setInputValue] = useState("");
+
+    const handleInputChange = (e) => {
+        setInputValue(e.target.value);
+    };
     return(
         <InputInfos infoName={props.infoName}>{props.infoName}
-            <InputInfo></InputInfo>
+            <InputUnit>
+                <InputInfo value={inputValue} onChange={handleInputChange} infoName={props.infoName}></InputInfo>
+                <Unit active={inputValue !== ""}>{props.unit}</Unit>
+            </InputUnit>
         </InputInfos>
     )
 }

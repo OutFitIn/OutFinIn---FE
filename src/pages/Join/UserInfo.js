@@ -28,8 +28,8 @@ const Male = styled.div`
     height: 38px;
     background-color: ${(props) => (props.selected ? '#100069' : '#fff')};
     border: 1px solid #C8C5D0;
-    border-right: 0px solid #fff;
-    border-radius: 10px 0px 0px 11px;
+    border-left: 0px solid #fff;
+    border-radius: 0px 10px 11px 0px;
     color: #E4E1EC;
     font-size: 14px;
     font-weight: 700;
@@ -44,8 +44,8 @@ const Female = styled.div`
     height: 38px;
     background-color: ${(props) => (props.selected ? '#100069' : '#fff')};
     border: 1px solid #C8C5D0;
-    border-left: 0px solid #fff;
-    border-radius: 0px 10px 11px 0px;
+    border-right: 0px solid #fff;
+    border-radius: 10px 0px 0px 11px;
     color: #E4E1EC;
     font-size: 14px;
     font-weight: 700;
@@ -97,16 +97,16 @@ const UserInfo = () => {
                     {/* 개인정보 입력 */}
                     <f.Flex>
                         <GetInfo infoName={'닉네임'}/>
-                        <Male 
-                            onClick={() => changeGender(1)}
-                            selected={male}>남</Male>
                         <Female 
                             onClick={() => changeGender(2)}
                             selected={female}>여</Female>
+                        <Male 
+                            onClick={() => changeGender(1)}
+                            selected={male}>남</Male>
                     </f.Flex>
                     <f.Flex>
-                        <GetInfo infoName={'키'}/>
-                        <GetInfo infoName={'체중'}/>
+                        <GetInfo infoName={'키'} unit={'cm'}/>
+                        <GetInfo infoName={'체중'} unit={'kg'}/>
                     </f.Flex>
 
                     {/* 체형 선택 */}
