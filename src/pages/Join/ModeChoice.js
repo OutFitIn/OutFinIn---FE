@@ -30,26 +30,27 @@ const ModeChoice = () =>{
             <f.Totalframe>
                 <f.ScreenComponent>
                     <f.ScreenJoin>
-                        <ButtonNumbers content={1} isSelected={number === '1'} onClick={() => changeNumber('1')} />
-                        <ButtonNumbers content={2} isSelected={number === '2'} onClick={() => changeNumber('2')} />
-                        <ButtonNumbers content={3} isSelected={number === '3'} onClick={() => changeNumber('3')} />
-                        <ButtonNumbers content={4} isSelected={number === '4'} onClick={() => changeNumber('4')} />
-                        <ButtonNumbers content={5} isSelected={number === '5'} onClick={() => changeNumber('5')} />
+                        <f.Flex>
+                            <ButtonNumbers content={1} isSelected={number === '1'} onClick={() => changeNumber('1')} />
+                            <ButtonNumbers content={2} isSelected={number === '2'} onClick={() => changeNumber('2')} />
+                            <ButtonNumbers content={3} isSelected={number === '3'} onClick={() => changeNumber('3')} />
+                            <ButtonNumbers content={4} isSelected={number === '4'} onClick={() => changeNumber('4')} />
+                        </f.Flex>
                         <QuestionMode content={'어떤 모드로 시작할까요?'} marginBottom={'42px'}/>
-                    </f.ScreenJoin>
-                    <BoxMode
-                        mode={'코디네이터 모드'} 
-                        choose={choose}
-                        selected={coordinate}
-                        describe={'나만의 코디를 업로드 하고 다른 사용자의 코디도 진행해보세요'}/>
-                    <BoxMode
-                        mode={'사용자 모드'} 
-                        choose={choose}
-                        selected={user}
-                        describe={'옷 고르기 힘들때 코디네이터에게 도움을 요청해보세요'}/>
+                        <BoxMode
+                            mode={'코디네이터 모드'} 
+                            choose={choose}
+                            selected={coordinate}
+                            describe={'나만의 코디를 업로드 하고 다른 사용자의 코디도 진행해보세요'}/>
+                        <BoxMode
+                            mode={'사용자 모드'} 
+                            choose={choose}
+                            selected={user}
+                            describe={'옷 고르기 힘들때 코디네이터에게 도움을 요청해보세요'}/>
                         <Link to={coordinate ? "./coinfo" : "./userinfo"} style={{ textDecoration: 'none' }}>
                             <ButtonBottom content={'다음'} />
                         </Link>
+                    </f.ScreenJoin>
                 </f.ScreenComponent>
             </f.Totalframe>
         </div>

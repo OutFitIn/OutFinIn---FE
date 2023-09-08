@@ -42,11 +42,12 @@ const GetStyle = () => {
             <f.SubScreen>
                 <f.ScreenComponent>
                     <f.ScreenJoin>
-                        <ButtonNumbers content={1} />
-                        <ButtonNumbers content={2}/>
-                        <ButtonNumbers content={3}/>
-                        <ButtonNumbers content={4}/>
-                        <ButtonNumbers content={5}/>
+                        <f.Flex>
+                            <ButtonNumbers content={1}/>
+                            <ButtonNumbers content={2}/>
+                            <ButtonNumbers content={3}/>
+                            <ButtonNumbers content={4}/>
+                        </f.Flex>
                         {/*여기 수정해주기!! 코디네이터냐 user냐에 따라 내용만 다르게 뜨게. 일단은 코디네이터 입장*/}
                         <QuestionMode content={'코디네이터님이 추구하는\n 스타일은 어떤 느낌일까요?'} marginBottom={'6px'}/> 
                         {/*여기 수정해주기!! 코디네이터냐 user냐에 따라 내용만 다르게 뜨게. 일단은 코디네이터 입장*/}
@@ -61,7 +62,7 @@ const GetStyle = () => {
                         
                         
                         {/*여기 수정!! 사용자인 경우에는 UserGetRecommend로 이동해야함. */}
-                        <Link to="../couploadmainpicture" style={{ textDecoration: 'none' }}>
+                        <Link to="../joinsuccess" style={{ textDecoration: 'none' }}>
                             <ButtonBottom content={'다음'} />
                         </Link>
                     </f.ScreenJoin>

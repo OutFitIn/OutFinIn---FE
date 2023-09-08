@@ -10,7 +10,7 @@ const BodyBox = styled.div`
     border-radius: 11px;
     border: 1px solid #E4E1EC;
     padding: 24px 0px 29px 32px;
-    margin-bottom: ${(props) => (props.bodyName == '스트레이트' || props.bodyName == '웨이브'? '1.42vh' : '4.82vh')};
+    margin-bottom: ${(props) => (props.bodyName === '스트레이트' || props.bodyName === '웨이브'? '1.42vh' : '10vh')};
 `
 
 const BodyImg = styled.img`
@@ -34,7 +34,7 @@ const BodyDescribe = styled.div`
 
 const BodyTpye = (props) => {
     const ChangeBoxColor = () => {
-        props.bodyName == '스트레이트' ? props.choose(1) : props.bodyName == '웨이브' ? props.choose(2) : props.choose(3)
+        props.bodyName === '스트레이트' ? props.choose(1) : props.bodyName === '웨이브' ? props.choose(2) : props.choose(3)
     }
     
     return (

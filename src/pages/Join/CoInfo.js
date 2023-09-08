@@ -54,6 +54,7 @@ const TextContainer = styled.div`
     position:relative; 
     display:inline-block; 
     width: 314px;
+    margin-bottom: 4.62vh;
 `
 
 const TextArea = styled.textarea`
@@ -114,11 +115,12 @@ const CoInfo = () => {
             <f.SubScreen>
                 <f.ScreenComponent>
                     <f.ScreenJoin>
-                        <ButtonNumbers content={1} />
-                        <ButtonNumbers content={2}/>
-                        <ButtonNumbers content={3}/>
-                        <ButtonNumbers content={4}/>
-                        <ButtonNumbers content={5}/>
+                        <f.Flex>
+                            <ButtonNumbers content={1}/>
+                            <ButtonNumbers content={2}/>
+                            <ButtonNumbers content={3}/>
+                            <ButtonNumbers content={4}/>
+                        </f.Flex>
                         <QuestionMode content={'코디네이터 님의\n 프로필을 작성해주세요'} marginBottom={'25px'}/>
                         {/*사진 입력받기*/}
                         <GetPhotoContainer>

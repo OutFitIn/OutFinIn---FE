@@ -59,11 +59,11 @@ const UserInfo = () => {
     const [female, setFemale] = useState(false);
 
     const choose = (x) => {
-        if(x == 1){
+        if(x === 1){
             setStraight(true);
             setWave(false);
             setNatural(false);
-        } else if(x == 2){
+        } else if(x === 2){
             setStraight(false);
             setWave(true);
             setNatural(false);
@@ -87,11 +87,12 @@ const UserInfo = () => {
         <f.Totalframe>
             <f.ScreenComponent>
                 <f.ScreenJoin>
-                    <ButtonNumbers content={1} />
-                    <ButtonNumbers content={2}/>
-                    <ButtonNumbers content={3}/>
-                    <ButtonNumbers content={4}/>
-                    <ButtonNumbers content={5}/>
+                    <f.Flex>
+                        <ButtonNumbers content={1}/>
+                        <ButtonNumbers content={2}/>
+                        <ButtonNumbers content={3}/>
+                        <ButtonNumbers content={4}/>
+                    </f.Flex>
                     <QuestionMode content={'더 정확한 추천을 위해 회원님의 \n 정보를 수집하고 있어요'} marginBottom={'2.87vh'}/>
                     {/* 개인정보 입력 */}
                     <f.Flex>
@@ -128,9 +129,9 @@ const UserInfo = () => {
                         choose={choose}
                         selected={natural}
                         bodyDescribe={'목이 가늘고 긴 편 둥글고 얇은 어깨\n상반신 보다 하반신 볼륨이 발달'}/>
-                        <Link to="../getstyle" style={{ textDecoration: 'none' }}>
-                            <ButtonBottom content={'다음'} />
-                        </Link>
+                    <Link to="../getstyle" style={{ textDecoration: 'none' }}>
+                        <ButtonBottom content={'다음'} />
+                    </Link>
                 </f.ScreenJoin>
             </f.ScreenComponent>
         </f.Totalframe>
