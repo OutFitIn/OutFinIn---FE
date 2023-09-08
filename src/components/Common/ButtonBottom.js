@@ -10,10 +10,10 @@ const Btn = styled.button`
     justify-content: center;
     align-items: center;
     border-radius: 20px;
-    background: #D8D9DA;
-    border: 1px solid #D8D9DA;
+    background: #100069;
     font-size: 16px;
     font-weight: 700;
+    color: #fff;
     line-height: normal;
     letter-spacing: 0.08px;
     position: fixed;
