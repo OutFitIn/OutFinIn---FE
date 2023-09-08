@@ -5,13 +5,14 @@ import user from '../../assets/img/user.svg';
 
 const Box = styled.div`
     display:flex;
+    justify-content: space-between;
     height: 19.9vh;
     border-radius: 15px;
     color: ${(props) => (props.active ? '#FFF' : '#000')};
     background: ${(props) => (props.active ? '#100069' : '#E4E1EC')};
-    padding: 25px 8px 0px 26px;
+    padding: 2.96vh 8px 2.84vh 26px;
     cursor: pointer;
-    margin-bottom: ${(props) => (props.mode === '코디네이터 모드' ? '16px' : '0.35vh;')}
+    margin-bottom: ${(props) => (props.mode === '아우터 모드' ? '16px' : '0px;')};
 `;
 
 const ModeName = styled.div`
@@ -21,35 +22,30 @@ const ModeName = styled.div`
     margin-bottom: 5.21vh;
 `;
 
-const ModeDescribe = styled.div` 
+const ModeDescribe = styled.div`
+    position: absolute;
+    z-index:20;
     font-size: 16px;
     font-weight: 400;
     letter-spacing: 0.04px;
-    margin-bottom: 24px;
+    margin-bottom: 2.84vh;
+    white-space: pre-line;
 `;
-
-const Img = styled.img`
-    margin: 2.48vh 0;
-`
-const Content = styled.div`
-    // margin-bottom: 2.84vh;
-`
 
 const BoxMode = (props) => {
 
     const ChangeBox = () => {
-        props.mode === '코디네이터 모드' ? props.choose(1) : props.choose(2)
+        props.mode === '아우터 모드' ? props.choose(1) : props.choose(2)
     }
     return(
         <Box mode={props.mode}
             active={props.selected}
             onClick={ChangeBox}>
-            <Content>
+            <div>
                 <ModeName>{props.mode}</ModeName>
                 <ModeDescribe>{props.describe}</ModeDescribe>
-            </Content> 
-            <Img src={props.mode === '코디네이터 모드'? coordinate : user} style={{width:'50%'}} /> 
-           
+            </div>
+            <img src={props.mode === '아우터 모드'? coordinate : user}/> 
         </Box>
         
     )

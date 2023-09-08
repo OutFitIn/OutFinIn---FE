@@ -38,15 +38,15 @@ const ModeChoice = () =>{
                         </f.Flex>
                         <QuestionMode content={'어떤 모드로 시작할까요?'} marginBottom={'2.84vh'}/>
                         <BoxMode
-                            mode={'코디네이터 모드'} 
+                            mode={'아우터 모드'} 
                             choose={choose}
                             selected={coordinate}
-                            describe={'나만의 코디를 업로드 하고 다른 사용자의 코디도 진행해보세요'}/>
+                            describe={'나만의 코디를 업로드 하고 다른\n피터의 코디도 진행해보세요'}/>
                         <BoxMode
-                            mode={'사용자 모드'} 
+                            mode={'피터 모드'} 
                             choose={choose}
                             selected={user}
-                            describe={'옷 고르기 힘들때 코디네이터에게 도움을 요청해보세요'}/>
+                            describe={'옷 고르기 힘들때 아우터에게\n도움을 요청해 보세요'}/>
                         <Link to={coordinate ? "./coinfo" : "./userinfo"} style={{ textDecoration: 'none' }}>
                             <ButtonBottom content={'다음'} />
                         </Link>
