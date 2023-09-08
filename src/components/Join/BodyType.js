@@ -10,7 +10,7 @@ const BodyBox = styled.div`
     border-radius: 11px;
     border: 1px solid #E4E1EC;
     padding: 24px 0px 29px 32px;
-    margin-bottom: ${(props) => (props.bodyName === '스트레이트' || props.bodyName === '웨이브'? '1.42vh' : '10vh')};
+    margin-bottom: ${(props) => (props.bodyName === '스트레이트' || props.bodyName === '웨이브'? '1.42vh' : '20vh')};
 `
 
 const BodyImg = styled.img`

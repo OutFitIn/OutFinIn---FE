@@ -16,16 +16,9 @@ const Btn = styled.button`
     font-weight: 700;
     line-height: normal;
     letter-spacing: 0.08px;
-<<<<<<< Updated upstream
-    margin-bottom:37px;
-    margin-top: 40px;
-=======
-    position:relative;
-    bottom: 31px;
->>>>>>> Stashed changes
+    position: fixed;
+    bottom: 37px;
     text-decoration: none;
-    position: absolute;
-    bottom: 0px;
 `
 
 const ButtonBottom = (props) => {

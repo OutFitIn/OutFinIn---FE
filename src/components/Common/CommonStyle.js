@@ -6,10 +6,15 @@ export const Totalframe = styled.div`
   border: 1px solid #eceeef;
   margin: 0 auto;
   overflow-y: auto;
+  padding: 0px 18px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  
 `;
 
 export const ScreenComponent = styled.div`
-  padding: 0px 18px;
+
 `;
 
 export const SubScreen = styled.div`
