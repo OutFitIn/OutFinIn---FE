@@ -4,6 +4,7 @@
   -ms-user-select:none;
   user-select:none;
   box-sizing: border-box;
+  text-decoration-line: none;
 }
 @font-face {
   font-family: 'Noto Sans KR';

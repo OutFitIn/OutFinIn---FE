@@ -53,8 +53,7 @@ const TextContainer = styled.div`
     margin-top: 2.96vh;
     position:relative; 
     display:inline-block; 
-    width: 314px;
-    margin-bottom: 4.62vh;
+    margin-bottom: 13.62vh;
 `
 
 const TextArea = styled.textarea`
@@ -112,51 +111,46 @@ const CoInfo = () => {
 
     return(
         <f.Totalframe>
-            <f.SubScreen>
-                <f.ScreenComponent>
-                    <f.ScreenJoin>
-                        <f.Flex>
-                            <ButtonNumbers content={1}/>
-                            <ButtonNumbers content={2}/>
-                            <ButtonNumbers content={3}/>
-                            <ButtonNumbers content={4}/>
-                        </f.Flex>
-                        <QuestionMode content={'코디네이터 님의\n 프로필을 작성해주세요'} marginBottom={'25px'}/>
-                        {/*사진 입력받기*/}
-                        <GetPhotoContainer>
-                            <Profile src={profileCircle}></Profile>
-                        </GetPhotoContainer>
-                        {/*정보 입력받기*/}
-                        <f.Flex>    
-                            <GetInfo infoName={'닉네임'}/>
-                            <Male 
-                                onClick={() => changeGender(1)}
-                                selected={male}>남</Male>
-                            <Female 
-                                onClick={() => changeGender(2)}
-                                selected={female}>여</Female>
-                        </f.Flex>
-                        <f.Flex>
-                            <GetInfo infoName={'키'}/>
-                            <GetInfo infoName={'체중'}/>
-                        </f.Flex>
-                        <f.Flex>
-                            <GetInfo infoName={'SNS 링크'}/>
-                        </f.Flex>
-                        {/*프로필 내용 입력받기 (1/50)-50글자 이내*/}
-                        <TextContainer>
-                            <TextArea onChange={onInputHandler} maxLength={maxInputLength} placeholder="프로필을 간단하게 적어주세요!"/>
-                            <TextCount><span>{inputCount}</span><span>/20 자</span></TextCount>
-                        </TextContainer>
-
-
-
-                        <Link to="../getstyle" style={{ textDecoration: 'none' }}>
-                            <ButtonBottom content={'다음'} />
-                        </Link>
-                    </f.ScreenJoin>
-                </f.ScreenComponent>
-            </f.SubScreen>
+            <f.ScreenComponent>
+                <f.ScreenJoin>
+                    <f.Flex>
+                        <ButtonNumbers content={1}/>
+                        <ButtonNumbers content={2} isSelected={true}/>
+                        <ButtonNumbers content={3}/>
+                        <ButtonNumbers content={4}/>
+                    </f.Flex>
+                    <QuestionMode content={'코디네이터 님의\n 프로필을 작성해주세요'} marginBottom={'25px'}/>
+                    {/*사진 입력받기*/}
+                    <GetPhotoContainer>
+                        <Profile src={profileCircle}></Profile>
+                    </GetPhotoContainer>
+                    {/*정보 입력받기*/}
+                    <f.Flex>    
+                        <GetInfo infoName={'닉네임'}/>
+                        <Male 
+                            onClick={() => changeGender(1)}
+                            selected={male}>남</Male>
+                        <Female 
+                            onClick={() => changeGender(2)}
+                            selected={female}>여</Female>
+                    </f.Flex>
+                    <f.Flex>
+                        <GetInfo infoName={'키'}/>
+                        <GetInfo infoName={'체중'}/>
+                    </f.Flex>
+                    <f.Flex>
+                        <GetInfo infoName={'SNS 링크'}/>
+                    </f.Flex>
+                    {/*프로필 내용 입력받기 (1/50)-50글자 이내*/}
+                    <TextContainer>
+                        <TextArea onChange={onInputHandler} maxLength={maxInputLength} placeholder="프로필을 간단하게 적어주세요!"/>
+                        <TextCount><span>{inputCount}</span><span>/20 자</span></TextCount>
+                    </TextContainer>
+                    <Link to="/getstyle">
+                        <ButtonBottom content={'다음'} />
+                    </Link>
+                </f.ScreenJoin>
+            </f.ScreenComponent>
         </f.Totalframe>
     )
 }
