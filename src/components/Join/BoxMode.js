@@ -8,8 +8,8 @@ const Box = styled.div`
     height: 19.9vh;
     border-radius: 15px;
     color: ${(props) => (props.active ? '#FFF' : '#000')};
-    background: ${(props) => (props.active ? '#61677A' : '#D8D9DA')};
-    padding: 25px 8px 24px 26px;
+    background: ${(props) => (props.active ? '#100069' : '#E4E1EC')};
+    padding: 25px 8px 0px 26px;
     cursor: pointer;
     margin-bottom: ${(props) => (props.mode === '코디네이터 모드' ? '16px' : '0.35vh;')}
 `;
@@ -18,21 +18,21 @@ const ModeName = styled.div`
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 0.03px;
-    margin-bottom: 44px;
+    margin-bottom: 5.21vh;
 `;
 
 const ModeDescribe = styled.div` 
     font-size: 16px;
     font-weight: 400;
     letter-spacing: 0.04px;
-    margin: 2.48vh 0;
+    margin-bottom: 24px;
 `;
 
 const Img = styled.img`
     margin: 2.48vh 0;
 `
-const  Content = styled.div`
-    margin-bottom: 2.84vh;
+const Content = styled.div`
+    // margin-bottom: 2.84vh;
 `
 
 const BoxMode = (props) => {

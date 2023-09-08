@@ -1,3 +1,4 @@
 import ModeChoice from './ModeChoice';
 import UserInfo from './UserInfo';
-export { ModeChoice, UserInfo};
+import InputEmail from './InputEmail';
+export { ModeChoice, UserInfo, InputEmail};

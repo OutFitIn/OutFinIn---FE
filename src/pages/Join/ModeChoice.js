@@ -36,7 +36,7 @@ const ModeChoice = () =>{
                             <ButtonNumbers content={3} isSelected={number === '3'} onClick={() => changeNumber('3')} />
                             <ButtonNumbers content={4} isSelected={number === '4'} onClick={() => changeNumber('4')} />
                         </f.Flex>
-                        <QuestionMode content={'어떤 모드로 시작할까요?'} marginBottom={'42px'}/>
+                        <QuestionMode content={'어떤 모드로 시작할까요?'} marginBottom={'2.84vh'}/>
                         <BoxMode
                             mode={'코디네이터 모드'} 
                             choose={choose}
@@ -52,6 +52,9 @@ const ModeChoice = () =>{
                         </Link>
                     </f.ScreenJoin>
                 </f.ScreenComponent>
+                <Link to={coordinate ? "./coinfo" : "./userinfo"} style={{ textDecoration: 'none' }}>
+                    <ButtonBottom content={'다음'} />
+                </Link>
             </f.Totalframe>
         </div>
     )
