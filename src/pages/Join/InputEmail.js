@@ -1,11 +1,11 @@
-import React,{ useState } from "react";
+import React,{ useRef,useState } from "react";
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 import * as f from '../../components/Common/CommonStyle';
 import ButtonBottom from '../../components/Common/ButtonBottom';
 import QuestionMode from '../../components/Join/QuestionModeBox';
 import {AiOutlineCheckCircle} from 'react-icons/ai';
-
+import axios from "axios";
 const Email = styled.input`
     border-radius: 5px;
     border: 1px solid #100069;
@@ -33,7 +33,7 @@ const Domain = styled.select`
     border: 1px solid #100069;
     width: 171px;
     height: 35px;
-    padding: 7px 16px 8px 12px;
+    padding: 7px 0px 8px 12px;
     &:focus{
         outline:none;
     }
@@ -82,6 +82,26 @@ const AuthenticateText = styled.div`
 `;
 
 const InputEmail = () => {
+    const emailRef = useRef("");
+    const [domain, setDomain] = useState('');
+
+    const sendDomain = (e) => {
+        setDomain(e.target.value)
+    }
+    
+    const sendEmail = () => {
+        let Email = emailRef.current.value + '@' + domain;
+        async function fetchEmail(){
+            try {
+                const res = await axios.get("http://127.0.0.1:8080/email/code/send?email="+{Email});
+                console.log(res)
+              } catch (error) {
+                console.error(error);
+              }
+              
+        }
+        fetchEmail()
+    }
 
     return(
         <f.Totalframe>
@@ -90,26 +110,27 @@ const InputEmail = () => {
                     <f.ScreenJoin>
                         <QuestionMode content={'서비스 이용 시작 전\n본인인증이 필요합니다.'} marginBottom={'6.27vh'}/>
                         <f.Flex>
-                            <Email placeholder="이메일 주소"></Email>
+                            <Email placeholder="이메일 주소" ref={emailRef}></Email>
                             <Dot>@</Dot>
-                            <Domain placeholder="gmail.com">
+                            <Domain onChange={sendDomain}>
+                                <option value="">이메일을 선택해주세요.</option>
                                 <option value="gmail.com">gmail.com</option>
-                                <option value="yahoo.com">naver.com</option>
-                                <option value="outlook.com">daum.net</option>
-                                <option value="outlook.com">hanmail.net</option>
-                                <option value="outlook.com">nate.com</option>
-                                <option value="outlook.com">icloud.com</option>
+                                <option value="naver.com">naver.com</option>
+                                <option value="daum.net">daum.net</option>
+                                <option value="hanmail.net">hanmail.net</option>
+                                <option value="nate.com">nate.com</option>
+                                <option value="icloud.com">icloud.com</option>
                             </Domain>
                         </f.Flex>
                         <AuthenticateCode>
                             <AuthenticateInput placeholder="인증 코드를 입력해주세요"></AuthenticateInput>
                             <div style={{display:'flex'}}>
-                                <Time>10:00</Time>
+                                <Time>05:00</Time>
                                 <AiOutlineCheckCircle fill="#C9C5CA"/>
                             </div>
                         </AuthenticateCode>
                         <AuthenticateText>인증 코드를 못 받았아요</AuthenticateText>
-                        <Link to="../joinsuccess" style={{ textDecoration: 'none' }}>
+                        <Link onClick={sendEmail}>
                             <ButtonBottom content={'메일 받기'} />
                         </Link>
                     </f.ScreenJoin>
