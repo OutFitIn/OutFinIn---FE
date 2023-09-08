@@ -18,7 +18,7 @@ const JoinSuccess = () => {
                             <ButtonNumbers content={1}/>
                             <ButtonNumbers content={2}/>
                             <ButtonNumbers content={3}/>
-                            <ButtonNumbers content={4}/>
+                            <ButtonNumbers content={4} isSelected={true}/>
                         </f.Flex>
                         {/*여기 수정. 코디네이터냐, 사용자냐에 따라*/}
                         <QuestionMode content={'회원가입이 완료 되었습니다!\n 오늘도 예쁜 코디 부탁드려요'} marginBottom={'2.96vh'}/>

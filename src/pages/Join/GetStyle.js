@@ -45,7 +45,7 @@ const GetStyle = () => {
                         <f.Flex>
                             <ButtonNumbers content={1}/>
                             <ButtonNumbers content={2}/>
-                            <ButtonNumbers content={3}/>
+                            <ButtonNumbers content={3} isSelected={true}/>
                             <ButtonNumbers content={4}/>
                         </f.Flex>
                         {/*여기 수정해주기!! 코디네이터냐 user냐에 따라 내용만 다르게 뜨게. 일단은 코디네이터 입장*/}

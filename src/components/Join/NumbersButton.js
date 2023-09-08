@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const BtnContainer = styled.div`
@@ -12,7 +12,7 @@ const Btn = styled.div`
     height: 25px;
     border-radius: 15px;
     margin-right: 10px;
-    background: ${(props) => (props.isSelected ? '#000' : '#C4C4C4')};
+    background: ${(props) => (props.isSelected ? '#4F44E2' : '#E4E1EC')};
 `
 
 const BtnIn = styled.div`
@@ -20,7 +20,6 @@ const BtnIn = styled.div`
     padding: 4px;
     text-align: center;
     line-height: normal;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-size: 12.706px;
     font-style: normal;
     font-weight: 700;
@@ -29,7 +28,7 @@ const BtnIn = styled.div`
 const ButtonNumbers = (props) => {
     return (
         <BtnContainer>
-            <Btn isSelected={props.isSelected} onClick={props.onClick}>
+            <Btn isSelected={props.isSelected}>
                 <BtnIn>
                     {props.content}
                 </BtnIn>
