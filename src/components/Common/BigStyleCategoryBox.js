@@ -4,7 +4,8 @@ import styled from 'styled-components';
 const Box = styled.div`
     cursor: pointer;
     border-radius: 20px;
-    border: 1px solid ${(props) => (props.isSelected ? '#000' : '#9A9A9A')};
+    border: 1px solid ${(props) => (props.isSelected ? '#4F44E2' : '#9A9A9A')};
+    margin-right: 8px;
     background: white;
     display: inline-flex;
     padding: 7px 16px;
@@ -13,7 +14,7 @@ const Box = styled.div`
 `
 
 const Content = styled.div`
-    color: ${(props) => (props.isSelected ? '#000' : '#9A9A9A')};
+    color: ${(props) => (props.isSelected ? '#4F44E2' : '#9A9A9A')};
     font-size: 14px;
     font-style: normal;
     font-weight: 700;

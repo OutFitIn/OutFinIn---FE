@@ -2,8 +2,11 @@ import styled from "styled-components";
 
 export const TotalNavigation = styled.div`
     display:flex;
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
     padding: 17px 40px 51px 40px;
-    width: 310px;
+    width: 390px;
     border-top: 1px solid #C4C4C4;
     position: fixed;
     bottom: 0;
@@ -12,7 +15,7 @@ export const TotalNavigation = styled.div`
 export const SubNavigation = styled.div`
     display:flex;
     flex-direction:column;
-    color: ${(props) => (props.isSelected ? '#000' : '#C4C4C4')};
+    color: ${(props) => (props.isSelected ? '#4F44E2' : '#C8C5D0')};
     font-size: 12px;
     align-items: center;
     font-weight: 400;
