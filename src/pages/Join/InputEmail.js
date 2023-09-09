@@ -1,4 +1,4 @@
-import React,{ useRef,useState } from "react";
+import React,{ useRef,useState,useEffect } from "react";
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 import * as f from '../../components/Common/CommonStyle';
@@ -84,6 +84,11 @@ const AuthenticateText = styled.div`
 const InputEmail = () => {
     const emailRef = useRef("");
     const [domain, setDomain] = useState('');
+    const [checkFill, setCheckFill] = useState('#C9C5CA');
+    const [pass, setPass] = useState(false);
+    const [timer,setTimer] = useState(300);
+    const [min,setMin] = useState(5);
+    const [sec,setSec] = useState(0);
 
     const sendDomain = (e) => {
         setDomain(e.target.value)
@@ -93,14 +98,54 @@ const InputEmail = () => {
         let Email = emailRef.current.value + '@' + domain;
         async function fetchEmail(){
             try {
-                const res = await axios.get("http://127.0.0.1:8080/email/code/send?email="+{Email});
-                console.log(res)
+                const res = await axios.get("http://127.0.0.1:8080/email/code/send?email="+Email);
               } catch (error) {
                 console.error(error);
               }
-              
+              setTimer(timer => timer - 1);
         }
-        fetchEmail()
+        fetchEmail();
+    }
+
+    // 타이머 시작
+    useEffect(() => {
+        if(timer == 300){
+            setMin(Math.floor(timer/60));
+            setSec(timer%60);
+            return;
+        }
+        const id = setInterval(() => {
+            setTimer(timer => timer - 1);
+            setMin(Math.floor(timer/60));
+            setSec(timer%60);
+        }, 1000);
+        if(timer === -1){
+            clearInterval(id);
+            setTimer(300);
+        }
+        return () => clearInterval(id);
+    }, [timer]);
+
+    const inputCode = (e) => {
+        let code = e.target.value
+        if(code.length == 4){
+            let Email = emailRef.current.value + '@' + domain;
+            async function fetchCode(){
+                try {
+                    const res = await axios.post("http://127.0.0.1:8080/email/code/auth",
+                    {
+                        email : Email,
+                        code : code
+                    });
+                    if(res.data == 'success!'){
+                        setPass(true);
+                    }
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+            fetchCode()
+        }
     }
 
     return(
@@ -123,15 +168,15 @@ const InputEmail = () => {
                             </Domain>
                         </f.Flex>
                         <AuthenticateCode>
-                            <AuthenticateInput placeholder="인증 코드를 입력해주세요"></AuthenticateInput>
+                            <AuthenticateInput placeholder="인증 코드를 입력해주세요" onChange={inputCode}></AuthenticateInput>
                             <div style={{display:'flex'}}>
-                                <Time>05:00</Time>
-                                <AiOutlineCheckCircle fill="#C9C5CA"/>
+                                <Time>{min}:{sec< 10 ? '0' + sec : sec}</Time>
+                                <AiOutlineCheckCircle fill={pass? '#4F44E2' : '#C9C5CA'}/>
                             </div>
                         </AuthenticateCode>
-                        <AuthenticateText>인증 코드를 못 받았아요</AuthenticateText>
+                        <AuthenticateText onClick={sendEmail}>인증 코드를 못 받았아요</AuthenticateText>
                         <Link onClick={sendEmail}>
-                            <ButtonBottom content={'메일 받기'} />
+                            <ButtonBottom content={pass? '다음' : '메일 받기'} />
                         </Link>
                     </f.ScreenJoin>
                 </f.ScreenComponent>
