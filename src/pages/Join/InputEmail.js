@@ -177,6 +177,7 @@ const InputEmail = () => {
                         <AuthenticateText onClick={sendEmail}>인증 코드를 못 받았아요</AuthenticateText>
                         <Link onClick={sendEmail}>
                             <ButtonBottom content={pass? '다음' : '메일 받기'} />
+
                         </Link>
                     </f.ScreenJoin>
                 </f.ScreenComponent>
