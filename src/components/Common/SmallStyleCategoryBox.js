@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 const Box = styled.div`
     display: inline-flex;
+    margin-right: 8px;
+    white-space: nowrap;
     padding: 5px 10px;
     justify-content: center;
     align-items: center;

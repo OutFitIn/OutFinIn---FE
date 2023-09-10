@@ -8,7 +8,7 @@ const Box = styled.div`
     margin-right: 8px;
     background: white;
     display: inline-flex;
-    padding: 7px 16px;
+    padding: 7px 1.89vh;
     justify-content: center;
     align-items: center;
 `

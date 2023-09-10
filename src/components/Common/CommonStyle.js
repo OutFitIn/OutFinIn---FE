@@ -20,6 +20,9 @@ export const SubScreen = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   height: calc(100vh - 130px);
+  &::-webkit-scrollbar{
+    display:none;
+  }
 `;
 
 export const ScreenJoin = styled.div`
