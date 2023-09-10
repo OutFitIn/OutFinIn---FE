@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import styled from "styled-components";
 import Navigation from "../../components/Navigation/Navigation";
 import * as f from "../../components/Common/CommonStyle";
@@ -18,13 +18,38 @@ const HashTag = styled.div`
   cursor: pointer;  
   white-space: nowrap;
   overflow-x : auto;
-  &::-webkit-scrollbar {
-    display: none;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar{
+    display:none;
   }
 `;
 const Main = () => {
   const [selectStyle, setSelectStyle] = useState('이지캐주얼');
+  const [dragging, setDragging] = useState(false);
+  const [clickPoint, setClickPoint] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
+  const containerRef = useRef(null);
+
+  const handelMouseDownEvent = (e) => {
+    setDragging(true);
+    if(containerRef.current){
+      setClickPoint(e.pageX);
+      setScrollLeft(containerRef.current.scrollLeft);
+    }
+  };
+
+  const handelMouseMoveEvent = (e) => {
+    if(!dragging) return;
+
+    e.preventDefault();
+
+    if(containerRef.current){
+      const walk = e.pageX - clickPoint;
+      containerRef.current.scrollLeft = scrollLeft - walk;
+    }
+  }
   const changeStyle = (style) => {
     setSelectStyle(style);
   }
@@ -34,7 +59,11 @@ const Main = () => {
       <f.SubScreen>
         <f.ScreenComponent>
           <MainText>인기 아우터들의<br/>코디를 둘러보세요 👀</MainText>
-          <HashTag>
+          <HashTag ref={containerRef}
+            onMouseDown={handelMouseDownEvent}
+            onMouseLeave={() => setDragging(false)}
+            onMouseUp={() => setDragging(false)}
+            onMouseMove={handelMouseMoveEvent}>
             <BigStyleCategoryBox content={'#미니멀'} onClick={() => changeStyle('미니멀')} isSelected={selectStyle === '미니멀'} />
             <BigStyleCategoryBox content={'#이지캐주얼'} onClick={() => changeStyle('이지캐주얼')} isSelected={selectStyle === '이지캐주얼'} />
             <BigStyleCategoryBox content={'#스트릿'}/>
