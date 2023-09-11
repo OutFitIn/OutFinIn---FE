@@ -1,6 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import  { ModeChoice, UserInfo, InputEmail} from "./pages/Join";
-import  MainPage from "./pages/Main/MainPage";
+import { MainPage, OuterProfile } from "./pages/Main";
 import CoInfo from "./pages/Join/CoInfo";
 import GetStyle from "./pages/Join/GetStyle";
 import JoinSuccess from "./pages/Join/JoinSuccess";
@@ -20,6 +20,7 @@ function App() {
             <Route path="/coinfo" element={<CoInfo/>}/>
             <Route path="/getstyle" element={<GetStyle/>}/>
             <Route path="/joinsuccess" element={<JoinSuccess />} />
+            <Route path="/outerprofile" element={<OuterProfile />} />
         </Routes>
       </Router>
     </div>

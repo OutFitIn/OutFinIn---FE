@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { Link } from 'react-router-dom';
 import * as n from "./NavigationStyle";
 import {AiFillHome} from 'react-icons/ai';
 import {AiOutlineSearch} from "react-icons/ai";
@@ -13,23 +14,26 @@ const Navigation = (props) => {
     return(
         <n.TotalNavigation>
             {/* 홈 */}
-            <n.SubNavigation 
-                marginRight='45px'
-                isSelected={selectIcon === 'Home'}
-                onClick={() => changeIcon('Home')}
-                >
-                <AiFillHome size='35'/>
-                <n.IconText>홈</n.IconText>
-            </n.SubNavigation>
+            <Link to='/main'>
+                <n.SubNavigation 
+                    marginRight='45px'
+                    isSelected={selectIcon === 'Home'}
+                    onClick={() => changeIcon('Home')}>
+                    <AiFillHome size='35'/>
+                    <n.IconText>홈</n.IconText>
+                </n.SubNavigation>
+            </Link>
             {/* 검색 */}
-            <n.SubNavigation
-                marginRight='45px'
-                isSelected={selectIcon === 'search'}
-                onClick={() => changeIcon('search')}
-                >
-                <AiOutlineSearch size='35'/>
-                <n.IconText>검색</n.IconText>
-            </n.SubNavigation>
+            <Link to='/'>
+                <n.SubNavigation
+                    marginRight='45px'
+                    isSelected={selectIcon === 'search'}
+                    onClick={() => changeIcon('search')}
+                    >
+                    <AiOutlineSearch size='35'/>
+                    <n.IconText>검색</n.IconText>
+                </n.SubNavigation>
+            </Link>
             {/* 채팅 */}
             <n.SubNavigation
                 marginRight='45px'
