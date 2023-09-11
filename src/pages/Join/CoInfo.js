@@ -1,12 +1,15 @@
-import React,{ useState } from "react";
+import { useState} from "react";
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
+import axios from "axios";
 import * as f from '../../components/Common/CommonStyle';
+import * as c from '../../components/Join/CoInfoStyle';
 import ButtonBottom from '../../components/Common/ButtonBottom';
 import ButtonNumbers from '../../components/Join/NumbersButton';
 import QuestionMode from '../../components/Join/QuestionModeBox';
 import GetInfo from "../../components/Join/GetInfo";
 import profileCircle from '../../assets/img/profileCircle.svg';
+import camera from '../../assets/img/camera.svg';
 
 const Male = styled.div`
     display: flex;
@@ -39,54 +42,53 @@ const Female = styled.div`
     font-weight: 700;
     letter-spacing: 0.175px;
 `
-const GetPhotoContainer = styled.div`
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 4.14vh;
-`
-
-const Profile = styled.img`
-    display: block;
-    margin: 0 auto;
-`
-const TextContainer = styled.div`
-    margin-top: 2.96vh;
-    position:relative; 
-    display:inline-block; 
-    margin-bottom: 13.62vh;
-`
-
-const TextArea = styled.textarea`
-    display: inline-flex;
-    padding: 20px 15px 60px 15px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 11px;
-    border: 1px solid #C8C5D0;
-    background: #FFF;
-    width: 100%;
-    &::placeholder{
-		color: #C8C5D0;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-        letter-spacing: 0.175px;
-	}
-`
-const TextCount = styled.div`
-    position:absolute; 
-    right:20px; 
-    bottom:20px; 
-    color:#666; 
-    font-size:15px;
-`
 
 const CoInfo = () => {
     const [male, setMale] = useState(false);
     const [female, setFemale] = useState(false);
     const [inputCount, setInputCount] = useState(0);
-    const maxInputLength = 20; // 최대 입력 길이
+    const maxInputLength =20;
+    const [image, setImage] = useState({
+        image_file: null,
+        preview_URL: null,
+    });
+    
+    const handleImageChange = (e) => {
+        const selectedFile = e.target.files[0];
+    
+        if (selectedFile) {
+            const reader = new FileReader();
+    
+            reader.onload = (e) => {
+                setImage({
+                    image_file: selectedFile,
+                    preview_URL: e.target.result,
+                });
+            };
+    
+            reader.readAsDataURL(selectedFile);
+        }
+    };
+    
+    // const handleImageUpload = async () => {
+    //     if (image.image_file) {
+    //         const formData = new FormData();
+    //         formData.append('image', image.image_file);
+
+    //         try {
+    //             await axios.post('/api/upload', formData, {
+    //                 headers: {
+    //                     'Content-Type': 'multipart/form-data',
+    //                 },
+    //             });
+    //             alert("서버에 이미지 업로드가 완료되었습니다!");
+    //         } catch (error) {
+    //             alert("이미지 업로드 중 오류가 발생했습니다.");
+    //         }
+    //     } else {
+    //         alert("사진을 등록하세요!");
+    //     }
+    // };
 
     const changeGender = (g) => {
         if (g === 1) {
@@ -121,9 +123,21 @@ const CoInfo = () => {
                     </f.Flex>
                     <QuestionMode content={'코디네이터 님의\n 프로필을 작성해주세요'} marginBottom={'25px'}/>
                     {/*사진 입력받기*/}
-                    <GetPhotoContainer>
-                        <Profile src={profileCircle}></Profile>
-                    </GetPhotoContainer>
+                    <input
+                        type="file"
+                        id="profileImageInput"
+                        accept="image/*" 
+                        style={{ display: "none" }}
+                        onChange={handleImageChange}
+                    />
+                    <c.Label htmlFor="profileImageInput">
+                        <c.GetPhotoContainer>
+                            <c.Profile
+                                src={image.preview_URL || profileCircle}
+                            />
+                            <c.Camera src={camera} />
+                        </c.GetPhotoContainer>
+                    </c.Label>
                     {/*정보 입력받기*/}
                     <f.Flex>    
                         <GetInfo infoName={'닉네임'}/>
@@ -141,13 +155,14 @@ const CoInfo = () => {
                     <f.Flex>
                         <GetInfo infoName={'SNS 링크'}/>
                     </f.Flex>
-                    {/*프로필 내용 입력받기 (1/50)-50글자 이내*/}
-                    <TextContainer>
-                        <TextArea onChange={onInputHandler} maxLength={maxInputLength} placeholder="프로필을 간단하게 적어주세요!"/>
-                        <TextCount><span>{inputCount}</span><span>/20 자</span></TextCount>
-                    </TextContainer>
+                    {/*프로필 내용 입력받기 (1/20)-20글자 이내*/}
+                    <c.TextContainer>
+                        <c.TextArea onChange={onInputHandler} maxLength={maxInputLength} placeholder="프로필을 간단하게 적어주세요!"/>
+                        <c.TextCount><span>{inputCount}</span><span>/20 자</span></c.TextCount>
+                    </c.TextContainer>
                     <Link to="/getstyle">
                         <ButtonBottom content={'다음'} />
+                        {/* onClick={handleImageUpload} */}
                     </Link>
                 </f.ScreenJoin>
             </f.ScreenComponent>
