@@ -16,8 +16,8 @@ const Btn = styled.button`
     color: #fff;
     line-height: normal;
     letter-spacing: 0.08px;
-    position: fixed;
-    bottom: 37px;
+    position: absolute;
+    bottom: 28px;
     text-decoration: none;
 `
 

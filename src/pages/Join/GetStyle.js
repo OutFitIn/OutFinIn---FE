@@ -62,7 +62,6 @@ const GetStyle = () => {
                         </StyleBoxContainer>
                         
                         
-                        {/*여기 수정!! 사용자인 경우에는 UserGetRecommend로 이동해야함. */}
                         <Link to="../joinsuccess" style={{ textDecoration: 'none' }}>
                             <ButtonBottom content={'다음'} />
                         </Link>
@@ -75,6 +74,7 @@ const GetStyle = () => {
 
 const StyleBoxContainer = styled.div`
     margin: 0 auto;
+    height: full;
 `
 
 export default GetStyle;
