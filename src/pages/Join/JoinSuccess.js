@@ -23,7 +23,9 @@ const JoinSuccess = () => {
                         <QuestionMode content={localStorage.getItem('mode') == 1 ? 
                         '회원가입이 완료 되었습니다!\n 오늘도 예쁜 코디 부탁드려요':
                         '회원가입이 완료 되었습니다! \n오늘도 딱 맞는 코디 받으세요'} marginBottom={'2.96vh'}/>
-                        <Link to="../main" style={{ textDecoration: 'none' }}>
+                        <Link to={localStorage.getItem('mode') == 1 ? 
+                        "../outermainpage":
+                        "../usermainpage"} style={{ textDecoration: 'none' }}>
                             <ButtonBottom content={'다음'} />
                         </Link>
                     </f.ScreenJoin>

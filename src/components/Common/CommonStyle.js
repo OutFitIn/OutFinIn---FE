@@ -9,7 +9,7 @@ export const Totalframe = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-  
+  position: relative; 
 `;
 
 export const ScreenComponent = styled.div`
@@ -19,7 +19,7 @@ export const ScreenComponent = styled.div`
 export const SubScreen = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
-  height: calc(100vh - 130px);
+  height: calc(100vh - 81.5px);
   &::-webkit-scrollbar{
     display:none;
   }
@@ -29,7 +29,6 @@ export const ScreenJoin = styled.div`
   padding-top: 85px;
   display: flex;
   flex-direction: column;
-  position: relative;
 `
 
 export const Flex = styled.div`

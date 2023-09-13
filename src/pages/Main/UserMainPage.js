@@ -31,7 +31,7 @@ const CoordinatorProfile = styled.div`
   margin-top:3.08vh;
 `;
 
-const Main = () => {
+const UserMainPage = () => {
   const [selectStyle, setSelectStyle] = useState('이지캐주얼');
   const [dragging, setDragging] = useState(false);
   const [clickPoint, setClickPoint] = useState(0);
@@ -82,7 +82,7 @@ const Main = () => {
           <CoordinatorProfile>
             <CoordinatorMainImg/>
             <Link to='/outerprofile'>
-              <CoordinatorInfo/>
+              <CoordinatorInfo name={"웜톤 천재 아우터"}/>
             </Link>
           </CoordinatorProfile>
         </f.ScreenComponent>
@@ -92,4 +92,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default UserMainPage;

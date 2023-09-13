@@ -21,6 +21,7 @@ const CoordinatorImg = styled.img`
 
 const CoordinatorSubInfo = styled.div`
     margin-left:14px;
+    position: relative;
 `;
 
 const CoordinatorName = styled.div`
@@ -60,6 +61,12 @@ const Star = styled.div`
     letter-spacing: 0.18px;
 `;
 
+const GradeContainer=styled.div`
+    position: absolute;
+    right: 0;
+    display: flex;
+`
+
 const StarImg = styled.img`
     margin-right: 7px;
 `;
@@ -68,21 +75,23 @@ const CategoryBox = styled.div`
     display: flex;
     margin-top: 1.18vh;
 `
-const CoordinatorInfo = () => {
+const CoordinatorInfo = (props) => {
     return(
         <CoordinatorInfos>
             <CoordinatorImg src={logo}></CoordinatorImg>
             <CoordinatorSubInfo>
                 <f.Flex>
-                <CoordinatorName>웜톤천재 아우터</CoordinatorName>
-                <Hanger>
-                    <HangerImg src={hanger}></HangerImg>
-                    의뢰 13번
-                </Hanger>
-                <Star>
-                    <StarImg src={star}></StarImg>
-                    4.95
-                </Star>
+                <CoordinatorName>{props.name}</CoordinatorName>
+                <GradeContainer>
+                    <Hanger>
+                        <HangerImg src={hanger}></HangerImg>
+                        의뢰 13번
+                    </Hanger>
+                    <Star>
+                        <StarImg src={star}></StarImg>
+                        4.95
+                    </Star>
+                </GradeContainer>
                 </f.Flex>
                 <CategoryBox>
                 <SmallStyleCategoryBox content={'#미니멀'}></SmallStyleCategoryBox>

@@ -22,8 +22,9 @@ const Btn = styled.button`
 `
 
 const ButtonBottom = (props) => {
+
     return (
-        <Btn>
+        <Btn onClick={props.type === 'axios' ? props.sendInfo : null}>
             {props.content}
         </Btn>
     );

@@ -5,7 +5,7 @@ export const TotalNavigation = styled.div`
     align-items: center;
     margin: 0 auto;
     text-align: center;
-    padding: 17px 40px 51px 40px;
+    padding: 13px 40px 5px 40px;
     width: 390px;
     border-top: 1px solid #C4C4C4;
     position: fixed;

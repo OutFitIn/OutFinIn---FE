@@ -40,16 +40,12 @@ const InputUnit = styled.div`
     display:flex;
 `;
 const GetInfo = (props) => {
-    const [inputValue, setInputValue] = useState("");
-
-    const handleInputChange = (e) => {
-        setInputValue(e.target.value);
-    };
+    
     return(
         <InputInfos infoName={props.infoName}>{props.infoName}
             <InputUnit>
-                <InputInfo value={inputValue} onChange={handleInputChange} infoName={props.infoName}></InputInfo>
-                <Unit active={inputValue !== ""}>{props.unit}</Unit>
+                <InputInfo value={props.inputValue} onChange={props.changeValue} infoName={props.infoName}></InputInfo>
+                <Unit active={props.inputValue !== ""}>{props.unit}</Unit>
             </InputUnit>
         </InputInfos>
     )

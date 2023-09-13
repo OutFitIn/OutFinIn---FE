@@ -1,4 +1,4 @@
-import MainPage from './MainPage';
+import UserMainPage from './UserMainPage';
 import OuterProfile from './OuterProfile';
 
-export { MainPage, OuterProfile };
+export { UserMainPage, OuterProfile };
