@@ -1,0 +1,45 @@
+.w-100 {
+    width: 100%;
+}
+.mail_header {
+    color: #000;
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.085px;
+}
+.mail_content {
+  margin: 93px 0px 0px 160px;
+}
+.mail_intro {
+    margin-top: 46px;
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.04px;
+}
+.mail_code{
+    margin-top: 46px;
+    color: #000;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #F3EFF4;
+    padding: 50px 614px 50px 164px;
+
+    color:#929094;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.048px;
+}
