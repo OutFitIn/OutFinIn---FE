@@ -44,7 +44,6 @@ const GradeBar = styled.div`
     background: #C4C4C4;
     margin: 0px 0px 0px 18px;
 `
-
 const CoordinatorIntro = styled.div`
     font-size: 14px;
     font-style: normal;
@@ -62,7 +61,6 @@ const ReviewText = styled.div`
     margin-top: 4.26vh;
     margin-bottom: 1.77vh;
 `
-
 const PostDetail = () => {
   const navigate = useNavigate(); // useNavigate 훅을 사용하여 navigate 함수 가져오기
 
