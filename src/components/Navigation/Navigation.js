@@ -45,7 +45,7 @@ const Navigation = (props) => {
                     <n.IconText>채팅</n.IconText>
                 </n.SubNavigation>
             </Link>
-            {/* 마이 */}
+            {/* 마이 -코디네이터, 유저냐에 따라 달라짐*/}
             <Link to='/outermypage'>
                 <n.SubNavigation 
                     isSelected={selectIcon === 'mypage'}
