@@ -13,8 +13,8 @@ const Navigation = (props) => {
     }
     return(
         <n.TotalNavigation>
-            {/* 홈 */}
-            <Link to='/main'>
+            {/* 홈-코디네이터, 유저냐에 따라 달라짐 */}
+            <Link to='/outermainpage'>
                 <n.SubNavigation 
                     marginRight='45px'
                     isSelected={selectIcon === 'Home'}
@@ -24,7 +24,7 @@ const Navigation = (props) => {
                 </n.SubNavigation>
             </Link>
             {/* 검색 */}
-            <Link to='/'>
+            <Link to='/search'>
                 <n.SubNavigation
                     marginRight='45px'
                     isSelected={selectIcon === 'search'}
@@ -35,22 +35,26 @@ const Navigation = (props) => {
                 </n.SubNavigation>
             </Link>
             {/* 채팅 */}
-            <n.SubNavigation
-                marginRight='45px'
-                isSelected={selectIcon === 'chat'}
-                onClick={() => changeIcon('chat')}
-                >
-                <BsFillChatDotsFill size='30'/>
-                <n.IconText>채팅</n.IconText>
-            </n.SubNavigation>
+            <Link to='/chat'>
+                <n.SubNavigation
+                    marginRight='45px'
+                    isSelected={selectIcon === 'chat'}
+                    onClick={() => changeIcon('chat')}
+                    >
+                    <BsFillChatDotsFill size='30'/>
+                    <n.IconText>채팅</n.IconText>
+                </n.SubNavigation>
+            </Link>
             {/* 마이 */}
-            <n.SubNavigation 
-                isSelected={selectIcon === 'mypage'}
-                onClick={() => changeIcon('mypage')}
-            >
-                <BsFillPersonFill size='35'/>
-                <n.IconText>마이</n.IconText>
-            </n.SubNavigation>
+            <Link to='/outermypage'>
+                <n.SubNavigation 
+                    isSelected={selectIcon === 'mypage'}
+                    onClick={() => changeIcon('mypage')}
+                >
+                    <BsFillPersonFill size='35'/>
+                    <n.IconText>마이</n.IconText>
+                </n.SubNavigation>
+            </Link>
         </n.TotalNavigation>
     )
 }

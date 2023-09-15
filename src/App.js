@@ -7,7 +7,9 @@ import JoinSuccess from "./pages/Join/JoinSuccess";
 import Login from "./pages/Join/Login";
 import OuterMainPage from "./pages/Main/OuterMainPage";
 import WriteNewPost from "./pages/NewPost/WriteNewPost";
-
+import Search from "./pages/Search/Search";
+import Chat from "./pages/Chat/Chat";
+import OuterMyPage from "./pages/MyPage/OuterMyPage";
 
 function App() {
   return (
@@ -25,6 +27,9 @@ function App() {
             <Route path="/joinsuccess" element={<JoinSuccess />} />
             <Route path="/outerprofile" element={<OuterProfile />} />
             <Route path="/writenewpost" element={<WriteNewPost />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/chat" element={<Chat />} />
+            <Route path="/outermypage" element={<OuterMyPage />} />
         </Routes>
       </Router>
     </div>
