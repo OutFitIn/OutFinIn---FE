@@ -6,6 +6,8 @@ import Navigation from "../../components/Navigation/Navigation";
 import CoordinatorInfo from "../../components/MainPage/CoordinatorInfo";
 import CoordinatorMainImg from "../../components/MainPage/CoordinatorMainImg";
 import ReviewBox from "../../components/MainPage/ReviewBox";
+import PostMainImg from "../../components/MainPage/PostMainImg";
+import logo from "../../assets/img/logo.svg"
 import fillMinHeart from "../../assets/img/fillMinHeart.svg";
 import star from "../../assets/img/star.svg";
 import money from "../../assets/img/money.svg";
@@ -55,6 +57,21 @@ const ReviewText = styled.div`
     margin-top: 4.26vh;
     margin-bottom: 1.77vh;
 `
+const PopularContainer = styled.div`
+  border-top: 1px solid #C8C5D0;
+`
+const PostList=styled.div`
+  display: flex;
+  gap: 16px;  
+  cursor: pointer;  
+  white-space: nowrap;
+  overflow-x : auto;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar{
+    display:none;
+  }
+`
 
 const OuterProfile = () => {
   const navigate = useNavigate(); // useNavigate 훅을 사용하여 navigate 함수 가져오기
@@ -96,9 +113,13 @@ const OuterProfile = () => {
           </ReviewText>
           <ReviewBox></ReviewBox>
           {/* Other Codi */}
-          <ReviewText>
-            웜톤천재 아우터 님의 다른 코디
-          </ReviewText>
+          
+          <PopularContainer>
+          <ReviewText>웜톤천재 아우터 님의 다른 코디</ReviewText>
+            <PostList>
+              <PostMainImg image={logo} name={'미니멀코디'} like={12340}/>
+            </PostList>
+          </PopularContainer>
         </f.ScreenComponent>
       </f.SubScreen>
       <Navigation />
