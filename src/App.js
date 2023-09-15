@@ -10,6 +10,7 @@ import WriteNewPost from "./pages/NewPost/WriteNewPost";
 import Search from "./pages/Search/Search";
 import Chat from "./pages/Chat/Chat";
 import OuterMyPage from "./pages/MyPage/OuterMyPage";
+import EditCoProfile from "./pages/MyPage/EditCoProfile";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             <Route path="/search" element={<Search />} />
             <Route path="/chat" element={<Chat />} />
             <Route path="/outermypage" element={<OuterMyPage />} />
+            <Route path="/editcoprofile" element={<EditCoProfile />} />
         </Routes>
       </Router>
     </div>
