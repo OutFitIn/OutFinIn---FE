@@ -35,7 +35,7 @@ const CoordinatorProfile = styled.div`
 const WriteButtonContainer=styled.div`
   position: absolute;
   right: 10px;
-  bottom: 85px;
+  bottom: 17.53vh;
 `
 
 const OuterMainPage = () => {

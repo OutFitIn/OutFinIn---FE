@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import * as n from "./NavigationStyle";
-import {AiFillHome} from 'react-icons/ai';
-import {AiOutlineSearch} from "react-icons/ai";
-import {BsFillChatDotsFill, BsFillPersonFill} from 'react-icons/bs';
+import Home from '../../assets/img/navigationIcon/home.svg';
+import Search from '../../assets/img/navigationIcon/search.svg';
+import Chat from '../../assets/img/navigationIcon/chat.svg';
+import MyPage from "../../assets/img/navigationIcon/mypage.svg";
 
 const Navigation = (props) => {
     const [selectIcon, setSelectIcon] = useState('Home')
@@ -19,7 +20,7 @@ const Navigation = (props) => {
                     marginRight='45px'
                     isSelected={selectIcon === 'Home'}
                     onClick={() => changeIcon('Home')}>
-                    <AiFillHome size='35'/>
+                    <img src={Home}/>
                     <n.IconText>홈</n.IconText>
                 </n.SubNavigation>
             </Link>
@@ -30,7 +31,7 @@ const Navigation = (props) => {
                     isSelected={selectIcon === 'search'}
                     onClick={() => changeIcon('search')}
                     >
-                    <AiOutlineSearch size='35'/>
+                    <img src={Search}/>
                     <n.IconText>검색</n.IconText>
                 </n.SubNavigation>
             </Link>
@@ -41,7 +42,7 @@ const Navigation = (props) => {
                     isSelected={selectIcon === 'chat'}
                     onClick={() => changeIcon('chat')}
                     >
-                    <BsFillChatDotsFill size='30'/>
+                    <img src={Chat}/>
                     <n.IconText>채팅</n.IconText>
                 </n.SubNavigation>
             </Link>
@@ -51,7 +52,7 @@ const Navigation = (props) => {
                     isSelected={selectIcon === 'mypage'}
                     onClick={() => changeIcon('mypage')}
                 >
-                    <BsFillPersonFill size='35'/>
+                    <img src={MyPage}/>
                     <n.IconText>마이</n.IconText>
                 </n.SubNavigation>
             </Link>

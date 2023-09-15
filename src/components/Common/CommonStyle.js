@@ -19,7 +19,7 @@ export const ScreenComponent = styled.div`
 export const SubScreen = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
-  height: calc(100vh - 81.5px);
+  height: calc(100vh - 15.40vh);
   &::-webkit-scrollbar{
     display:none;
   }

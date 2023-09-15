@@ -7,6 +7,7 @@ export const TotalNavigation = styled.div`
     text-align: center;
     padding: 13px 40px 5px 40px;
     width: 390px;
+    height: 15.40vh;
     border-top: 1px solid #C4C4C4;
     position: fixed;
     bottom: 0;
@@ -21,7 +22,6 @@ export const SubNavigation = styled.div`
     font-weight: 400;
     letter-spacing: 0.048px;
     width: 40px;
-    height: 62px;
     cursor: pointer;
     margin-right: ${props => props.marginRight};
 `
