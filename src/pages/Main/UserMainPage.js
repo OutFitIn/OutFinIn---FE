@@ -89,7 +89,7 @@ const UserMainPage = () => {
           {/* 코디네이터 프로필 */}
           <CoordinatorProfile>
             <CoordinatorMainImg/>
-            <Link to='/outerprofile'>
+            <Link to='/postdetail'>
               <CoordinatorInfo name={"웜톤 천재 아우터"}/>
             </Link>
           </CoordinatorProfile>

@@ -6,14 +6,11 @@ import Navigation from "../../components/Navigation/Navigation";
 import CoordinatorInfo from "../../components/MainPage/CoordinatorInfo";
 import PostMainImg from "../../components/MainPage/PostMainImg";
 import BigStyleCategoryBox from "../../components/Common/SmallStyleCategoryBox";
-import fillMinHeart from "../../assets/img/fillMinHeart.svg";
-import star from "../../assets/img/star.svg";
-import money from "../../assets/img/money.svg";
-import hanger from "../../assets/img/hanger.svg";
-import goback from "../../assets/img/goback.svg";
+import Grades from "../../components/MainPage/Grades";
 // 지울거. 샘플이미지
 import logo from "../../assets/img/logo.svg";
 import sample from "../../assets/img/sample.svg";
+import goback from "../../assets/img/goback.svg"
 
 const GobackContainer=styled.div`
   margin-top:36px;
@@ -204,28 +201,7 @@ const OuterMyPage = () => {
           </GobackContainer>
           {/* 코디네이터 프로필 */}
           <CoordinatorInfo name={"웜톤 천재 아우터"}/>
-          {/* like , start , money , hanger */}
-          <Grade>
-            <GradeSection>
-                <GradeIcon src={fillMinHeart}/>
-                1234
-                <GradeBar/>
-            </GradeSection>
-            <GradeSection>
-                <GradeIcon src={star}/>
-                4.95
-                <GradeBar/>
-            </GradeSection>
-            <GradeSection>
-                <GradeIcon src={money}/>
-                50,000원 ~
-                <GradeBar/>
-            </GradeSection>
-            <GradeSection>
-                <GradeIcon src={hanger}/>
-                123번
-            </GradeSection>
-          </Grade>
+          <Grades/>
           {/* 프로필 편집 버튼 */}
           <EditCotainer>
             <EditContent>프로필 편집</EditContent>

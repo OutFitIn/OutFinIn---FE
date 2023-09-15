@@ -5,13 +5,10 @@ import {Link, useNavigate} from 'react-router-dom';
 import Navigation from "../../components/Navigation/Navigation";
 import CoordinatorInfo from "../../components/MainPage/CoordinatorInfo";
 import CoordinatorMainImg from "../../components/MainPage/CoordinatorMainImg";
+import Grades from "../../components/MainPage/Grades";
 import ReviewBox from "../../components/MainPage/ReviewBox";
 import PostMainImg from "../../components/MainPage/PostMainImg";
 import logo from "../../assets/img/logo.svg"
-import fillMinHeart from "../../assets/img/fillMinHeart.svg";
-import star from "../../assets/img/star.svg";
-import money from "../../assets/img/money.svg";
-import hanger from "../../assets/img/hanger.svg";
 import goback from "../../assets/img/goback.svg";
 
 const GobackContainer=styled.div`
@@ -89,20 +86,7 @@ const OuterProfile = () => {
 
           {/* 코디네이터 프로필 */}
           <CoordinatorInfo name={"웜톤 천재 아우터"}/>
-          {/* like , start , money , hanger */}
-          <Grade>
-            <GradeIcon src={fillMinHeart}/>
-            1234
-            <GradeBar/>
-            <GradeIcon src={star}/>
-            4.95
-            <GradeBar/>
-            <GradeIcon src={money}/>
-            50,000원 ~
-            <GradeBar/>
-            <GradeIcon src={hanger}/>
-            123번
-          </Grade>
+          <Grades/>
           <CoordinatorIntro>
             웜톤천재 아우터가 추천하는 미니멀한 코디에요! 이번 코디는 SPA브랜드만을 이용해서 진행했어요! 나에게 딱 맞는 미니멀 코디가 필요하시다면 채팅 주세요🌰
           </CoordinatorIntro>

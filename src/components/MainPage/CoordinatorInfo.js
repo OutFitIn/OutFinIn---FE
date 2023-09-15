@@ -9,7 +9,7 @@ import logo from '../../assets/img/logo.svg';
 const CoordinatorInfos = styled.div`
     display: flex;
     margin-top: 2.36vh;
-    margin-bottom: 3vh;
+    margin-bottom: 1.06vh;
     color: #000;
 `;
 

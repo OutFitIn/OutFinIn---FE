@@ -1,6 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import  { ModeChoice, UserInfo, InputEmail} from "./pages/Join";
-import { UserMainPage, OuterProfile } from "./pages/Main";
+import { UserMainPage, OuterProfile, PostDetail } from "./pages/Main";
 import CoInfo from "./pages/Join/CoInfo";
 import GetStyle from "./pages/Join/GetStyle";
 import JoinSuccess from "./pages/Join/JoinSuccess";
@@ -26,6 +26,7 @@ function App() {
             <Route path="/getstyle" element={<GetStyle/>}/>
             <Route path="/joinsuccess" element={<JoinSuccess />} />
             <Route path="/outerprofile" element={<OuterProfile />} />
+            <Route path="/postdetail" element={<PostDetail />} />
             <Route path="/writenewpost" element={<WriteNewPost />} />
             <Route path="/search" element={<Search />} />
             <Route path="/chat" element={<Chat />} />
