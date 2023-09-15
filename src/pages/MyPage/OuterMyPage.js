@@ -61,11 +61,11 @@ const Category = styled.div`
 `;
 
 const PopularContainer=styled.div`
-  border-top: 1px solid var(--material-theme-sys-light-outline-variant, #C8C5D0);
 `
 const EveryContainer=styled.div`
   disply: flex;
   margin-bottom: 20px;
+  border-bottom: 1px solid var(--material-theme-sys-light-outline-variant, #C8C5D0);
 `
 
 const PostList=styled.div`
@@ -98,11 +98,16 @@ const Date=styled.div`
 `
 const ImgContainer=styled.div`
   margin-bottom: 10px;
-  width: 354px;
-  height: 392px;
+  display: flex;
+  height: 362px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  align-self: stretch;
 `
 const MainImg=styled.img`
   object-fit: cover;
+  jusfity-content: center;
   flex-shrink: 0;
   border-radius: 18px;
   width: 100%;
@@ -129,6 +134,36 @@ const Content=styled.div`
   letter-spacing: 0.175px;
   whitespace: nowrap;
 `
+
+const EditCotainer=styled.div`
+  display: flex;
+  margin-bottom: 20px;
+  padding: 7px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  flex: 1 0 0;
+  border-radius: 5px;
+  border: 1px solid var(--material-theme-sys-light-outline, #787680);
+`
+const EditContent=styled.div`
+  color: var(--material-theme-sys-light-outline, #787680);
+  text-align: center;
+  font-family: Noto Sans KR;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.056px;
+`
+const CoordinatorIntro = styled.div`
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.056px;
+    margin-bottom: 1.89vh;
+`;
 
 const OuterMyPage = () => {
   const navigate = useNavigate();
@@ -191,11 +226,17 @@ const OuterMyPage = () => {
                 123번
             </GradeSection>
           </Grade>
-
+          {/* 프로필 편집 버튼 */}
+          <EditCotainer>
+            <EditContent>프로필 편집</EditContent>
+          </EditCotainer>
           {/* 마이페이지 내용 */}
+          <CoordinatorIntro>
+          안녕하세요 저는 패션디자인과를 졸업한 아우터입니다. 주로 아이돌 코디를 전담했었습니다.
+          </CoordinatorIntro>
           {/* 인기코디 */}
+          <Category>인기 코디</Category>
           <PopularContainer>
-            <Category>인기 코디</Category>
             <PostList ref={containerRef}
               onMouseDown={handelMouseDownEvent}
               onMouseLeave={() => setDragging(false)}

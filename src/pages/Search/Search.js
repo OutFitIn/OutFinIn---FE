@@ -16,8 +16,6 @@ const MainText = styled.div`
   margin-bottom: 1.65vh;
 `;
 
-
-
 const CoordinatorProfile = styled.div`
   margin-top:3.08vh;
 `;
