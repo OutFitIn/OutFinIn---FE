@@ -11,6 +11,7 @@ const Box = styled.div`
     padding: 7px 1.89vh;
     justify-content: center;
     align-items: center;
+    white-space: nowrap;
 `
 
 const Content = styled.div`
