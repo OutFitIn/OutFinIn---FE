@@ -55,8 +55,9 @@ const Hr = styled.div`
   margin: 3.55vh 0px;
 `;
 
-function BottomSheet() {
+function BottomSheet(props) {
     const [selectedStyles, setSelectedStyles] = useState([]);
+    const [isClose, setIsClose] = useState(false)
     const handleStyleClick = (style) => {
         // 이미 선택된 스타일이면 제거, 아니면 추가
         if (selectedStyles.includes(style)) {
@@ -104,6 +105,11 @@ function BottomSheet() {
         isSelected={selectedStyles.includes(category)} onClick={() => handleStyleClick(category)}
       />
     ))
+
+    const isopenChange = () => {
+      props.openState(!props.isOpen)
+    }
+
     return (
     <>
     <StyledModalBackground />
@@ -111,7 +117,8 @@ function BottomSheet() {
         <BottomSheetContent>
             <ModalTitle>
                 추가하실 스타일<br/>태그를 골라주세요
-                <img src={XButton}/>
+                <img src={XButton} onClick={isopenChange} />
+                {/* <BottomSheet openState={setIsOpen} isOpen={isOpen}/> */}
             </ModalTitle>
             <Category>{styleCategoryBoxes}</Category>
             <Hr/>

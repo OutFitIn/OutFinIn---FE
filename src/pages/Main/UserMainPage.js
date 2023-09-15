@@ -6,6 +6,7 @@ import * as f from "../../components/Common/CommonStyle";
 import BigStyleCategoryBox from "../../components/Common/BigStyleCategoryBox";
 import CoordinatorInfo from "../../components/MainPage/CoordinatorInfo";
 import CoordinatorMainImg from "../../components/MainPage/CoordinatorMainImg";
+import BottomSheet from "../../components/MainPage/BottomSheet";
 
 const MainText = styled.div`
   color: #000;
@@ -36,6 +37,7 @@ const UserMainPage = () => {
   const [dragging, setDragging] = useState(false);
   const [clickPoint, setClickPoint] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
   
   const containerRef = useRef(null);
 
@@ -61,6 +63,10 @@ const UserMainPage = () => {
     setSelectStyle(style);
   }
 
+  const openBottonSheet = () => {
+    setIsOpen(true)
+  }
+
   return (
     <f.Totalframe>
       <f.SubScreen>
@@ -76,7 +82,9 @@ const UserMainPage = () => {
             <BigStyleCategoryBox content={'#이지캐주얼'} onClick={() => changeStyle('이지캐주얼')} isSelected={selectStyle === '이지캐주얼'} />
             <BigStyleCategoryBox content={'#스트릿'}/>
             <BigStyleCategoryBox content={'#봄 코디'}/>
-            <BigStyleCategoryBox content={'+'}/>
+            <BigStyleCategoryBox content={'+'} onClick={openBottonSheet}/>
+            {isOpen ? <BottomSheet openState={setIsOpen} isOpen={isOpen}/> : null }
+            
           </HashTag>
           {/* 코디네이터 프로필 */}
           <CoordinatorProfile>
