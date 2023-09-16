@@ -83,7 +83,6 @@ const UserMainPage = () => {
             <BigStyleCategoryBox content={'#스트릿'}/>
             <BigStyleCategoryBox content={'#봄 코디'}/>
             <BigStyleCategoryBox content={'+'} onClick={openBottonSheet}/>
-            {isOpen ? <BottomSheet openState={setIsOpen} isOpen={isOpen}/> : null }
             
           </HashTag>
           {/* 코디네이터 프로필 */}
@@ -95,7 +94,7 @@ const UserMainPage = () => {
           </CoordinatorProfile>
         </f.ScreenComponent>
       </f.SubScreen>
-      <Navigation type={'Home'}/>
+      {isOpen ? <BottomSheet openState={setIsOpen} isOpen={isOpen}/> : <Navigation type={'Home'}/> }
     </f.Totalframe>
   );
 };

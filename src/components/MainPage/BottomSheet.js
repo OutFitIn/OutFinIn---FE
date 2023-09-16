@@ -54,6 +54,44 @@ const Hr = styled.div`
   margin: 3.55vh 0px;
 `;
 
+const FooterBottomSheet = styled.div`
+  padding: 1.6vh 21px 2.72vh 21px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom:0;
+  height: 15.04vh;
+  width: 390px;
+`;
+
+const Clear = styled.div`
+  color: #ADAAAF;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.175px;
+  cursor: pointer;
+  margin-right: 30px;
+`
+
+const ApplyCodi = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  width: 253px;
+  height: 6.73vh;
+  background: #100069;
+  color: #FFF;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.175px;
+`;
+
 function BottomSheet(props) {
     const [selectedStyles, setSelectedStyles] = useState([]);
     const [isClose, setIsClose] = useState(false)
@@ -136,6 +174,10 @@ function BottomSheet(props) {
             {situationCategoryBoxes}
         </BottomSheetContent>
     </StyledBottomSheet>
+    <FooterBottomSheet>
+      <Clear>선택 해제</Clear>
+      <ApplyCodi>코디 확인하기</ApplyCodi>
+    </FooterBottomSheet>
     </>
   );
 }

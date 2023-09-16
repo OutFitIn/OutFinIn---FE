@@ -95,7 +95,6 @@ const Search = () => {
           <SearchBox>
             <img src={smallFind}/>
             <SearchInput placeholder="찾고있는 스타일이 있나요?" onClick={openBottomSheet}/>
-            {isOpen ? <BottomSheet openState={setIsOpen} isOpen={isOpen}/> : null }
           </SearchBox>
           <Filters ref={containerRef}
             onMouseDown={handelMouseDownEvent}
@@ -119,7 +118,8 @@ const Search = () => {
           </>
         </f.ScreenComponent>
       </f.SubScreen>
-      <Navigation type={'search'}/>
+      {isOpen ? <BottomSheet openState={setIsOpen} isOpen={isOpen}/> : <Navigation type={'search'}/> }
+      
     </f.Totalframe>
   );
 };
