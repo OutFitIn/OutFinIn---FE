@@ -117,7 +117,7 @@ const Search = () => {
           </>
         </f.ScreenComponent>
       </f.SubScreen>
-      <Navigation />
+      <Navigation type={'search'}/>
     </f.Totalframe>
   );
 };

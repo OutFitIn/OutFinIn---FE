@@ -95,7 +95,7 @@ const UserMainPage = () => {
           </CoordinatorProfile>
         </f.ScreenComponent>
       </f.SubScreen>
-      <Navigation />
+      <Navigation type={'Home'}/>
     </f.Totalframe>
   );
 };

@@ -115,7 +115,7 @@ const OuterMainPage = () => {
 
         </f.ScreenComponent>
       </f.SubScreen>
-      <Navigation />
+      <Navigation type={'Home'}/>
     </f.Totalframe>
     )
 }

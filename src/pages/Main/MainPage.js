@@ -87,7 +87,7 @@ const Main = () => {
           </CoordinatorProfile>
         </f.ScreenComponent>
       </f.SubScreen>
-      <Navigation />
+      <Navigation type={'home'}/>
     </f.Totalframe>
   );
 };

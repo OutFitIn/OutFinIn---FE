@@ -201,7 +201,7 @@ const OuterMyPage = () => {
 
         </f.ScreenComponent>
       </f.SubScreen>
-      <Navigation />
+      <Navigation type={'mypage'}/>
     </f.Totalframe>
     )
 }

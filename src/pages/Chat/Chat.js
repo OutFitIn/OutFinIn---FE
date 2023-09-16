@@ -13,7 +13,7 @@ const Chat = () => {
             채팅 레츠고
         </f.ScreenComponent>
       </f.SubScreen>
-      <Navigation />
+      <Navigation type={'chat'}/>
     </f.Totalframe>
   );
 };
