@@ -42,7 +42,6 @@ const SearchBox = styled.div`
   width: 100%;
   vertical-align: middle;
   white-space: nowrap;
-  position: relative;
   padding: 7px 0px 7px 10px;
   border-radius: 20px;
   border: 1px solid #ADAAAF;

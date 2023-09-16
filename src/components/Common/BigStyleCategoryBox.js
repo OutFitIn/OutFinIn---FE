@@ -25,13 +25,13 @@ const Content = styled.div`
 `
 
 const Icons = styled.img`
-    margin-right: 10px;
+    margin-right: ${(props) => (props.icons)? '10px' : '0px'} ;
 `;
 
 const BigStyleCategoryBox = (props) => {
     return (
         <Box isSelected={props.isSelected} onClick={props.onClick}>
-            <Icons src={props.icon}/>
+            <Icons src={props.icon} icons={props.icon}/>
             <Content isSelected={props.isSelected}>
                 {props.content}
             </Content>

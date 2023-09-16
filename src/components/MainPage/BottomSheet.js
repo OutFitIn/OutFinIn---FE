@@ -8,7 +8,6 @@ const StyledModalBackground = styled.div`
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  margin: 0 auto;
   width: 390px;
   height: calc(100vh - 15.04vh);
   background-color: rgba(0, 0, 0, 0.5);
