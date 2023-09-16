@@ -4,12 +4,15 @@ import styled from "styled-components";
 import Navigation from "../../components/Navigation/Navigation";
 import * as f from "../../components/Common/CommonStyle";
 import BigStyleCategoryBox from "../../components/Common/BigStyleCategoryBox";
-import CoordinatorInfo from "../../components/MainPage/CoordinatorInfo";
+import CoordinatorInfo from "../../components/MainPage/CoordinatorInfo";  
 import CoordinatorMainImg from "../../components/MainPage/CoordinatorMainImg";
 import BottomSheet from "../../components/MainPage/BottomSheet";
 import smallFind from "../../assets/img/smallFind.svg";
 import goback from "../../assets/img/goback.svg";
-import fillMinHeart from "../../assets/img/fillMinHeart.svg";
+import grayHeart from "../../assets/img/grayHeart.svg";
+import grayStar from "../../assets/img/grayStar.svg";
+import grayMoney from "../../assets/img/grayMoney.svg";
+import grayHanger from "../../assets/img/grayHanger.svg";
 
 const MainText = styled.div`
   color: #000;
@@ -51,6 +54,7 @@ const SearchInput = styled.input`
   width: calc(100% - 30px);
   border: none;
   outline: none;
+  cursor: pointer;
 `;
 
 const Search = () => {
@@ -99,11 +103,10 @@ const Search = () => {
             onMouseLeave={() => setDragging(false)}
             onMouseUp={() => setDragging(false)}
             onMouseMove={handelMouseMoveEvent}>
-            <BigStyleCategoryBox content={'좋아요 많은 순'}>
-            </BigStyleCategoryBox>
-            <BigStyleCategoryBox content={'별점 높은 순'}/>
-            <BigStyleCategoryBox content={'가격 낮은 순'}/>
-            <BigStyleCategoryBox content={'코디 횟수 높은 순'}/>
+            <BigStyleCategoryBox icon={grayHeart} content={'좋아요 많은 순'}></BigStyleCategoryBox>
+            <BigStyleCategoryBox icon={grayStar} content={'별점 높은 순'}/>
+            <BigStyleCategoryBox icon={grayMoney}  content={'가격 낮은 순'}/>
+            <BigStyleCategoryBox icon={grayHanger} content={'코디 횟수 높은 순'}/>
           </Filters>
           <MainText>이런 스타일은 어떠신가요? 👀</MainText>
           {/* 코디네이터 프로필 */}

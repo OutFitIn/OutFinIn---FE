@@ -2,6 +2,7 @@ import React from "react";
 import styled from 'styled-components';
 
 const Box = styled.div`
+    display: flex;
     cursor: pointer;
     border-radius: 20px;
     border: 1px solid ${(props) => (props.isSelected ? '#4F44E2' : '#9A9A9A')};
@@ -23,9 +24,14 @@ const Content = styled.div`
     letter-spacing: 0.175px;
 `
 
+const Icons = styled.img`
+    margin-right: 10px;
+`;
+
 const BigStyleCategoryBox = (props) => {
     return (
         <Box isSelected={props.isSelected} onClick={props.onClick}>
+            <Icons src={props.icon}/>
             <Content isSelected={props.isSelected}>
                 {props.content}
             </Content>
