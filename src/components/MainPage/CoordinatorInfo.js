@@ -78,25 +78,24 @@ const CategoryBox = styled.div`
 const CoordinatorInfo = (props) => {
     return(
         <CoordinatorInfos>
-            <CoordinatorImg src={logo}></CoordinatorImg>
+            <CoordinatorImg src={props.profileImg}></CoordinatorImg>
             <CoordinatorSubInfo>
                 <f.Flex>
                 <CoordinatorName>{props.name}</CoordinatorName>
                 <GradeContainer>
                     <Hanger>
                         <HangerImg src={hanger}></HangerImg>
-                        의뢰 13번
+                        의뢰 {props.requestCnt}번
                     </Hanger>
                     <Star>
                         <StarImg src={star}></StarImg>
-                        4.95
+                        {props.likeCnt}
                     </Star>
                 </GradeContainer>
                 </f.Flex>
                 <CategoryBox>
+                props.styles.map((style))
                 <SmallStyleCategoryBox content={'#미니멀'}></SmallStyleCategoryBox>
-                <SmallStyleCategoryBox content={'#시티보이'}></SmallStyleCategoryBox>
-                <SmallStyleCategoryBox content={'#비즈니스캐주얼'}></SmallStyleCategoryBox>
                 </CategoryBox>
             </CoordinatorSubInfo>
         </CoordinatorInfos>

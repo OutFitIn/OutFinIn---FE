@@ -20,14 +20,14 @@ const Img = styled.img`
     height: 46.44vh;
     border-radius: 18px;
 `;
-const CoordinatorMainImg = () => {
+const CoordinatorMainImg = (props) => {
     const [fillColor, setFillColor] = useState(heart);
     const ChangeColor = () => {
         setFillColor(fillColor === heart ? fillheart : heart)
       }
     return(
         <CoordinatorMainImgs>
-            <Img src={logo}/>
+            <Img src={props.boardImg}/>
             <Heart src={fillColor} onClick={ChangeColor}></Heart>
         </CoordinatorMainImgs>
     )

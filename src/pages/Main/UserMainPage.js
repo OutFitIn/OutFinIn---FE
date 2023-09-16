@@ -1,4 +1,4 @@
-import React, { useState,useRef } from "react";
+import React, { useState,useRef,useEffect } from "react";
 import {Link} from 'react-router-dom';
 import styled from "styled-components";
 import Navigation from "../../components/Navigation/Navigation";
@@ -38,6 +38,7 @@ const UserMainPage = () => {
   const [clickPoint, setClickPoint] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const [mainPage, setMainPage] = useState('');
   
   const containerRef = useRef(null);
 
@@ -66,6 +67,32 @@ const UserMainPage = () => {
   const openBottonSheet = () => {
     setIsOpen(true)
   }
+  // 백엔드 통신
+  useEffect(()=>{
+    async function fetchMainPage(){
+      try{
+        axios.defaults.withCredentials=true;
+        const res = await axios.get("http://localhost:8080/main/user");
+        setMainPage(res)
+      }catch(error){
+        console.error(error);
+      }
+    }
+    fetchMainPage();
+  }, [])
+//   const sendEmail = () => {
+//     let Email = emailRef.current.value + '@' + domain;
+//     async function fetchEmail(){
+//         try {
+//             axios.defaults.withCredentials=true;
+//             const res = await axios.get("http://localhost:8080/email/code/send?email="+Email);
+//           } catch (error) {
+//             console.error(error);
+//           }
+//           setTimer(timer => timer - 1);
+//     }
+//     fetchEmail();
+// }
 
   return (
     <f.Totalframe>
@@ -86,14 +113,16 @@ const UserMainPage = () => {
             
           </HashTag>
           {/* 코디네이터 프로필 */}
-          <CoordinatorProfile>
-            <Link to='/postdetail'>
-            <CoordinatorMainImg/>
+          {mainPage.map((data)=>(
+            <CoordinatorProfile>
+              <Link to='/postdetail'>
+            <CoordinatorMainImg boardImg={data.board_imgage}/>
             </Link>
             <Link to='/outerprofile'>
-              <CoordinatorInfo name={"웜톤 천재 아우터"}/>
+              <CoordinatorInfo name={data.nickname} profileImg={data.profile_imgage} requestCnt={data.request_count} likeCnt={data.total_like}/>
             </Link>
           </CoordinatorProfile>
+          ))}
         </f.ScreenComponent>
       </f.SubScreen>
       {isOpen ? <BottomSheet openState={setIsOpen} isOpen={isOpen}/> : <Navigation type={'Home'}/> }
