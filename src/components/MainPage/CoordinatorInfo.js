@@ -94,8 +94,9 @@ const CoordinatorInfo = (props) => {
                 </GradeContainer>
                 </f.Flex>
                 <CategoryBox>
-                props.styles.map((style))
-                <SmallStyleCategoryBox content={'#미니멀'}></SmallStyleCategoryBox>
+                {props.styles.map((style)=>(
+                    <SmallStyleCategoryBox content={style}></SmallStyleCategoryBox>
+                ))}
                 </CategoryBox>
             </CoordinatorSubInfo>
         </CoordinatorInfos>

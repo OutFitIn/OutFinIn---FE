@@ -119,7 +119,7 @@ const UserMainPage = () => {
             <CoordinatorMainImg boardImg={data.board_imgage}/>
             </Link>
             <Link to='/outerprofile'>
-              <CoordinatorInfo name={data.nickname} profileImg={data.profile_imgage} requestCnt={data.request_count} likeCnt={data.total_like}/>
+              <CoordinatorInfo name={data.nickname} profileImg={data.profile_imgage} requestCnt={data.request_count} likeCnt={data.total_like} styles={data.styles}/>
             </Link>
           </CoordinatorProfile>
           ))}
