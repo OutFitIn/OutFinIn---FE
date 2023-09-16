@@ -95,14 +95,14 @@ const Search = () => {
           <SearchBox>
             <img src={smallFind}/>
             <SearchInput placeholder="찾고있는 스타일이 있나요?" onClick={openBottomSheet}/>
-            {isOpen && <BottomSheet/>}
+            {isOpen ? <BottomSheet openState={setIsOpen} isOpen={isOpen}/> : null }
           </SearchBox>
           <Filters ref={containerRef}
             onMouseDown={handelMouseDownEvent}
             onMouseLeave={() => setDragging(false)}
             onMouseUp={() => setDragging(false)}
             onMouseMove={handelMouseMoveEvent}>
-            <BigStyleCategoryBox icon={grayHeart} content={'좋아요 많은 순'}></BigStyleCategoryBox>
+            <BigStyleCategoryBox icon={grayHeart} content={'좋아요 많은 순'}/>
             <BigStyleCategoryBox icon={grayStar} content={'별점 높은 순'}/>
             <BigStyleCategoryBox icon={grayMoney}  content={'가격 낮은 순'}/>
             <BigStyleCategoryBox icon={grayHanger} content={'코디 횟수 높은 순'}/>
