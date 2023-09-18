@@ -8,9 +8,11 @@ import Login from "./pages/Join/Login";
 import OuterMainPage from "./pages/Main/OuterMainPage";
 import WriteNewPost from "./pages/NewPost/WriteNewPost";
 import Search from "./pages/Search/Search";
+import SearchFilter from "./pages/Search/SearchFilter";
 import Chat from "./pages/Chat/Chat";
 import OuterMyPage from "./pages/MyPage/OuterMyPage";
 import EditCoProfile from "./pages/MyPage/EditCoProfile";
+import OuterRankInfo from "./pages/MyPage/OuterRankInfo";
 
 function App() {
   return (
@@ -30,9 +32,11 @@ function App() {
             <Route path="/postdetail" element={<PostDetail />} />
             <Route path="/writenewpost" element={<WriteNewPost />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/searchfilter" element={<SearchFilter />} />
             <Route path="/chat" element={<Chat />} />
             <Route path="/outermypage" element={<OuterMyPage />} />
             <Route path="/editcoprofile" element={<EditCoProfile />} />
+            <Route path="/outerrankinfo" element={<OuterRankInfo/>}/>
         </Routes>
       </Router>
     </div>
