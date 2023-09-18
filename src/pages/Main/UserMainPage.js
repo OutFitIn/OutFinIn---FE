@@ -7,7 +7,7 @@ import BigStyleCategoryBox from "../../components/Common/BigStyleCategoryBox";
 import CoordinatorInfo from "../../components/MainPage/CoordinatorInfo";
 import CoordinatorMainImg from "../../components/MainPage/CoordinatorMainImg";
 import BottomSheet from "../../components/MainPage/BottomSheet";
-
+import axios from 'axios'; 
 const MainText = styled.div`
   color: #000;
   font-size: 24px;
@@ -38,7 +38,7 @@ const UserMainPage = () => {
   const [clickPoint, setClickPoint] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-  const [mainPage, setMainPage] = useState('');
+  const [mainPage, setMainPage] = useState(null);
   
   const containerRef = useRef(null);
 
@@ -73,26 +73,13 @@ const UserMainPage = () => {
       try{
         axios.defaults.withCredentials=true;
         const res = await axios.get("http://localhost:8080/main/user");
-        setMainPage(res)
+        setMainPage(res.data)
       }catch(error){
         console.error(error);
       }
     }
     fetchMainPage();
   }, [])
-//   const sendEmail = () => {
-//     let Email = emailRef.current.value + '@' + domain;
-//     async function fetchEmail(){
-//         try {
-//             axios.defaults.withCredentials=true;
-//             const res = await axios.get("http://localhost:8080/email/code/send?email="+Email);
-//           } catch (error) {
-//             console.error(error);
-//           }
-//           setTimer(timer => timer - 1);
-//     }
-//     fetchEmail();
-// }
 
   return (
     <f.Totalframe>
@@ -113,13 +100,13 @@ const UserMainPage = () => {
             
           </HashTag>
           {/* 코디네이터 프로필 */}
-          {mainPage.map((data)=>(
+          {mainPage?.map((data)=>(
             <CoordinatorProfile>
-              <Link to='/postdetail'>
-            <CoordinatorMainImg boardImg={data.board_imgage}/>
+              <Link>
+            <CoordinatorMainImg boardImg={"https://seumu-s3-bucket.s3.ap-northeast-2.amazonaws.com/"+data.board_image}/>
             </Link>
             <Link to='/outerprofile'>
-              <CoordinatorInfo name={data.nickname} profileImg={data.profile_imgage} requestCnt={data.request_count} likeCnt={data.total_like} styles={data.styles}/>
+              <CoordinatorInfo name={data.nickname} profileImg={"https://seumu-s3-bucket.s3.ap-northeast-2.amazonaws.com/"+data.profile_image} requestCnt={data.request_count} likeCnt={data.total_like} styles={data.styles}/>
             </Link>
           </CoordinatorProfile>
           ))}
