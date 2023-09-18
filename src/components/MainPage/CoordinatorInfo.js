@@ -4,7 +4,7 @@ import * as f from '../Common/CommonStyle';
 import SmallStyleCategoryBox from "../../components/Common/SmallStyleCategoryBox";
 import hanger from '../../assets/img/hanger.svg';
 import star from '../../assets/img/star.svg';
-import logo from '../../assets/img/logo.svg';
+import rank1 from '../../assets/img/Rank/rank1.svg';
 
 const CoordinatorInfos = styled.div`
     display: flex;
@@ -16,11 +16,21 @@ const CoordinatorInfos = styled.div`
 const CoordinatorImg = styled.img`
     width: 61px;
     height: 61px;
-    border-radius: 45px;
+    border-radius: 50%;
 `;
 
 const CoordinatorSubInfo = styled.div`
+    width: 100%;
     margin-left:14px;
+`;
+
+const CoordinatorGrade = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
+
+const Rank = styled.img`
+    margin-right: 4px;
 `;
 
 const CoordinatorName = styled.div`
@@ -60,9 +70,6 @@ const Star = styled.div`
     letter-spacing: 0.18px;
 `;
 
-const GradeContainer=styled.div`
-    display: flex;
-`
 
 const StarImg = styled.img`
     margin-right: 7px;
@@ -77,19 +84,22 @@ const CoordinatorInfo = (props) => {
         <CoordinatorInfos>
             <CoordinatorImg src={props.profileImg}></CoordinatorImg>
             <CoordinatorSubInfo>
-                <f.Flex>
-                <CoordinatorName>{props.name}</CoordinatorName>
-                <GradeContainer>
-                    <Hanger>
-                        <HangerImg src={hanger}></HangerImg>
-                        의뢰 {props.requestCnt}번
-                    </Hanger>
-                    <Star>
-                        <StarImg src={star}></StarImg>
-                        {props.likeCnt}
-                    </Star>
-                </GradeContainer>
-                </f.Flex>
+                <CoordinatorGrade>
+                    <f.Flex>
+                        <Rank src={rank1}/>
+                        <CoordinatorName>{props.name}</CoordinatorName>
+                    </f.Flex>
+                        <f.Flex>
+                        <Hanger>
+                            <HangerImg src={hanger}></HangerImg>
+                            의뢰 {props.requestCnt}번
+                        </Hanger>
+                        <Star>
+                            <StarImg src={star}></StarImg>
+                            {props.likeCnt}
+                        </Star>
+                        </f.Flex>
+                    </CoordinatorGrade>
                 <CategoryBox>
                 {props.styles.map((style)=>(
                     <SmallStyleCategoryBox content={style}></SmallStyleCategoryBox>
