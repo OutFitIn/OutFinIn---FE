@@ -21,7 +21,6 @@ const CoordinatorImg = styled.img`
 
 const CoordinatorSubInfo = styled.div`
     margin-left:14px;
-    position: relative;
 `;
 
 const CoordinatorName = styled.div`
@@ -62,8 +61,6 @@ const Star = styled.div`
 `;
 
 const GradeContainer=styled.div`
-    position: absolute;
-    right: 0;
     display: flex;
 `
 

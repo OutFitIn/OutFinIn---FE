@@ -1,6 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {Link} from 'react-router-dom';
 import styled from "styled-components";
+import axios from 'axios';
 import Navigation from "../../components/Navigation/Navigation";
 import * as f from "../../components/Common/CommonStyle";
 import BigStyleCategoryBox from "../../components/Common/BigStyleCategoryBox";
@@ -57,6 +58,7 @@ const Search = () => {
   const [dragging, setDragging] = useState(false);
   const [clickPoint, setClickPoint] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const [search, setSearch] = useState(null);
   const containerRef = useRef(null);
 
   const handelMouseDownEvent = (e) => {
@@ -82,6 +84,18 @@ const Search = () => {
     setIsOpen(true);
   }
 
+  useEffect(()=>{
+    async function fetchSearchPage(){
+      try{
+        axios.defaults.withCredentials=true;
+        const res = await axios.get("http://localhost:8080/search/main");
+        setSearch(res.data);
+      }catch(error){
+        console.error(error);
+      }
+    }
+    fetchSearchPage();
+  }, [])
   return (
 
     <f.Totalframe>
@@ -104,14 +118,16 @@ const Search = () => {
           </Filters>
           <MainText>이런 스타일은 어떠신가요? 👀</MainText>
           {/* 코디네이터 프로필 */}
-          <>
+           {search?.map((data)=>(
+            <>
             <Link to='/postdetail'>
               <CoordinatorMainImg/>
             </Link>
             <Link to='/outerprofile'>
-              <CoordinatorInfo name={"웜톤 천재 아우터"}/>
+              <CoordinatorInfo name={data.nickname} profileImg={data.profile_image} requestCnt={data.request_count} likeCnt={data.total_like} styles={data.styles}/>
             </Link>
-          </>
+            </>
+          ))}
         </f.ScreenComponent>
       </f.SubScreen>
       {isOpen ? <BottomSheet openState={setIsOpen} isOpen={isOpen}/> : <Navigation type={'search'}/> }
