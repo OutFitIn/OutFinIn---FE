@@ -65,6 +65,8 @@ const UserInfo = () => {
     const [natural,setNatural] = useState(false);
     const [male, setMale] = useState(false);
     const [female, setFemale] = useState(false);
+    const [height, setHeight] = useState("");
+    const [weight, setWeight] = useState("");
     const [pass, setPass] = useState(false);
     const [nickname, setNickname] = useState("");
 
@@ -126,6 +128,14 @@ const UserInfo = () => {
         setNickname(e.target.value);
     }
 
+    const changeHeight = (e) => {
+        setHeight(e.target.value);
+    }
+
+    const changeWeight = (e) => {
+        setWeight(e.target.value);
+    }
+
     const changeGender = (g) => {
         if (g === 1) {
             setMale(true);
@@ -158,8 +168,8 @@ const UserInfo = () => {
                             selected={male}>남</Male>
                     </InputContaier>
                     <f.Flex>
-                        <GetInfo infoName={'키'} unit={'cm'}/>
-                        <GetInfo infoName={'체중'} unit={'kg'}/>
+                        <GetInfo infoName={'키'} unit={'cm'} inputValue={height} changeValue={changeHeight}/>
+                        <GetInfo infoName={'체중'} unit={'kg'} inputValue={weight} changeValue={changeWeight}/>
                     </f.Flex>
 
                     {/* 체형 선택 */}
@@ -181,7 +191,7 @@ const UserInfo = () => {
                         bodyName={'내추럴'}
                         choose={choose}
                         selected={natural}
-                        bodyDescribe={'목이 가늘고 긴 편 둥글고 얇은 어깨\n상반신 보다 하반신 볼륨이 발달'}/>
+                        bodyDescribe={'가슴과 허리 위치가 높은 편\n신체 중심이 높고 어깨가 발달'}/>
                     <Link to="../getstyle">
                         <ButtonBottom content={'다음'} />
                     </Link>

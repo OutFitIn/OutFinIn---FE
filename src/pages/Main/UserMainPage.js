@@ -98,7 +98,6 @@ const UserMainPage = () => {
             <BigStyleCategoryBox content={'#이지캐주얼'} onClick={() => changeStyle('이지캐주얼')} isSelected={selectStyle === '이지캐주얼'} />
             <BigStyleCategoryBox content={'#스트릿'}/>
             <BigStyleCategoryBox content={'#봄 코디'}/>
-            <BigStyleCategoryBox content={'+'} onClick={openBottonSheet}/>
             
           </HashTag>
           {/* 코디네이터 프로필 */}
@@ -114,7 +113,7 @@ const UserMainPage = () => {
           ))}
         </f.ScreenComponent>
       </f.SubScreen>
-      {isOpen ? <BottomSheet openState={setIsOpen} isOpen={isOpen}/> : <Navigation type={'Home'}/> }
+      <Navigation type={'Home'}/>
     </f.Totalframe>
   );
 };
