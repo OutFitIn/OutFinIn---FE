@@ -11,6 +11,7 @@ import Search from "./pages/Search/Search";
 import SearchFilter from "./pages/Search/SearchFilter";
 import Chat from "./pages/Chat/Chat";
 import OuterMyPage from "./pages/MyPage/OuterMyPage";
+import UserMyPage from "./pages/MyPage/UserMyPage";
 import EditCoProfile from "./pages/MyPage/EditCoProfile";
 import OuterRankInfo from "./pages/MyPage/OuterRankInfo";
 
@@ -35,6 +36,7 @@ function App() {
             <Route path="/searchfilter" element={<SearchFilter />} />
             <Route path="/chat" element={<Chat />} />
             <Route path="/outermypage" element={<OuterMyPage />} />
+            <Route path="/usermypage" element={<UserMyPage />} />
             <Route path="/editcoprofile" element={<EditCoProfile />} />
             <Route path="/outerrankinfo" element={<OuterRankInfo/>}/>
         </Routes>

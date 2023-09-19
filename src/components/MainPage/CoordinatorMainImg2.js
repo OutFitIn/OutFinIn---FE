@@ -20,7 +20,7 @@ const Img = styled.img`
     height: 46.44vh;
     border-radius: 18px;
 `;
-const CoordinatorMainImg = (props) => {
+const CoordinatorMainImg2 = (props) => {
     const [fillColor, setFillColor] = useState(heart);
     const ChangeColor = () => {
         setFillColor(fillColor === heart ? fillheart : heart)
@@ -32,4 +32,4 @@ const CoordinatorMainImg = (props) => {
         </CoordinatorMainImgs>
     )
 }
-export default CoordinatorMainImg
+export default CoordinatorMainImg2

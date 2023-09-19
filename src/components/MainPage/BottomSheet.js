@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import GetStyleBox from "../../components/Join/GetStyleBox";
 import XButton from "../../assets/img/X_button.svg";
+import axios from 'axios';
 
 const StyledModalBackground = styled.div`
   position: absolute;
@@ -96,51 +97,56 @@ const ApplyCodi = styled.div`
 function BottomSheet(props) {
     const [selectedStyles, setSelectedStyles] = useState([]);
     const [isClose, setIsClose] = useState(false)
-    const handleStyleClick = (style) => {
+
+    const handleStyleClick = (style, type) => {
         // 이미 선택된 스타일이면 제거, 아니면 추가
         if (selectedStyles.includes(style)) {
           setSelectedStyles(selectedStyles.filter((selectedStyle) => selectedStyle !== style));
+
+          if(type === 'style'){
+            props.setSelectedStyles(
+              props.selectedStyles.filter((selected) => selected !== style));
+          }
+
+          else if(type === 'situation') {
+            props.setSelectedSituation(
+              props.selectedSituation.filter((selected) => selected !== style));
+          }
+
+          else if(type === 'weather') {
+
+          }
+
+
         } else {
           setSelectedStyles([...selectedStyles, style]);
+
+          if(type === 'style'){
+            props.setSelectedStyles([...props.selectedStyles, style]);
+          }
+
+          else if(type === 'situation') {
+            props.setSelectedSituation([...props.selectedSituation, style]);
+          }
+
+          else if(type === 'weather') {
+
+          }
         }
-      }
-    
-    const styleCategories = [
-        "미니멀",
-        "이지캐주얼",
-        "비즈니스캐주얼",
-        "아메카지",
-        "스트릿",
-        "시티보이",
-        "원마일웨어",
-        "스포티",
-        "유니크",
-        "레트로",
-        "올드머니룩",
-        "하객룩",
-        "바캉스룩",
-        "힙합",
-    ];
+    }   
 
-    const weatherCategories = [
-        ["봄 코디", "여름 코디"],
-        ["가을 코디", "겨울 코디"],
-    ];
-
-    const situationCategories = ["면접","여행","캠퍼스","데이트","출근","결혼식"]
-
-    const styleCategoryBoxes = styleCategories.map((category, index) => (
+    const styleCategoryBoxes = props.styleCategories.map((category, index) => (
         <GetStyleBox
         key={index}
         content={category}
-        isSelected={selectedStyles.includes(category)} onClick={() => handleStyleClick(category)}
+        isSelected={selectedStyles.includes(category)} onClick={() => handleStyleClick(category, 'style')}
         />
     ));
 
-    const situationCategoryBoxes = situationCategories.map((category) => (
+    const situationCategoryBoxes = props.situationCategories.map((category) => (
       <GetStyleBox
         content={category}
-        isSelected={selectedStyles.includes(category)} onClick={() => handleStyleClick(category)}
+        isSelected={selectedStyles.includes(category)} onClick={() => handleStyleClick(category, 'situation')}
       />
     ))
 
@@ -160,7 +166,7 @@ function BottomSheet(props) {
             </ModalTitle>
             <Category>{styleCategoryBoxes}</Category>
             <Hr/>
-            {weatherCategories.map((categoryRow, rowIndex) => (
+            {props.weatherCategories.map((categoryRow, rowIndex) => (
                 <div key={rowIndex}>
                 {categoryRow.map((category, index) => (
                     <GetStyleBox
@@ -177,7 +183,7 @@ function BottomSheet(props) {
     </StyledBottomSheet>
     <FooterBottomSheet>
       <Clear>선택 해제</Clear>
-      <ApplyCodi>코디 확인하기</ApplyCodi>
+      <ApplyCodi onClick={props.sendData}>코디 확인하기</ApplyCodi>
     </FooterBottomSheet>
     </>
   );
