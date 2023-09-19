@@ -44,7 +44,7 @@ const Grades = (props) => {
         </GradeSection>
         <GradeSection>
             <GradeIcon src={money}/>
-            50,000원 ~
+            10,000원 ~
             <GradeBar/>
         </GradeSection>
         <GradeSection>
