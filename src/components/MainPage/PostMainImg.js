@@ -78,7 +78,7 @@ const PostMainImg = (props) => {
                 <Name>{props.name}</Name>
                 <CountContainer>
                     <LikeIcon src={whiteHeart}></LikeIcon>
-                    <Count>{props.like}</Count>
+                    {/* <Count>{props.like}</Count> */}
                 </CountContainer>
             </PostInfo>
         </PostMainImgs>

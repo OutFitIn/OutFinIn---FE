@@ -29,7 +29,7 @@ function App() {
             <Route path="/coinfo" element={<CoInfo/>}/>
             <Route path="/getstyle" element={<GetStyle/>}/>
             <Route path="/joinsuccess" element={<JoinSuccess />} />
-            <Route path="/outerprofile" element={<OuterProfile />} />
+            <Route path="/outerprofile/:coordinator_id" element={<OuterProfile />} />
             <Route path="/postdetail" element={<PostDetail />} />
             <Route path="/writenewpost" element={<WriteNewPost />} />
             <Route path="/search" element={<Search />} />

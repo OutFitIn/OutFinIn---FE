@@ -22,14 +22,28 @@ const Img = styled.img`
 `;
 const CoordinatorMainImg = (props) => {
     const [fillColor, setFillColor] = useState(heart);
-    const ChangeColor = () => {
-        setFillColor(fillColor === heart ? fillheart : heart)
+    const SaveBtn = () => {
+        setFillColor(fillColor === heart ? fillheart : heart);
+
+         // 백엔드 통신
+        // useEffect(()=>{
+        //     async function fetchMainPage(){
+        //     try{
+        //         axios.defaults.withCredentials=true;
+        //         const res = await axios.get("http://localhost:8080/user/like?userId="+1+"&boardId="+);
+        //         setMainPage(res.data)
+        //     }catch(error){
+        //         console.error(error);
+        //     }
+        //     }
+        //     fetchMainPage();
+        // }, [])
       }
     return(
         <CoordinatorMainImgs>
             <Img src={props.boardImg}/>
-            <Heart src={fillColor} onClick={ChangeColor}></Heart>
+            <Heart src={fillColor} onClick={SaveBtn}></Heart>
         </CoordinatorMainImgs>
     )
 }
-export default CoordinatorMainImg
+export default CoordinatorMainImg;

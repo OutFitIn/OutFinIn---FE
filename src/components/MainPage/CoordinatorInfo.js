@@ -80,6 +80,7 @@ const CategoryBox = styled.div`
     margin-top: 1.18vh;
 `
 const CoordinatorInfo = (props) => {
+
     return(
         <CoordinatorInfos>
             <CoordinatorImg src={props.profileImg}></CoordinatorImg>
@@ -89,7 +90,7 @@ const CoordinatorInfo = (props) => {
                         <Rank src={rank1}/>
                         <CoordinatorName>{props.name}</CoordinatorName>
                     </f.Flex>
-                        <f.Flex>
+                        {/* <f.Flex>
                         <Hanger>
                             <HangerImg src={hanger}></HangerImg>
                             의뢰 {props.requestCnt}번
@@ -98,10 +99,10 @@ const CoordinatorInfo = (props) => {
                             <StarImg src={star}></StarImg>
                             {props.likeCnt}
                         </Star>
-                        </f.Flex>
+                        </f.Flex> */}
                     </CoordinatorGrade>
                 <CategoryBox>
-                {props.styles.map((style)=>(
+                {props.styles?.map((style)=>(
                     <SmallStyleCategoryBox content={style}></SmallStyleCategoryBox>
                 ))}
                 </CategoryBox>

@@ -106,7 +106,7 @@ const UserMainPage = () => {
               <Link>
             <CoordinatorMainImg boardImg={"https://seumu-s3-bucket.s3.ap-northeast-2.amazonaws.com/"+data.board_image}/>
             </Link>
-            <Link to='/outerprofile'>
+            <Link to={`/outerprofile/${data.coordinator_id}`}>
               <CoordinatorInfo name={data.nickname} profileImg={"https://seumu-s3-bucket.s3.ap-northeast-2.amazonaws.com/"+data.profile_image} requestCnt={data.request_count} likeCnt={data.total_like} styles={data.styles}/>
             </Link>
           </CoordinatorProfile>

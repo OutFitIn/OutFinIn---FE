@@ -29,17 +29,17 @@ const GradeBar = styled.div`
     background: #C4C4C4;
     margin: 0px 20px;
 `
-const Grades = () => {
+const Grades = (props) => {
     return(
     <Grade>
         <GradeSection>
             <GradeIcon src={fillMinHeart}/>
-            1234
+            {props.like}
             <GradeBar/>
         </GradeSection>
         <GradeSection>
             <GradeIcon src={star}/>
-            4.95
+            4.48
             <GradeBar/>
         </GradeSection>
         <GradeSection>
@@ -49,7 +49,7 @@ const Grades = () => {
         </GradeSection>
         <GradeSection>
             <GradeIcon src={hanger}/>
-            123번
+            {props.request}
         </GradeSection>
     </Grade>
     )
