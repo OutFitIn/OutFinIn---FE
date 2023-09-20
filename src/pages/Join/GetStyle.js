@@ -40,9 +40,10 @@ const GetStyle = () => {
 
     // 코디네이터 선호 스타일
     const sendStyles = () => {
+        let mode = localStorage.getItem('mode') == 1? 'coordinator' : 'user';
         async function fetchData(){
             try {
-                const res = await axios.post("http://localhost:8080/coordinator/styles",
+                const res = await axios.post(`http://localhost:8080/${mode}/styles`,
                 {
                     styles: selectedStyles
                 });
@@ -85,9 +86,7 @@ const GetStyle = () => {
                     </f.ScreenJoin>
                 </f.ScreenComponent>
                 <ButtonContainer>
-                    <Link onClick={sendStyles} >
-                        <ButtonBottom content={'다음'} />
-                    </Link>
+                    <ButtonBottom content={'다음'} type={'axios'} sendInfo={sendStyles}/>
                 </ButtonContainer>
             </f.SubScreen>
         </f.Totalframe>
