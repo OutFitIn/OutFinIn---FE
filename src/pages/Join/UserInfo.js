@@ -74,8 +74,6 @@ const UserInfo = () => {
     const nicknameRef = useRef(null);
 
     const handleClickOutside = async ({ target }) => {
-        console.log("handleClickOutside 실행");
-        console.log(nickname);
 
         if (nicknameRef.current && !nicknameRef.current.contains(target) && checkNickname !== nickname) {
             // axios 코드 작성 하면 됨
@@ -87,7 +85,7 @@ const UserInfo = () => {
                     if(res.data === 'available') {
                         setPass(true);
                         setCheckNickname(nickname); // 검사를 완료한 닉네임
-                        console.log(nickname);
+
                     } else {
                         setPass(false);
                     }
@@ -145,6 +143,26 @@ const UserInfo = () => {
             setFemale(true);
         }
     }
+
+    const UserInfoData = () => {
+        
+        async function fetchUser(){
+            try {
+                const res = await axios.post("http://localhost:8080/user/profile",
+                {
+                    nickname : nickname,
+                    height : height,
+                    weight : weight,
+                    gender : male ? 'MALE' : 'FEMALE',
+                    shape : straight ? 'STRAIGHT' : wave ? 'WAVE' : 'NATURAL'
+                });
+                console.log(res)
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        fetchUser();
+    }
     return(
         <f.Totalframe>
             <f.ScreenComponent>
@@ -192,8 +210,8 @@ const UserInfo = () => {
                         choose={choose}
                         selected={natural}
                         bodyDescribe={'가슴과 허리 위치가 높은 편\n신체 중심이 높고 어깨가 발달'}/>
-                    <Link to="../getstyle">
-                        <ButtonBottom content={'다음'} />
+                    <Link to="/getstyle">
+                        <ButtonBottom content={'다음'} sendInfo={UserInfoData} type={'axios'}/>
                     </Link>
                 </f.ScreenJoin>
             </f.ScreenComponent>
