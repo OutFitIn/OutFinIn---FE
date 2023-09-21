@@ -35,13 +35,14 @@ const HashTag = styled.div`
 const CoordinatorProfile = styled.div`
   margin-top:3.08vh;
 `;
-
 const UserMainPage = () => {
+  const initialLikedPosts = {};
   const [selectStyle, setSelectStyle] = useState('이지캐주얼');
   const [dragging, setDragging] = useState(false);
   const [clickPoint, setClickPoint] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const [likedPosts, setLikedPosts] = useState(initialLikedPosts);
   const [mainPage, setMainPage] = useState(null);
   
   const containerRef = useRef(null);
@@ -101,6 +102,14 @@ const UserMainPage = () => {
       fetchLike();
   }
 
+  // 게시물의 좋아요 상태를 토글하는 함수
+  const toggleLike = (postId) => {
+    setLikedPosts((prevLikedPosts) => ({
+      ...prevLikedPosts,
+      [postId]: !prevLikedPosts[postId], // 현재 상태를 반전시킴
+    }));
+  };
+
   return (
     <f.Totalframe>
       <f.SubScreen>
@@ -126,8 +135,9 @@ const UserMainPage = () => {
                 likeIncrease={(e) => {
                   e.preventDefault(); // 링크 이동을 막음
                   likeIncrease(data.board_id); // 하트 클릭 이벤트 처리
+                  toggleLike(data.board_id);
                 }}
-                fillColor={fillColor}/>
+                fillColor={likedPosts[data.board_id] ? fillheart : heart}/>
               </Link>
             <Link to={`/outerprofile/${data.coordinator_id}`}>
               <CoordinatorInfo name={data.nickname} profileImg={"https://seumu-s3-bucket.s3.ap-northeast-2.amazonaws.com/"+data.profile_image}

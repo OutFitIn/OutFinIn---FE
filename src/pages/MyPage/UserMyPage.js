@@ -133,12 +133,10 @@ const UserMyPage = () => {
                 <Icon src={Hanger}/>
                 <MyPageDescribe>내가 받은 코디</MyPageDescribe>
               </MyPageMenu>
-              <Link to={'/likecodies'}>
-                <MyPageMenu>
-                  <Icon src={Heart}/>
-                  <MyPageDescribe>좋아요 누른 코디</MyPageDescribe>
-                </MyPageMenu>
-              </Link>
+              <MyPageMenu>
+                <Icon src={Heart}/>
+                <MyPageDescribe>좋아요 누른 코디</MyPageDescribe>
+              </MyPageMenu>
               <MyPageMenu>
                 <Icon src={Review}/>
                 <MyPageDescribe>내가 쓴 리뷰 보기</MyPageDescribe>
