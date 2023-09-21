@@ -130,7 +130,6 @@ function BottomSheet(props) {
 
           }
         }
-        props.addSelectedTag(style);
     }   
 
     const styleCategoryBoxes = props.styleCategories.map((category, index) => (
