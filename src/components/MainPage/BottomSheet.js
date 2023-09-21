@@ -147,9 +147,10 @@ function BottomSheet(props) {
       />
     ))
 
-    // const isopenChange = () => {
-    //   props.openState(!props.isOpen)
-    // }
+    // 선택해제
+    const resetCategories = () => {
+      setSelectedStyles([])
+    }
 
     return (
     <>
@@ -178,7 +179,7 @@ function BottomSheet(props) {
         </BottomSheetContent>
     </StyledBottomSheet>
     <FooterBottomSheet>
-      <Clear>선택 해제</Clear>
+      <Clear onClick={resetCategories}>선택 해제</Clear>
       <ApplyCodi onClick={props.sendData}>코디 확인하기</ApplyCodi>
     </FooterBottomSheet>
     </>
