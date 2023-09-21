@@ -93,7 +93,10 @@ const HangerContent=styled.div`
 `
 
 const CoordinatorInfo = (props) => {
+<<<<<<< HEAD
 
+=======
+>>>>>>> c949b7c (Conflict Resolution)
     return(
         <CoordinatorInfos>
             <CoImgContainer>
