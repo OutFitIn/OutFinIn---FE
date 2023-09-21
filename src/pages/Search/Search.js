@@ -84,7 +84,7 @@ const Search = () => {
   }
 
   const openBottomSheet = () => {
-    setIsOpen(true);
+    setIsOpen(!isOpen);
   }
 
   useEffect(()=>{
@@ -217,7 +217,7 @@ const Search = () => {
             
           </f.ScreenComponent>
         </f.SubScreen>
-        {isOpen ? <BottomSheet openState={isOpen} isOpen={isOpen} sendData={searchHandler} 
+        {isOpen ? <BottomSheet openState={openBottomSheet} isOpen={isOpen} sendData={searchHandler} 
         styleCategories={styleCategories} weatherCategories={weatherCategories} situationCategories={situationCategories}
         selectedStyles={selectedStyles} selectedSituation={selectedSituation} selectedWeather={selectedWeather}
         setSelectedStyles={setSelectedStyles} setSelectedSituation={setSelectedSituation} setSelectedWeather={setSelectedWeather}/> 
