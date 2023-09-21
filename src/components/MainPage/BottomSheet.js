@@ -147,9 +147,9 @@ function BottomSheet(props) {
       />
     ))
 
-    const isopenChange = () => {
-      props.openState(!props.isOpen)
-    }
+    // const isopenChange = () => {
+    //   props.openState(!props.isOpen)
+    // }
 
     return (
     <>
@@ -158,8 +158,7 @@ function BottomSheet(props) {
         <BottomSheetContent>
             <ModalTitle>
                 추가하실 스타일<br/>태그를 골라주세요
-                <img src={XButton} onClick={isopenChange} />
-                {/* <BottomSheet openState={setIsOpen} isOpen={isOpen}/> */}
+                <img src={XButton} onClick={props.openState} />  
             </ModalTitle>
             <Category>{styleCategoryBoxes}</Category>
             <Hr/>
