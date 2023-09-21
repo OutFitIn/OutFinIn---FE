@@ -7,7 +7,8 @@ import logo from "../../assets/img/logo.svg"
 import naver from "../../assets/img/naver.svg"
 import kakao from "../../assets/img/kakao.svg"
 import google from "../../assets/img/google.svg"
-import axios from "axios"
+import axios from "axios";
+import { useCookies } from 'react-cookie';
 
 const LoginContainer=styled.div`
     margin-top: 87.33px;

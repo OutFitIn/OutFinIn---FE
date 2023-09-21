@@ -1,5 +1,5 @@
 import React, { useState,useRef,useEffect } from "react";
-import {Link} from 'react-router-dom';
+import {Link,useParams} from 'react-router-dom';
 import styled from "styled-components";
 import Navigation from "../../components/Navigation/Navigation";
 import * as f from "../../components/Common/CommonStyle";
@@ -7,6 +7,8 @@ import BigStyleCategoryBox from "../../components/Common/BigStyleCategoryBox";
 import CoordinatorInfo from "../../components/MainPage/CoordinatorInfo";
 import CoordinatorMainImg from "../../components/MainPage/CoordinatorMainImg";
 import BottomSheet from "../../components/MainPage/BottomSheet";
+import heart from '../../assets/img/heart.svg';
+import fillheart from '../../assets/img/fillheart.svg';
 import axios from 'axios'; 
 
 
@@ -83,6 +85,22 @@ const UserMainPage = () => {
     fetchMainPage();
   }, [])
 
+  //like function
+  const [fillColor, setFillColor] = useState(heart);
+
+  const likeIncrease = (board_id) => {
+    console.log(board_id)
+    setFillColor(fillColor === heart ? fillheart : heart);
+    async function fetchLike(){
+      try{
+          axios.defaults.withCredentials=true;
+          const res = await axios.get("http://localhost:8080/user/like?boardId="+board_id);
+      }catch(error){
+          console.error(error);
+      }}
+      fetchLike();
+  }
+
   return (
     <f.Totalframe>
       <f.SubScreen>
@@ -103,11 +121,17 @@ const UserMainPage = () => {
           {/* 코디네이터 프로필 */}
           {mainPage?.map((data)=>(
             <CoordinatorProfile>
-              <Link>
-            <CoordinatorMainImg boardImg={"https://seumu-s3-bucket.s3.ap-northeast-2.amazonaws.com/"+data.board_image}/>
-            </Link>
+              <Link to={`/postdetail/${data.board_id}`}>
+                <CoordinatorMainImg boardImg={"https://seumu-s3-bucket.s3.ap-northeast-2.amazonaws.com/"+data.board_image}
+                likeIncrease={(e) => {
+                  e.preventDefault(); // 링크 이동을 막음
+                  likeIncrease(data.board_id); // 하트 클릭 이벤트 처리
+                }}
+                fillColor={fillColor}/>
+              </Link>
             <Link to={`/outerprofile/${data.coordinator_id}`}>
-              <CoordinatorInfo name={data.nickname} profileImg={"https://seumu-s3-bucket.s3.ap-northeast-2.amazonaws.com/"+data.profile_image} requestCnt={data.request_count} likeCnt={data.total_like} styles={data.styles}/>
+              <CoordinatorInfo name={data.nickname} profileImg={"https://seumu-s3-bucket.s3.ap-northeast-2.amazonaws.com/"+data.profile_image}
+              requestCnt={data.request_count} likeCnt={data.total_like} styles={data.styles}/>
             </Link>
           </CoordinatorProfile>
           ))}
