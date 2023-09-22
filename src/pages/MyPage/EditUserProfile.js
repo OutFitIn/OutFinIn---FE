@@ -1,6 +1,6 @@
 import React,{ useState, useRef, useEffect } from "react";
 import styled from 'styled-components';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import * as f from '../../components/Common/CommonStyle';
 import ButtonBottom from '../../components/Common/ButtonBottom';
@@ -78,6 +78,7 @@ const DoneText = styled.div`
     line-height: normal;
     letter-spacing: 0.2px;
 `;
+
 const EditUserProfile= () => {
     const [straight,setStraight] = useState(false);
     const [wave,setWave] = useState(false);
@@ -96,9 +97,9 @@ const EditUserProfile= () => {
         shape: ""
         // styles: [],
     });
-
     const [checkNickname, setCheckNickname] = useState("");
     const nicknameRef = useRef(null);
+    const navigate = useNavigate();
 
     const handleClickOutside = async ({ target }) => {
 
@@ -201,13 +202,34 @@ const EditUserProfile= () => {
         fetchEditPage();
     }, [])
 
+    //편집 적용
+    const reSave = () => {
+        async function fetchReSavePage(){
+            try{
+              axios.defaults.withCredentials=true;
+              const res = await axios.post("http://localhost:8080/user/edit",
+              {
+                id : 1,
+                nickname : nickname,
+                height : height,
+                weight : weight,
+                gender : male ? 'MALE' : 'FEMALE',
+                shape : straight ? 'STRAIGHT' : wave ? 'WAVE' : 'NATURAL'
+              });
+              navigate('/usermypage');
+            }catch(error){
+              console.error(error.config.data);
+            }
+          }
+          fetchReSavePage();
+    }
     
     return(
         <f.Totalframe>
             <f.ScreenComponent>
             <TopEdit>
                 <GobackContainer/>
-                <DoneText>완료</DoneText>
+                <DoneText onClick={reSave}>완료</DoneText>
             </TopEdit>
             {/* 개인정보 입력 */}
             <InputContaier>
