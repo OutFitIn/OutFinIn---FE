@@ -87,15 +87,30 @@ const UserMainPage = () => {
   }, [])
 
   //like function
-  const [fillColor, setFillColor] = useState(heart);
+  const [likeBoardId, setLikeBoardId] = useState([]);
 
-  const likeIncrease = (board_id) => {
+  useEffect(() => {
+    if(mainPage == null) return;
+
+    setLikeBoardId(mainPage?.user_board_like);
+  }, [mainPage])
+
+  const likeIncrease = (board_id, fillColor) => {
     console.log(board_id)
-    console.log(mainPage.user_board_like) 
+    console.log(likeBoardId)
+    console.log(fillColor); 
     async function fetchLike(){
       try{
           axios.defaults.withCredentials=true;
           const res = await axios.get("http://localhost:8080/user/like?boardId="+board_id);
+          if(res.data == 'success'){
+            //mainPage.user_board_like.push(board_id);
+
+            setLikeBoardId([...likeBoardId, board_id]);
+            //setLikeBoardId(likeBoardId.splice(likeBoardId.indexOf(board_id), 1));
+            //setLikeBoardId([...likeBoardId])
+          }
+
       }catch(error){
           console.error(error);
       }}
@@ -104,6 +119,13 @@ const UserMainPage = () => {
       try {
         axios.defaults.withCredentials = true;
         const res = await axios.get("http://localhost:8080/user/unlike?boardId="+board_id);
+        if(res.data == 'possible'){
+          //mainPage.user_board_like.pop(board_id);
+          console.log('possible')
+          setLikeBoardId((oldValue) => {
+            return oldValue.filter((id) => id !== board_id)
+          });        
+        }
       } catch (error) {
         console.error(error);
       }
@@ -111,10 +133,8 @@ const UserMainPage = () => {
   
     if (fillColor == fillheart) {
       fetchLikeCancel();
-      mainPage.user_board_like.pop(board_id);
     } else {
       fetchLike();
-      mainPage.user_board_like.push(board_id);
     }
 }
 
@@ -129,10 +149,9 @@ const UserMainPage = () => {
             onMouseLeave={() => setDragging(false)}
             onMouseUp={() => setDragging(false)}
             onMouseMove={handelMouseMoveEvent}>
-            <BigStyleCategoryBox content={'#미니멀'} onClick={() => changeStyle('미니멀')} isSelected={selectStyle === '미니멀'} />
-            <BigStyleCategoryBox content={'#이지캐주얼'} onClick={() => changeStyle('이지캐주얼')} isSelected={selectStyle === '이지캐주얼'} />
-            <BigStyleCategoryBox content={'#스트릿'}/>
-            <BigStyleCategoryBox content={'#봄 코디'}/>
+            {mainPage?.styles.map(style => (
+              <BigStyleCategoryBox content={'#'+style} onClick={() => changeStyle(style)} isSelected={selectStyle === style} />
+            ))}
             
           </HashTag>
           {/* 코디네이터 프로필 */}
@@ -140,11 +159,11 @@ const UserMainPage = () => {
             <CoordinatorProfile>
               <Link to={`/postdetail/${data.board_id}`}>
                 <CoordinatorMainImg boardImg={data.board_image}
-                likeIncrease={(e) => {
+                likeIncrease={(fillColor, e) => {
                   e.preventDefault(); // 링크 이동을 막음
-                  likeIncrease(data.board_id); // 하트 클릭 이벤트 처리
+                  likeIncrease(data.board_id, fillColor); // 하트 클릭 이벤트 처리
                 }}
-                fillColor={mainPage.user_board_like.includes(data.board_id) ? fillheart : heart}/>
+                fillColor={likeBoardId.includes(data.board_id) ? fillheart : heart}/>
               </Link>
             <Link to={`/outerprofile/${data.coordinator_id}`}>
               <CoordinatorInfo name={data.nickname} profileImg={data.profile_image}

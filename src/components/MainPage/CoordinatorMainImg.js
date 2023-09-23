@@ -24,7 +24,7 @@ const CoordinatorMainImg = (props) => {
     return(
         <CoordinatorMainImgs>
             <Img src={"https://seumu-s3-bucket.s3.ap-northeast-2.amazonaws.com/"+props.boardImg}/>
-            <Heart src={props.fillColor} onClick={props.likeIncrease}></Heart>
+            <Heart src={props.fillColor} onClick={(e) => props.likeIncrease(props.fillColor, e)}></Heart>
         </CoordinatorMainImgs>
     )
 }
