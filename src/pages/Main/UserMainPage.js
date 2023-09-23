@@ -104,11 +104,7 @@ const UserMainPage = () => {
           axios.defaults.withCredentials=true;
           const res = await axios.get("http://localhost:8080/user/like?boardId="+board_id);
           if(res.data == 'success'){
-            //mainPage.user_board_like.push(board_id);
-
             setLikeBoardId([...likeBoardId, board_id]);
-            //setLikeBoardId(likeBoardId.splice(likeBoardId.indexOf(board_id), 1));
-            //setLikeBoardId([...likeBoardId])
           }
 
       }catch(error){
@@ -120,7 +116,6 @@ const UserMainPage = () => {
         axios.defaults.withCredentials = true;
         const res = await axios.get("http://localhost:8080/user/unlike?boardId="+board_id);
         if(res.data == 'possible'){
-          //mainPage.user_board_like.pop(board_id);
           console.log('possible')
           setLikeBoardId((oldValue) => {
             return oldValue.filter((id) => id !== board_id)
