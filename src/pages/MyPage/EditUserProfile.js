@@ -205,48 +205,46 @@ const EditUserProfile= () => {
     return(
         <f.Totalframe>
             <f.ScreenComponent>
-                <f.ScreenJoin>
-                    <TopEdit>
-                        <GobackContainer/>
-                        <DoneText>완료</DoneText>
-                    </TopEdit>
-                    {/* 개인정보 입력 */}
-                    <InputContaier>
-                        <GetInfo infoName={'닉네임'} changeValue={changeNickname} inputValue={nickname} check={nicknameRef}/>
-                        <AiOutlineCheckCircle fill={pass? '#4F44E2' : '#C9C5CA'}/>
-                        <Female 
-                            onClick={() => changeGender(2)}
-                            selected={female}>여</Female>
-                        <Male 
-                            onClick={() => changeGender(1)}
-                            selected={male}>남</Male>
-                    </InputContaier>
-                    <f.Flex>
-                        <GetInfo infoName={'키'} unit={'cm'} inputValue={height} changeValue={changeHeight}/>
-                        <GetInfo infoName={'체중'} unit={'kg'} inputValue={weight} changeValue={changeWeight}/>
-                    </f.Flex>
+            <TopEdit>
+                <GobackContainer/>
+                <DoneText>완료</DoneText>
+            </TopEdit>
+            {/* 개인정보 입력 */}
+            <InputContaier>
+                <GetInfo infoName={'닉네임'} changeValue={changeNickname} inputValue={nickname} check={nicknameRef}/>
+                <AiOutlineCheckCircle fill={pass? '#4F44E2' : '#C9C5CA'}/>
+                <Female 
+                    onClick={() => changeGender(2)}
+                    selected={female}>여</Female>
+                <Male 
+                    onClick={() => changeGender(1)}
+                    selected={male}>남</Male>
+            </InputContaier>
+            <f.Flex>
+                <GetInfo infoName={'키'} unit={'cm'} inputValue={height} changeValue={changeHeight}/>
+                <GetInfo infoName={'체중'} unit={'kg'} inputValue={weight} changeValue={changeWeight}/>
+            </f.Flex>
 
-                    {/* 체형 선택 */}
-                    <BodyTypeText>체형</BodyTypeText>
-                    <BodyTpye
-                        bodyImg={bodyStraight}
-                        bodyName={'스트레이트'}
-                        choose={choose}
-                        selected={straight}
-                        bodyDescribe={'목이 다소 짧고 승모근이 발달\n바스트 라인이 높고 볼륨감이 있는 편'}/>
-                    <BodyTpye
-                        bodyImg={bodyWave}
-                        bodyName={'웨이브'}
-                        choose={choose}
-                        selected={wave}
-                        bodyDescribe={'목이 가늘고 긴 편 둥글고 얇은 어깨\n상반신 보다 하반신 볼륨이 발달'}/>
-                    <BodyTpye
-                        bodyImg={bodyNatural}
-                        bodyName={'내추럴'}
-                        choose={choose}
-                        selected={natural}
-                        bodyDescribe={'가슴과 허리 위치가 높은 편\n신체 중심이 높고 어깨가 발달'}/>
-                </f.ScreenJoin>
+            {/* 체형 선택 */}
+            <BodyTypeText>체형</BodyTypeText>
+            <BodyTpye
+                bodyImg={bodyStraight}
+                bodyName={'스트레이트'}
+                choose={choose}
+                selected={straight}
+                bodyDescribe={'목이 다소 짧고 승모근이 발달\n바스트 라인이 높고 볼륨감이 있는 편'}/>
+            <BodyTpye
+                bodyImg={bodyWave}
+                bodyName={'웨이브'}
+                choose={choose}
+                selected={wave}
+                bodyDescribe={'목이 가늘고 긴 편 둥글고 얇은 어깨\n상반신 보다 하반신 볼륨이 발달'}/>
+            <BodyTpye
+                bodyImg={bodyNatural}
+                bodyName={'내추럴'}
+                choose={choose}
+                selected={natural}
+                bodyDescribe={'가슴과 허리 위치가 높은 편\n신체 중심이 높고 어깨가 발달'}/>
             </f.ScreenComponent>
             <Navigation type={'mypage'}/>
         </f.Totalframe>
