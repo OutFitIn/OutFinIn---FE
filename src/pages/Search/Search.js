@@ -127,7 +127,7 @@ const Search = () => {
   ]);
 
   const [situationCategories, setSituationCategories] = useState([
-    "면접", "여행", "캠퍼스", "데이트", "출근", "결혼식"
+    "면접", "여행", "캠퍼스", "데이트", "출근", "결혼식", "일상"
   ]);
 
   const [selectedStyles, setSelectedStyles] = useState([]);
@@ -183,7 +183,7 @@ const Search = () => {
               onMouseMove={handelMouseMoveEvent}>
               <BigStyleCategoryBox icon={grayHeart} content={'좋아요 많은 순'}/>
               <BigStyleCategoryBox icon={grayStar} content={'별점 높은 순'}/>
-              <BigStyleCategoryBox icon={grayMoney}  content={'가격 낮은 순'}/>
+              <BigStyleCategoryBox icon={grayMoney}  content={'등급 높은 순'}/>
               <BigStyleCategoryBox icon={grayHanger} content={'코디 횟수 높은 순'}/>
             </Filters>
             <MainText>이런 스타일은 어떠신가요? 👀</MainText>

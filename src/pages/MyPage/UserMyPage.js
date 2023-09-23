@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from 'axios';
-import {Link, useAsyncError} from 'react-router-dom';
+import {Link, useAsyncError, useNavigate} from 'react-router-dom';
 import styled from "styled-components";
 import * as f from "../../components/Common/CommonStyle";
 import GobackContainer from "../../components/Common/GobackContainer";
@@ -94,9 +94,12 @@ const AccountBox = styled.div`
   margin-left: ${(props)=>props.delete ? '7.5px' : '0px' };
   color: ${(props)=>props.delete ? '#690005': 'black'};
 `;
+
 const UserMyPage = () => {
   const [userMyPage,setUserMyPage] = useState('');
   const [bodyShape,setBodyShape] = useState('');
+  const navigate = useNavigate();
+  
   // 백엔드 통신
   useEffect(()=>{
     async function fetchMainPage(){
@@ -111,6 +114,20 @@ const UserMyPage = () => {
     }
     fetchMainPage();
   }, [])
+
+  //logout
+  const clickLogOut = () =>{
+    async function fetchLogOut(){
+      try{
+        axios.defaults.withCredentials=true;
+        const res = await axios.post("http://localhost:8080/logout");
+        navigate('/');
+      }catch(error){
+        console.error(error);
+      }
+    }
+    fetchLogOut();
+  }
 
     return(
         <f.Totalframe>
@@ -153,7 +170,7 @@ const UserMyPage = () => {
               </Link>
             </UserInfos>
             <AccountBtns>
-              <AccountBox logout>로그아웃</AccountBox>
+              <AccountBox logout onClick={clickLogOut}>로그아웃</AccountBox>
               <AccountBox delete>계정삭제</AccountBox>
             </AccountBtns>
           </f.ScreenComponent>
