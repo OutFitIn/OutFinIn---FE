@@ -107,7 +107,7 @@ const UserMyPage = () => {
       try{
         axios.defaults.withCredentials=true;
         const res = await axios.get("http://localhost:8080/user/mypage?id="+1);
-        userMyPage.shape == 'NATURAL' ? setBodyShape('내추럴') : userMyPage.shape == 'WAVE' ? setBodyShape('웨이브') : setBodyShape('스트레이트');
+        res.data.shape == 'NATURAL' ? setBodyShape('내추럴') : res.data.shape == 'WAVE' ? setBodyShape('웨이브') : setBodyShape('스트레이트');
         setUserMyPage(res.data)
       }catch(error){
         console.error(error);
