@@ -94,7 +94,6 @@ const Search = () => {
         axios.defaults.withCredentials=true;
         const res = await axios.get("http://localhost:8080/search/main");
         setFirstPage(res.data);
-        console.log(res.data)
       }catch(error){
         console.error(error);
       }

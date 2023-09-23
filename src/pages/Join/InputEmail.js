@@ -268,7 +268,7 @@ const InputEmail = () => {
             <f.SubScreen>
                 <f.ScreenComponent>
                     <TopModal show={modal}/>
-                    <f.ScreenJoin>
+                    <f.ScreenJoin email={true}>
                         <QuestionMode content={'서비스 이용 시작 전\n본인인증이 필요합니다.'} marginBottom={'6.27vh'}/>
                         <f.Flex>
                             <Email placeholder={duplicateEmail? "이미 가입한 이메일":"이메일 주소"} error={duplicateEmail} ref={emailRef}></Email>
