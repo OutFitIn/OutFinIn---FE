@@ -48,13 +48,26 @@ const SearchBox = styled.div`
   margin-bottom: 0.94vh;
 `;
 
-const SearchInput = styled.input`
+const SearchInput = styled.div`
   width: calc(100% - 30px);
   border: none;
   outline: none;
   cursor: pointer;
 `;
 
+const SelectSearch = styled.div`
+  display:inline-block;
+  border-radius: 20px;
+  background: #100069;
+  padding: 5px 14px;
+  color: #fff;
+  margin-left: 10px;
+`;
+
+const CoordinatorProfile = styled.div`
+  border-bottom: 1px solid #C8C5D0;
+  margin-top:3.08vh;
+`;
 const Search = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dragging, setDragging] = useState(false);
@@ -64,6 +77,7 @@ const Search = () => {
   const [firstPage, setFirstPage] = useState(null);
   const containerRef = useRef(null);
   const {board_id, coordinator_id} = useParams();
+  const arrstyles = [];
 
   const handelMouseDownEvent = (e) => {
     setDragging(true);
@@ -153,14 +167,17 @@ const Search = () => {
             situation : selectedSituation
           });
           setIsOpen(!isOpen);
-
+          
           setSearch(res.data);
+          console.log(res)
+          // arrstyles.push(res.data);
           setSelectedStyles([]);
           setSelectedWeather([]);
           setSelectedSituation([]);
+          arrstyles([]);
           setFirstPage(null);
         }catch(error){
-          console.error(error.config.data);
+          console.error(error.data);
         }
       }
       fetchCodiCheck();
@@ -174,7 +191,11 @@ const Search = () => {
             <GobackContainer />
             <SearchBox>
               <img src={smallFind}/>
-              <SearchInput placeholder="찾고있는 스타일이 있나요?" onClick={openBottomSheet}/>
+              <SearchInput placeholder="찾고있는 스타일이 있나요?" onClick={openBottomSheet}>
+                {/* {arrstyles?.map(style => (
+                  <SelectSearch>{style}</SelectSearch>
+                ))} */}
+              </SearchInput>
             </SearchBox>
             <Filters ref={containerRef}
               onMouseDown={handelMouseDownEvent}
@@ -188,7 +209,7 @@ const Search = () => {
             </Filters>
             <MainText>이런 스타일은 어떠신가요? 👀</MainText>
             {firstPage?.map((data) => (
-              <>
+              <CoordinatorProfile>
               <Link to={`/postdetail/${data.board_id}`}>
                 <CoordinatorMainImg boardImg={data.board_image}/>
               </Link>
@@ -196,14 +217,14 @@ const Search = () => {
                 <CoordinatorInfo name={data.nickname} profileImg={data.profile_image} requestCnt={data.request_count}
                 likeCnt={data.total_like} styles={data.styles}/>
               </Link>
-              </>              
+              </CoordinatorProfile>              
             ))}
 
             
 
             {/* 코디네이터 프로필 */}
             {search?.map((data)=>(
-              <>
+              <CoordinatorProfile>
               <Link to='/postdetail'>
               <CoordinatorMainImg2 boardImg={"https://seumu-s3-bucket.s3.ap-northeast-2.amazonaws.com/"+data.boardImage}/>
               </Link>
@@ -211,7 +232,7 @@ const Search = () => {
                 <CoordinatorInfo2 name={data.coornickname} profileImg={"https://seumu-s3-bucket.s3.ap-northeast-2.amazonaws.com/"+data.coorimageUrl} requestCnt={data.coorrequestCount}
                 likeCnt={data.boardlikeCount} styles={data.boardStyle} weather={data.boardseason} situation={data.boardsituation}/>
               </Link>
-              </>
+              </CoordinatorProfile>
             ))}
 
             
