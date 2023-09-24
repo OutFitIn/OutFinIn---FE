@@ -34,6 +34,7 @@ const HashTag = styled.div`
 
 const CoordinatorProfile = styled.div`
   margin-top:3.08vh;
+  border-bottom: 1px solid #C8C5D0;
 `;
 const UserMainPage = () => {
   const initialLikedPosts = {};

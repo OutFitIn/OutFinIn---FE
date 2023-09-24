@@ -7,8 +7,6 @@ import SmallStyleCategoryBox from "../../components/Common/SmallStyleCategoryBox
 import rank1 from '../../assets/img/Rank/rank1.svg';
 import instagram from '../../assets/img/instagram.svg';
 const CoordinatorInfos = styled.div`
-    width: 61px;
-    height: 61px;
     display: flex;
     margin-top: 2.36vh;
     margin-bottom: 1.06vh;
@@ -68,6 +66,7 @@ const InstagramImg = styled.img`
 const CategoryBox = styled.div`
     display: flex;
     margin-top: 1.18vh;
+    margin-bottom: 1vh;
 `
 
 const CoordinatorInfo = (props) => {
