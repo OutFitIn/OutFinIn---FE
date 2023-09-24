@@ -19,6 +19,7 @@ import OuterRankInfo from "./pages/MyPage/OuterRankInfo";
 import CoAllCodies from "./pages/MyPage/CoAllCodies";
 import CoReviews from "./pages/MyPage/CoReviews";
 import LikeCodies from "./pages/MyPage/LikeCodies";
+import UserChatRoom from "./pages/Chat/UserChatRoom";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
             <Route path="/searchfilter" element={<SearchFilter />} />
             <Route path="/chatlist" element={<ChatList />} />
             <Route path="/chatroom" element={<ChatRoom/>}/>
+            <Route path="/userchatroom" element={<UserChatRoom/>}/>
             <Route path="/outermypage" element={<OuterMyPage />} />
             <Route path="/usermypage" element={<UserMyPage />} />
             <Route path="/editcoprofile" element={<EditCoProfile />} />
