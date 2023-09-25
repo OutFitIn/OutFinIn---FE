@@ -205,7 +205,7 @@ const UserChatRoom = () => {
                     case 'confirm':
                         try {
                             // 내부 비지니스 로직(쿠폰, 등급, 할인 같은)
-                            const res = await axios.post("http://localhost:8080/pay/confirm", { 
+                            const res = await axios.post("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/pay/confirm", { 
                                 receipt_id: response.receipt_id,
                                 status: response.status,
                                 price: response.price 
@@ -229,14 +229,14 @@ const UserChatRoom = () => {
 
     const connect = () => {
         client.current = new StompJs.Client({
-            brokerURL: 'ws://localhost:8080/ws-stomp',
+            brokerURL: 'ws://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/ws-stomp',
             onConnect: () => {
                 subscribe();
             }
         });
 
         client.current.webSocketFactory = function () {
-            return new SockJS("http://localhost:8080/ws-stomp");
+            return new SockJS("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/ws-stomp");
         };
 
         client.current.activate();

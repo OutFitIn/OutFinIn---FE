@@ -139,6 +139,12 @@ const ChatRoom = () => {
     const [content, setContent] = useState(''); //input창의 메시지 저장
     const [isSend, setIsSend] = useState(false);
     const [text, setText] = useState(''); //확정메시지 (말풍선)
+    const today = new Date();
+    const year = today.getFullYear(); // 연도
+    const month = today.toLocaleString('default', { month: 'long' }); // 월 (긴 형식으로)
+    const day = today.getDate(); // 일
+    const formattedDate = `${year}년 ${month} ${day}일`;
+
 
     const handleInput = (e) => {
         setContent(e.target.value);
@@ -162,14 +168,14 @@ const ChatRoom = () => {
 
     const connect = () => {
         client.current = new StompJs.Client({
-            brokerURL: 'ws://localhost:8080/ws-stomp',
+            brokerURL: 'ws://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/ws-stomp',
             onConnect: () => {
                 subscribe();
             }
         });
 
         client.current.webSocketFactory = function () {
-            return new SockJS("http://localhost:8080/ws-stomp");
+            return new SockJS("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/ws-stomp");
         };
 
         client.current.activate();
@@ -219,7 +225,7 @@ const ChatRoom = () => {
                     {/* 날짜 표시-고정 */}
                     <DateContainer>
                         <Line></Line>
-                        <DateContent>2023년 9월 17일</DateContent>
+                        <DateContent>{formattedDate}</DateContent>
                         <Line></Line>
                     </DateContainer>
                     {chatList.map((data) => (
