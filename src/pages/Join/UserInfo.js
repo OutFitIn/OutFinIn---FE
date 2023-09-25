@@ -153,6 +153,7 @@ const UserInfo = () => {
         
         async function fetchUser(){
             try {
+                axios.defaults.withCredentials=true;
                 const res = await axios.post("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/user/profile",
                 {
                     nickname : nickname,
