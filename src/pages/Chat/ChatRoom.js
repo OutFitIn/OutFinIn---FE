@@ -162,7 +162,7 @@ const ChatRoom = () => {
         async function fetchChatRoom() {
             try {
                 axios.defaults.withCredentials = true;
-                const res = await axios.get("http://localhost:8080/chat/messages?roomId=" + chatRoomId + "&nickname=" + otherNickname);
+                const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/chat/messages?roomId=" + chatRoomId + "&nickname=" + otherNickname);
                 setChatList(res.data.chatHistories);
                 console.log(res.data.chatHistories);
             } catch (error) {

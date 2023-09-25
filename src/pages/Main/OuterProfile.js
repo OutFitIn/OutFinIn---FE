@@ -123,7 +123,7 @@ const OuterProfile = () => {
     async function fetchLike() {
       try {
         axios.defaults.withCredentials = true;
-        const res = await axios.get("http://localhost:8080/user/like?boardId=" + board_id);
+        const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/user/like?boardId=" + board_id);
         setLike(true);
 
       } catch (error) {
@@ -134,7 +134,7 @@ const OuterProfile = () => {
     async function fetchLikeCancel() {
       try {
         axios.defaults.withCredentials = true;
-        const res = await axios.get("http://localhost:8080/user/unlike?boardId=" + board_id);
+        const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/user/unlike?boardId=" + board_id);
         if (res.data == 'possible') {
           console.log('possible')
           setLike(false);
