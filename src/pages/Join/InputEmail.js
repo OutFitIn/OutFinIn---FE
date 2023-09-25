@@ -250,6 +250,7 @@ const InputEmail = () => {
 
             async function fetchCode(){
                 try {
+                    axios.defaults.withCredentials=true;
                     const res = await axios.post("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/email/code/auth",
                     {
                         email : Email,
@@ -271,6 +272,7 @@ const InputEmail = () => {
     const sendData = () => {
         async function fetchData(){
             try {
+                axios.defaults.withCredentials=true;
                 const res = await axios.post("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/register",
                 {
                     email : email,

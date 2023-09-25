@@ -43,6 +43,7 @@ const GetStyle = () => {
         let mode = localStorage.getItem('mode') == 1? 'coordinator' : 'user';
         async function fetchData(){
             try {
+                axios.defaults.withCredentials=true;
                 const res = await axios.post(`https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/${mode}/styles`,
                 {
                     styles: selectedStyles

@@ -177,6 +177,7 @@ const CoInfo = () => {
             promise.then((data) => {
                 async function fetchData() {
                     try {
+                        axios.defaults.withCredentials=true;
                         const res = await axios.post('https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/coordinator/profile',
                             {
                                 email: email,

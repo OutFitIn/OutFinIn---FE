@@ -273,6 +273,7 @@ const EditCoProfile = () => {
         // 코디네이터 프로필 편집-수정
         async function fetchData() {
             try {
+                axios.defaults.withCredentials=true;
                 const res = await axios.post("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/coordinator/edit",
                     {
                         id: 1,
