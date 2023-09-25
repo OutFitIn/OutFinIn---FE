@@ -6,7 +6,7 @@ import user from '../../assets/img/user.svg';
 const Box = styled.div`
     display:flex;
     justify-content: space-between;
-    height: 23.9vh;
+    height: 175px;
     border-radius: 15px;
     color: ${(props) => (props.active ? '#FFF' : '#000')};
     background: ${(props) => (props.active ? '#100069' : '#E4E1EC')};

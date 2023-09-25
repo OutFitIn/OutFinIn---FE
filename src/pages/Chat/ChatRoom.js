@@ -159,6 +159,18 @@ const ChatRoom = () => {
     // 추가 - 준형
     useEffect(() => {
         connect();
+        async function fetchChatRoom() {
+            try {
+                axios.defaults.withCredentials = true;
+                const res = await axios.get("http://localhost:8080/chat/messages?roomId=" + chatRoomId + "&nickname=" + otherNickname);
+                setChatList(res.data.chatHistories);
+                console.log(res.data.chatHistories);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        fetchChatRoom();
 
         return () => disconnect();
     }, []);

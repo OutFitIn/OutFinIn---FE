@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import * as f from "../../components/Common/CommonStyle";
 import styled from "styled-components";
+<<<<<<< HEAD
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
+=======
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
+>>>>>>> f3f7a63b1237d79c2384bdb2849a177632000933
 import axios from 'axios';
 import BottomPrice from "../../components/MainPage/BottomPrice";
 import GobackContainer from "../../components/Common/GobackContainer";
@@ -59,7 +63,11 @@ const PostDetail = (props) => {
       try {
         axios.defaults.withCredentials = true;
         const res = await axios.get(
+<<<<<<< HEAD
           "https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/board/show?id="+board_id
+=======
+          "http://localhost:8080/board/show?id=" + board_id
+>>>>>>> f3f7a63b1237d79c2384bdb2849a177632000933
         );
         setPost(res.data);
         setLike(res.data.like_status);
@@ -69,6 +77,7 @@ const PostDetail = (props) => {
     }
 
     fetchPostDetail();
+<<<<<<< HEAD
   //   if (location.state && location.state.from === "/writenewpost") {
   //     const modalTimer = setTimeout(() => {
   //       setModal(true);
@@ -89,6 +98,19 @@ const PostDetail = (props) => {
   //   // 컴포넌트가 언마운트될 때 타이머를 클리어
   //   return () => clearTimeout(modalHideTimer);
   }, []);
+=======
+
+    if (location.state && location.state.from === "/writenewpost") {
+      const modalTimer = setTimeout(() => {
+        setModal(true);
+      }, 1000);
+
+      // 컴포넌트가 언마운트될 때 타이머를 클리어
+      return () => clearTimeout(modalTimer);
+    }
+  }, [board_id, location.state]);
+
+>>>>>>> f3f7a63b1237d79c2384bdb2849a177632000933
 
   useEffect(() => {
     async function fetchNickname() {
@@ -104,6 +126,19 @@ const PostDetail = (props) => {
     fetchNickname();
   }, [])
 
+  useEffect(() => {
+    async function fetchNickname() {
+      try {
+        axios.defaults.withCredentials = true;
+        const res = await axios.get("http://localhost:8080/user/nickname");
+        setUserNickname(res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchNickname();
+  }, [])
 
   styleTag.push(post.style);
   styleTag.push(post.season);
@@ -111,6 +146,7 @@ const PostDetail = (props) => {
 
   //like function
   const likeIncrease = (board_id, fillColor) => {
+<<<<<<< HEAD
     async function fetchLike(){
       try{
           axios.defaults.withCredentials=true;
@@ -126,6 +162,24 @@ const PostDetail = (props) => {
         axios.defaults.withCredentials = true;
         const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/user/unlike?boardId="+board_id);
         if(res.data == 'possible'){
+=======
+    async function fetchLike() {
+      try {
+        axios.defaults.withCredentials = true;
+        const res = await axios.get("http://localhost:8080/user/like?boardId=" + board_id);
+        setLike(true);
+
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    async function fetchLikeCancel() {
+      try {
+        axios.defaults.withCredentials = true;
+        const res = await axios.get("http://localhost:8080/user/unlike?boardId=" + board_id);
+        if (res.data == 'possible') {
+>>>>>>> f3f7a63b1237d79c2384bdb2849a177632000933
           console.log('possible')
           setLike(false);
         }
@@ -158,7 +212,11 @@ const PostDetail = (props) => {
         axios.defaults.withCredentials = true;
         // 상대 코디네이터 닉네임 보내기
         // 반환 값은 만들어진 채팅방 ID -> 이걸로 ChatRoom에서 Params 사용해서 불러오자
+<<<<<<< HEAD
         const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/chat/room?coordinatorNickname=" + post.nickname);
+=======
+        const res = await axios.get("http://localhost:8080/chat/room?coordinatorNickname=" + post.nickname);
+>>>>>>> f3f7a63b1237d79c2384bdb2849a177632000933
         navigate(`/userchatroom/${res.data}/${userNickname}/${post.nickname}`); // 만들어진 채팅방으로 이동
       } catch (error) {
         console.error(error);

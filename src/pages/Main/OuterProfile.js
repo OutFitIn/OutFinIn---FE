@@ -11,6 +11,8 @@ import Grades from "../../components/MainPage/Grades";
 import ReviewBox from "../../components/MainPage/ReviewBox";
 import PostMainImg from "../../components/MainPage/PostMainImg";
 import logo from "../../assets/img/logo.svg";
+import heart from '../../assets/img/heart.svg';
+import fillheart from '../../assets/img/fillheart.svg';
 
 import sample from "../../assets/img/sample.svg";
 
@@ -71,6 +73,7 @@ const OuterProfile = () => {
   const [clickPoint, setClickPoint] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [page, setPage] = useState([]);
+  const [like, setLike] = useState(false);
 
   const containerRef = useRef(null);
 
@@ -115,6 +118,39 @@ const OuterProfile = () => {
     }
   };
 
+   //like function
+  const likeIncrease = (board_id, fillColor) => {
+    async function fetchLike() {
+      try {
+        axios.defaults.withCredentials = true;
+        const res = await axios.get("http://localhost:8080/user/like?boardId=" + board_id);
+        setLike(true);
+
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    async function fetchLikeCancel() {
+      try {
+        axios.defaults.withCredentials = true;
+        const res = await axios.get("http://localhost:8080/user/unlike?boardId=" + board_id);
+        if (res.data == 'possible') {
+          console.log('possible')
+          setLike(false);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    if (fillColor == fillheart) {
+      fetchLikeCancel();
+    } else {
+      fetchLike();
+    }
+  }
+
   return (
     <f.Totalframe>
       <f.SubScreen>
@@ -135,7 +171,13 @@ const OuterProfile = () => {
             >
               {page.boards?.map((board) => (
                 <Link to={`/postdetail/${board.board_id}`}>
-                  <PostMainImg image={"https://seumu-s3-bucket.s3.ap-northeast-2.amazonaws.com/"+board.image_url} name={board.title} />
+                  <PostMainImg image={"https://seumu-s3-bucket.s3.ap-northeast-2.amazonaws.com/"+board.image_url}
+                  name={board.title}
+                  likeIncrease={(fillColor, e) => {
+                    e.preventDefault(); // 링크 이동을 막음
+                    likeIncrease(board.board_id, fillColor); // 하트 클릭 이벤트 처리
+                  }}
+                  fillColor={like ? fillheart : heart}/>
                 </Link>
               ))}
             </PostList>
