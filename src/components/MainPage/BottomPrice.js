@@ -75,7 +75,7 @@ const BottomPrice = (props) => {
                     </TagCodi>
                     <Prcie>1만원~</Prcie>
                 </div>
-                <Chat>채팅 보내기</Chat>
+                <Chat onClick={props.createChatRoom}>채팅 보내기</Chat>
             </SubBottomPrcie>
         </TotalBottomPrice>
     )

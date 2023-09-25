@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import React, { useState, useRef, useEffect} from "react";
 import { Link,useParams } from 'react-router-dom';
+=======
+import React, { useState, useRef, useEffect } from "react";
+import { Link, useParams } from 'react-router-dom';
+>>>>>>> f3f7a63b1237d79c2384bdb2849a177632000933
 import styled from "styled-components";
 import Navigation from "../../components/Navigation/Navigation";
 import GobackContainer from "../../components/Common/GobackContainer";
@@ -158,6 +163,18 @@ const UserChatRoom = () => {
 
     useEffect(() => {
         connect();
+        async function fetchChatRoom() {
+            try {
+                axios.defaults.withCredentials = true;
+                const res = await axios.get("http://localhost:8080/chat/messages?roomId=" + chatRoomId + "&nickname=" + otherNickname);
+                setChatList(res.data.chatHistories);
+                console.log(res.data.chatHistories);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        fetchChatRoom();
 
         return () => disconnect();
     }, []);
@@ -205,7 +222,11 @@ const UserChatRoom = () => {
                     case 'confirm':
                         try {
                             // 내부 비지니스 로직(쿠폰, 등급, 할인 같은)
-                            const res = await axios.post("http://localhost:8080/pay/confirm", { 
+<<<<<<< HEAD
+                            const res = await axios.post("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/pay/confirm", { 
+=======
+                            const res = await axios.post("http://localhost:8080/pay/confirm", {
+>>>>>>> f3f7a63b1237d79c2384bdb2849a177632000933
                                 receipt_id: response.receipt_id,
                                 status: response.status,
                                 price: response.price 
@@ -229,14 +250,14 @@ const UserChatRoom = () => {
 
     const connect = () => {
         client.current = new StompJs.Client({
-            brokerURL: 'ws://localhost:8080/ws-stomp',
+            brokerURL: 'ws://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/ws-stomp',
             onConnect: () => {
                 subscribe();
             }
         });
 
         client.current.webSocketFactory = function () {
-            return new SockJS("http://localhost:8080/ws-stomp");
+            return new SockJS("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/ws-stomp");
         };
 
         client.current.activate();
