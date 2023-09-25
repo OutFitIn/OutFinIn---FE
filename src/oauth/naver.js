@@ -38,7 +38,7 @@ function App() {
             async function fetchData(){
                 try {
                     const res = await axios.post(
-                        "http://localhost:8080/naver",
+                        "https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/naver",
                         newCode);
 
                     if(res.data === 'coordinator') {

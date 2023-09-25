@@ -51,7 +51,7 @@ function App() {
 
     useEffect(() => {
         if (token && code) { // token과 code 모두 존재할 때만 요청 보냄
-            const url = 'http://localhost:8080/oauth/register/google';
+            const url = 'https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/oauth/register/google';
             const headers = {
                 'Authorization': token
             };

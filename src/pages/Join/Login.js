@@ -120,7 +120,7 @@ const Login = () => {
     const loginHandler = () => {
         async function fetchData(){
             try {
-                const res = await axios.post("http://localhost:8080/login",
+                const res = await axios.post("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/login",
                 {
                     email : email,
                     password : password

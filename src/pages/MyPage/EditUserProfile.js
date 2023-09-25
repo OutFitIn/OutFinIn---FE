@@ -184,7 +184,7 @@ const EditUserProfile= () => {
             async function fetchNickname(){
                 try {
                     axios.defaults.withCredentials=true;
-                    const res = await axios.get("http://localhost:8080/check/nickname?nickname="+ nickname);
+                    const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/check/nickname?nickname="+ nickname);
                     if(res.data === 'available') {
                         setPass(true);
                         setCheckNickname(nickname); // 검사를 완료한 닉네임
@@ -257,7 +257,7 @@ const EditUserProfile= () => {
         async function fetchEditPage(){
         try{
             axios.defaults.withCredentials=true;
-            const res = await axios.get("http://localhost:8080/user/info");
+            const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/user/info");
             setCurValue(res.data);
             setNickname(res.data.nickname);
             setFirstNickname(res.data.nickname);
@@ -290,7 +290,7 @@ const EditUserProfile= () => {
         async function fetchReSavePage(){
             try{
               axios.defaults.withCredentials=true;
-              const res = await axios.post("http://localhost:8080/user/edit",
+              const res = await axios.post("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/user/edit",
               {
                 id : 1,
                 nickname : nickname,

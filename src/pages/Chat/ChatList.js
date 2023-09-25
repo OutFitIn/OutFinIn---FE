@@ -77,7 +77,7 @@ const ChatList = () => {
     async function fetchChatRoom() {
       try {
         axios.defaults.withCredentials = true;
-        const res = await axios.get("http://localhost:8080/chat/main");
+        const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/chat/main");
         setChatRoomList(res.data);
         console.log(res.data);
       } catch (error) {

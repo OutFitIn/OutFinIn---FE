@@ -78,7 +78,7 @@ const LikeCodies = () => {
             try {
               axios.defaults.withCredentials = true;
               const res = await axios.get(
-                "http://localhost:8080/user/board/like"
+                "https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/user/board/like"
               );
               setBoardLike(res.data);
               console.log(res.data)
@@ -97,7 +97,7 @@ const LikeCodies = () => {
         async function fetchLike(){
           try{
               axios.defaults.withCredentials=true;
-              const res = await axios.get("http://localhost:8080/user/like?boardId="+board_id);
+              const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/user/like?boardId="+board_id);
           }catch(error){
               console.error(error);
           }}
@@ -105,7 +105,7 @@ const LikeCodies = () => {
         async function fetchLikeCancel() {
           try {
             axios.defaults.withCredentials = true;
-            const res = await axios.get("http://localhost:8080/user/unlike?boardId="+board_id);
+            const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/user/unlike?boardId="+board_id);
           } catch (error) {
             console.error(error);
           }

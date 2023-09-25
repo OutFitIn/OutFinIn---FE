@@ -83,7 +83,7 @@ const UserInfo = () => {
             async function fetchNickname(){
                 try {
                     axios.defaults.withCredentials=true;
-                    const res = await axios.get("http://localhost:8080/check/nickname?nickname="+ nickname);
+                    const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/check/nickname?nickname="+ nickname);
     
                     if(res.data === 'available') {
                         setPass(true);
@@ -153,7 +153,7 @@ const UserInfo = () => {
         
         async function fetchUser(){
             try {
-                const res = await axios.post("http://localhost:8080/user/profile",
+                const res = await axios.post("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/user/profile",
                 {
                     nickname : nickname,
                     height : height,

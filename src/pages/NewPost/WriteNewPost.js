@@ -258,7 +258,7 @@ const WriteNewPost = () => {
     async function fetchData() {
       try {
         axios.defaults.withCredentials = true;
-        const res = await axios.get("http://localhost:8080/coordinator/nickname");
+        const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/coordinator/nickname");
         setNickname(res.data)
       } catch (error) {
         console.error(error);
@@ -290,7 +290,7 @@ const WriteNewPost = () => {
     promise.then((data)=>{
       async function fetchData() {
         try {
-          const res = await axios.post('http://localhost:8080/board/create', 
+          const res = await axios.post('https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/board/create', 
             {
               style: selectedStyles,
               like_count: 0,

@@ -104,7 +104,7 @@ const CoInfo = () => {
             async function fetchNickname(){
                 try {
                     axios.defaults.withCredentials=true;
-                    const res = await axios.get("http://localhost:8080/check/nickname?nickname="+ nickname);
+                    const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/check/nickname?nickname="+ nickname);
     
                     if(res.data === 'available') {
                         setPass(true);
@@ -177,7 +177,7 @@ const CoInfo = () => {
             promise.then((data) => {
                 async function fetchData() {
                     try {
-                        const res = await axios.post('http://localhost:8080/coordinator/profile',
+                        const res = await axios.post('https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/coordinator/profile',
                             {
                                 email: email,
                                 password: password,

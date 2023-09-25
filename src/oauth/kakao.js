@@ -35,7 +35,7 @@ function App() {
             async function fetchData(){
                 try {
                     const res = await axios.post(
-                        "http://localhost:8080/kakao",
+                        "https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/kakao",
                         newCode);
 
                     if(res.data === 'coordinator') {

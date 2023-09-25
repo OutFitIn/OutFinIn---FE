@@ -83,7 +83,7 @@ const OuterProfile = () => {
         try {
           axios.defaults.withCredentials = true;
           const res = await axios.get(
-            "http://localhost:8080/coordinator/page?id=" + coordinator_id
+            "https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/coordinator/page?id=" + coordinator_id
           );
           setPage(res.data);
           console.log(res.data.sns_url);

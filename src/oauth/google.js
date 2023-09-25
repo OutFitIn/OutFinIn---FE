@@ -34,40 +34,11 @@ function App() {
         const urlParams = new URLSearchParams(window.location.search);
         const newCode = urlParams.get('code');
 
-        /*if (newCode) {
-            async function fetchData(){
-                try {
-                    const res = await axios.post(
-                        "http://localhost:8080/google",
-                        newCode);
-
-                    if(res.data === 'coordinator') {
-                        localStorage.setItem('mode', 1)
-                        //navigate('/outermainpage');
-                    }
-                    else if(res.data === 'user') {
-                        localStorage.setItem('mode', 2)
-                        //navigate('/usermainpage');
-                    }else {
-                        alert("연동된 계정이 없습니다.")
-                        //navigate('/');
-                    }
-
-                    // res.data 가 outer, fiter 로 나눠서 보내줌
-                    // 단, 실패 시 이메일이 틀린 경우: Email Not Found  /  비밀번호가 틀린 경우: Password Not Equal
-                } catch (error) {
-                    console.error(error);
-                }
-            }
-
-            fetchData();
-        }*/
-
         if (newCode) {
             async function fetchData(){
                 try {
                     const res = await axios.post(
-                        "http://localhost:8080/oauth/register/testgoogle", newCode);
+                        "https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/oauth/register/testgoogle", newCode);
 
                     if(res.data === 'coordinator') {
                         localStorage.setItem('mode', 1)

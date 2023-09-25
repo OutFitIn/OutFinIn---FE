@@ -192,7 +192,7 @@ const InputEmail = () => {
         async function fetchEmail(){
             try {
                 axios.defaults.withCredentials=true;
-                const res = await axios.get("http://localhost:8080/email/code/send?email="+Email);
+                const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/email/code/send?email="+Email);
                 //중복되는 경우
                 if(res.data === 'duplicate') {
                     emailRef.current.value='';
@@ -250,7 +250,7 @@ const InputEmail = () => {
 
             async function fetchCode(){
                 try {
-                    const res = await axios.post("http://localhost:8080/email/code/auth",
+                    const res = await axios.post("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/email/code/auth",
                     {
                         email : Email,
                         code : code
@@ -271,7 +271,7 @@ const InputEmail = () => {
     const sendData = () => {
         async function fetchData(){
             try {
-                const res = await axios.post("http://localhost:8080/register",
+                const res = await axios.post("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/register",
                 {
                     email : email,
                     password : password

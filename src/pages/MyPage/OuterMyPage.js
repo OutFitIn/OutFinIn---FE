@@ -132,7 +132,7 @@ const OuterMyPage = () => {
     async function fetchMainPage(){
       try{
         axios.defaults.withCredentials=true;
-        const res = await axios.get("http://localhost:8080/coordinator/mypage");
+        const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/coordinator/mypage");
         console.log(res.data);
         setOuterMyPage(res.data)
       }catch(error){
@@ -149,7 +149,7 @@ const OuterMyPage = () => {
       async function fetchLogOut(){
         try{
           axios.defaults.withCredentials=true;
-          const res = await axios.post("http://localhost:8080/logout");
+          const res = await axios.post("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/logout");
           navigate('/');
         }catch(error){
           console.error(error);
