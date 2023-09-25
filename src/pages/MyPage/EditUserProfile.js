@@ -6,6 +6,8 @@ import * as f from '../../components/Common/CommonStyle';
 import ButtonBottom from '../../components/Common/ButtonBottom';
 import ButtonNumbers from '../../components/Join/NumbersButton';
 import QuestionMode from '../../components/Join/QuestionModeBox';
+import BigStyleCategoryBox from "../../components/Common/BigStyleCategoryBox";
+import BottomSheetStyles from "../../components/MainPage/BottomSheetStyles";
 import GobackContainer from "../../components/Common/GobackContainer";
 import BodyTpye from "../../components/Join/BodyType";
 import Navigation from "../../components/Navigation/Navigation";
@@ -14,6 +16,7 @@ import bodyWave from '../../assets/img/bodyWave.svg';
 import bodyNatural from '../../assets/img/bodyNatural.svg';
 import {AiOutlineCheckCircle} from 'react-icons/ai';
 import GetInfo from "../../components/Join/GetInfo";
+import addTag from "../../assets/img/addTag.svg";
 
 const BodyTypeText = styled.div`
     color: ${(props)=> (props.nowinput?'#100069':'#E4E1EC')};
@@ -79,6 +82,20 @@ const DoneText = styled.div`
     letter-spacing: 0.2px;
 `;
 
+const HashTag = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 27px;
+  cursor: pointer;  
+  white-space: nowrap;
+  overflow-x : auto;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar{
+    display:none;
+  }
+`
+
 const EditUserProfile= () => {
     const [isClicked, setIsClicked]=useState('');
     const [straight,setStraight] = useState(false);
@@ -91,6 +108,8 @@ const EditUserProfile= () => {
     const [pass, setPass] = useState(true);
     const [nickname, setNickname] = useState("");
     const [firstNickname, setFirstNickname] = useState("");
+    const [styles ,setStyles] = useState([]);
+    const [selectedStyles, setSelectedStyles] = useState([]);
     const [curValue, setCurValue] = useState({
         nickname: "",
         height: "",
@@ -101,9 +120,58 @@ const EditUserProfile= () => {
     });
     const [checkNickname, setCheckNickname] = useState("");
     const nicknameRef = useRef(null);
+    const containerRef = useRef(null);
+    const [dragging, setDragging] = useState(false);
+    const [clickPoint, setClickPoint] = useState(0);
+    const [scrollLeft, setScrollLeft] = useState(0);
+    const [isOpen, setIsOpen] = useState(false); //바텀시트 열기
+    const [nowSelected, setNowSelected] = useState([]);
+    const [showTag, setShowTag] = useState(false); //태그들 보여주기
     const navigate = useNavigate();
-
+    // after filter
+    const [styleCategories, setStyleCategories] = useState([
+        "미니멀",
+        "이지캐주얼",
+        "비즈니스캐주얼",
+        "아메카지",
+        "스트릿",
+        "시티보이",
+        "원마일웨어",
+        "스포티",
+        "유니크",
+        "레트로",
+        "러블리",
+        "올드머니룩",
+        "하객룩",
+        "바캉스룩",
+        "힙합",
+    ]);
     
+    const handelMouseDownEvent = (e) => {
+        setDragging(true);
+        if (containerRef.current) {
+            setClickPoint(e.pageX);
+            setScrollLeft(containerRef.current.scrollLeft);
+        }
+    };
+
+    // 태그들 스크롤
+    const handelMouseMoveEvent = (e) => {
+        if (!dragging) return;
+
+        e.preventDefault();
+
+        if (containerRef.current) {
+            const walk = e.pageX - clickPoint;
+            containerRef.current.scrollLeft = scrollLeft - walk;
+        }
+    }
+
+    const openBottomSheet = () => {
+        setIsOpen(true);
+        setNowSelected([...selectedStyles]);
+        //setSelectedStyles([]); //+버튼 누를 때마다 선택된 배열 초기화
+    }
 
     const handleClickOutside = async ({ target }) => {
 
@@ -181,6 +249,9 @@ const EditUserProfile= () => {
         }
     }
 
+    useEffect(() => {
+        setSelectedStyles([...styles]);
+    }, [styles])
     // 값 불러오는 백엔드 통신
     useEffect(()=>{
         async function fetchEditPage(){
@@ -205,6 +276,7 @@ const EditUserProfile= () => {
             } else if(res.data.shape === 'NATURAL'){
                 setNatural(true);
             }
+            setStyles(res.data.styles);
             
         }catch(error){
             console.error(error);
@@ -225,7 +297,8 @@ const EditUserProfile= () => {
                 height : height,
                 weight : weight,
                 gender : male ? 'MALE' : 'FEMALE',
-                shape : straight ? 'STRAIGHT' : wave ? 'WAVE' : 'NATURAL'
+                shape : straight ? 'STRAIGHT' : wave ? 'WAVE' : 'NATURAL',
+                styles : selectedStyles
               });
               navigate('/usermypage');
             }catch(error){
@@ -234,7 +307,18 @@ const EditUserProfile= () => {
           }
           fetchReSavePage();
     }
-    
+    // '코디 확인하기' 버튼
+    const TagHandler = () => { //태그 모두 선택 이후, 바텀시트 닫고 선택한 태그들 보여주기 위한 상태 관리
+        setIsOpen(false);
+        setShowTag(true);
+        setSelectedStyles([...nowSelected]);
+    }
+
+    //x버튼
+    const cancelHandler = () => {
+        setNowSelected([]);
+        setIsOpen(false);
+    }
     return(
         <f.Totalframe>
             <f.ScreenComponent>
@@ -243,6 +327,18 @@ const EditUserProfile= () => {
                 <DoneText onClick={reSave}>완료</DoneText>
             </TopEdit>
             {/* 개인정보 입력 */}
+            <HashTag ref={containerRef}
+            onMouseDown={handelMouseDownEvent}
+            onMouseLeave={() => setDragging(false)}
+            onMouseUp={() => setDragging(false)}
+            onMouseMove={handelMouseMoveEvent}>
+            <>
+            {selectedStyles?.map((data) => (
+                <BigStyleCategoryBox key={data} content={'#' + data} isSelected={true} />
+            ))}
+            <img src={addTag} onClick={openBottomSheet} />
+            </>
+            </HashTag>
             <InputContaier>
                 <GetInfo infoName={'닉네임'} changeValue={changeNickname} inputValue={nickname} check={nicknameRef} click={()=>setIsClicked('닉네임')} nowinput={isClicked==='닉네임'}/>
                 <AiOutlineCheckCircle fill={pass? '#4F44E2' : '#C9C5CA'}/>
@@ -282,7 +378,10 @@ const EditUserProfile= () => {
                 selected={natural}
                 bodyDescribe={'가슴과 허리 위치가 높은 편\n신체 중심이 높고 어깨가 발달'}/>
             </f.ScreenComponent>
-            <Navigation type={'mypage'}/>
+            {isOpen ? <BottomSheetStyles openState={cancelHandler} isOpen={isOpen} sendData={TagHandler}
+                styleCategories={styleCategories} selectedStyles={selectedStyles}
+                setSelectedStyles={setSelectedStyles} nowSelected={nowSelected} setNowSelected={setNowSelected}/>
+                : null}
         </f.Totalframe>
     )
 }

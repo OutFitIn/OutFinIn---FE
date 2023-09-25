@@ -113,7 +113,8 @@ function BottomSheet(props) {
           }
 
           else if(type === 'weather') {
-
+            props.setSelectedStyles(
+              props.selectedStyles.filter((selected) => selected !== style));
           }
         } else {
           setSelectedStyles([...selectedStyles, style]);
@@ -127,7 +128,7 @@ function BottomSheet(props) {
           }
 
           else if(type === 'weather') {
-
+            props.setSelectedSituation([...props.selectedWeather, style]);
           }
         }
     }   

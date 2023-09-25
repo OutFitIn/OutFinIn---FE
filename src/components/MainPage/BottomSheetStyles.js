@@ -65,6 +65,7 @@ const FooterBottomSheet = styled.div`
   position: fixed;
   bottom:0;
   height: 15.04vh;
+  background-color: #fff;
   width: 390px;
 `;
 

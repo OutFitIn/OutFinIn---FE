@@ -38,14 +38,14 @@ const CoordinatorProfile = styled.div`
 `;
 const UserMainPage = () => {
   const initialLikedPosts = {};
-  const [selectStyle, setSelectStyle] = useState('이지캐주얼');
   const [dragging, setDragging] = useState(false);
   const [clickPoint, setClickPoint] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [likedPosts, setLikedPosts] = useState(initialLikedPosts);
   const [mainPage, setMainPage] = useState(null);
-  
+  const [selectStyle, setSelectStyle] = useState(mainPage?.styles || []);
+
   const containerRef = useRef(null);
 
   const handelMouseDownEvent = (e) => {
@@ -92,7 +92,9 @@ const UserMainPage = () => {
 
   useEffect(() => {
     if(mainPage == null) return;
-
+    if(mainPage?.styles){
+      setSelectStyle(mainPage.styles);
+    }
     setLikeBoardId(mainPage?.user_board_like);
   }, [mainPage])
 
@@ -146,7 +148,8 @@ const UserMainPage = () => {
             onMouseUp={() => setDragging(false)}
             onMouseMove={handelMouseMoveEvent}>
             {mainPage?.styles.map(style => (
-              <BigStyleCategoryBox content={'#'+style} onClick={() => changeStyle(style)} isSelected={selectStyle === style} />
+              <BigStyleCategoryBox content={'#'+style} onClick={() => changeStyle(style)}
+              isSelected={selectStyle.includes(style)} />
             ))}
             
           </HashTag>
