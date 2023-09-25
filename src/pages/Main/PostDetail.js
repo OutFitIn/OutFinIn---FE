@@ -185,9 +185,9 @@ const PostDetail = (props) => {
     <f.Totalframe>
       <f.SubScreen>
         <f.ScreenComponent>
-          {modal && (
+          {/* {modal && (
             <TopModal show={modal} content={"성공적으로 글을 작성하였습니다."} />
-          )}
+          )} */}
           <GobackContainer />
           {/* 코디네이터 프로필 */}
           <CoordinatorInfo
