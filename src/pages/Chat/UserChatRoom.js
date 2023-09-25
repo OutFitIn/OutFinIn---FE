@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState, useRef, useEffect} from "react";
 import { Link,useParams } from 'react-router-dom';
 import styled from "styled-components";
