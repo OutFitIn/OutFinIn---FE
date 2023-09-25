@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as f from "../../components/Common/CommonStyle";
 import styled from "styled-components";
-import { useParams, useNavigate, useLocation } from 'react-router-dom'
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import BottomPrice from "../../components/MainPage/BottomPrice";
 import GobackContainer from "../../components/Common/GobackContainer";

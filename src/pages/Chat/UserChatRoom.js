@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect, useParams } from "react";
-import { Link } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from "react";
+import { Link, useParams } from 'react-router-dom';
 import styled from "styled-components";
 import Navigation from "../../components/Navigation/Navigation";
 import GobackContainer from "../../components/Common/GobackContainer";
@@ -158,6 +158,18 @@ const UserChatRoom = () => {
 
     useEffect(() => {
         connect();
+        async function fetchChatRoom() {
+            try {
+                axios.defaults.withCredentials = true;
+                const res = await axios.get("http://localhost:8080/chat/messages?roomId=" + chatRoomId + "&nickname=" + otherNickname);
+                setChatList(res.data.chatHistories);
+                console.log(res.data.chatHistories);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        fetchChatRoom();
 
         return () => disconnect();
     }, []);
@@ -205,7 +217,7 @@ const UserChatRoom = () => {
                     case 'confirm':
                         try {
                             // 내부 비지니스 로직(쿠폰, 등급, 할인 같은)
-                            const res = await axios.post("http://localhost:8080/pay/confirm", { 
+                            const res = await axios.post("http://localhost:8080/pay/confirm", {
                                 receipt_id: response.receipt_id,
                                 status: response.status,
                                 price: response.price 

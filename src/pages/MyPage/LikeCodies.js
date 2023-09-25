@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 import * as f from "../../components/Common/CommonStyle";
 import GobackContainer from "../../components/Common/GobackContainer";
 import styled from "styled-components";
@@ -127,6 +128,7 @@ const LikeCodies = () => {
           <Category>좋아요 누른 코디</Category>
           <TotalPost>
             {boardLike?.boards?.map((post) => (
+                <Link to={`/postdetail/${post.board_id}`}>
                 <PostImg key={post.board_id}>
                     <MainImg src={"https://seumu-s3-bucket.s3.ap-northeast-2.amazonaws.com/"+post.image_url} />
                     <PostInfo>
@@ -136,6 +138,7 @@ const LikeCodies = () => {
                 onClick={(e)=>likeIncrease(post.board_id,e)}
                 />
               </PostImg>
+            </Link>
           ))}
           </TotalPost>
         </f.ScreenComponent>
