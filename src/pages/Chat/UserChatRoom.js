@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect, useParams } from "react";
-import { Link } from 'react-router-dom';
+import React, { useState, useRef, useEffect} from "react";
+import { Link,useParams } from 'react-router-dom';
 import styled from "styled-components";
 import Navigation from "../../components/Navigation/Navigation";
 import GobackContainer from "../../components/Common/GobackContainer";

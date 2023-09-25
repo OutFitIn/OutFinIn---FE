@@ -38,7 +38,7 @@ const Navigation = (props) => {
                 </n.SubNavigation>
             </Link>
             {/* 채팅 */}
-            <Link to={localStorage.getItem('mode') == 1 ? '/chatlist': 'userchatlist'}>
+            <Link to={localStorage.getItem('mode') == 1 ? '/chatlist': '/userchatlist'}>
                 <n.SubNavigation
                     marginRight='45px'
                     isSelected={selectIcon === 'chat'}
