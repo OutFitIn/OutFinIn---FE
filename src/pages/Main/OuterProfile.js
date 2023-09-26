@@ -74,7 +74,7 @@ const OuterProfile = () => {
   const [scrollLeft, setScrollLeft] = useState(0);
   const [page, setPage] = useState([]);
   const [like, setLike] = useState(false);
-
+  const [likeBoardId, setLikeBoardId] = useState([]);
   const containerRef = useRef(null);
 
   const { coordinator_id } = useParams();
@@ -89,7 +89,7 @@ const OuterProfile = () => {
             "https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/coordinator/page?id=" + coordinator_id
           );
           setPage(res.data);
-          console.log(res.data.sns_url);
+          setLikeBoardId(res.data.user_board_id);
         } catch (error) {
           console.error(error);
         }
@@ -124,7 +124,9 @@ const OuterProfile = () => {
       try {
         axios.defaults.withCredentials = true;
         const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/user/like?boardId=" + board_id);
-        setLike(true);
+        if(res.data === 'success'){
+          setLikeBoardId([...likeBoardId, board_id]);
+        }
 
       } catch (error) {
         console.error(error);
@@ -135,9 +137,10 @@ const OuterProfile = () => {
       try {
         axios.defaults.withCredentials = true;
         const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/user/unlike?boardId=" + board_id);
-        if (res.data == 'possible') {
-          console.log('possible')
-          setLike(false);
+        if(res.data === 'possible'){
+          setLikeBoardId((oldValue) => {
+            return oldValue.filter((id) => id !== board_id)
+          });        
         }
       } catch (error) {
         console.error(error);
@@ -171,13 +174,14 @@ const OuterProfile = () => {
             >
               {page.boards?.map((board) => (
                 <Link to={`/postdetail/${board.board_id}`}>
-                  <PostMainImg image={"https://seumu-s3-bucket.s3.ap-northeast-2.amazonaws.com/"+board.image_url}
+                  <PostMainImg 
+                  image={"https://seumu-s3-bucket.s3.ap-northeast-2.amazonaws.com/"+board.image_url}
                   name={board.title}
                   likeIncrease={(fillColor, e) => {
                     e.preventDefault(); // 링크 이동을 막음
                     likeIncrease(board.board_id, fillColor); // 하트 클릭 이벤트 처리
                   }}
-                  fillColor={like ? fillheart : heart}/>
+                  fillColor={likeBoardId?.includes(board.board_id) ? fillheart : heart}/>
                 </Link>
               ))}
             </PostList>

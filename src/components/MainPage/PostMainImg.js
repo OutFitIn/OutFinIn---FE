@@ -69,14 +69,13 @@ const Count=styled.div`
 `
 
 const PostMainImg = (props) => {
-    const [fillColor, setFillColor] = useState(heart);
-    const ChangeColor = () => {
-        setFillColor(fillColor === heart ? fillheart : heart)
-      }
     return(
         <PostMainImgs>
             <Img src={props.image}/>
-            <Heart src={fillColor} onClick={ChangeColor}></Heart>
+            {localStorage.getItem('mode') == 1 ? 
+            (<Heart src={props.fillColor} 
+                onClick={(e) => props.likeIncrease(props.fillColor, e)} />) 
+            : null}
             <PostInfo>
                 <Name>{props.name}</Name>
                 {/* <CountContainer>

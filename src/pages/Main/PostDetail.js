@@ -54,13 +54,14 @@ const PostDetail = (props) => {
 
   const location = useLocation();
   let { board_id } = useParams();
+
   useEffect(() => {
     async function fetchPostDetail() {
       try {
         axios.defaults.withCredentials = true;
         const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/board/show?id="+board_id);
         setPost(res.data);
-        setLike(res.data.like_status);
+        setLikeStatus(res.data.like_status);
       } catch (error) {
         console.error(error);
       }
@@ -104,23 +105,10 @@ const PostDetail = (props) => {
     fetchNickname();
   }, [])
 
-  useEffect(() => {
-    async function fetchNickname() {
-      try {
-        axios.defaults.withCredentials = true;
-        const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/user/nickname");
-        setUserNickname(res.data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    fetchNickname();
-  }, [])
-
   styleTag.push(post.style);
   styleTag.push(post.season);
   styleTag.push(post.situation);
+  const [likeStatus, setLikeStatus] = useState(false);
 
   //like function
   const likeIncrease = (board_id, fillColor) => {
@@ -128,8 +116,9 @@ const PostDetail = (props) => {
       try{
           axios.defaults.withCredentials=true;
           const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/user/like?boardId="+board_id);
-          setLike(true);
-
+          if(res.data === 'success') {
+            setLikeStatus(true);
+          }
       }catch(error){
           console.error(error);
       }}
@@ -140,27 +129,27 @@ const PostDetail = (props) => {
         const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/user/unlike?boardId="+board_id);
         if(res.data == 'possible'){
           console.log('possible')
-          setLike(false);
+          setLikeStatus(false);
         }
       } catch (error) {
         console.error(error);
       }
     }
 
-    if (fillColor == fillheart) {
+    if (likeStatus) {
       fetchLikeCancel();
     } else {
       fetchLike();
     }
   }
 
-  // 게시물의 좋아요 상태를 토글하는 함수
-  const toggleLike = (postId) => {
-    setLikedPosts((prevLikedPosts) => ({
-      ...prevLikedPosts,
-      [postId]: !prevLikedPosts[postId], // 현재 상태를 반전시킴
-    }));
-  };
+  // // 게시물의 좋아요 상태를 토글하는 함수
+  // const toggleLike = (postId) => {
+  //   setLikedPosts((prevLikedPosts) => ({
+  //     ...prevLikedPosts,
+  //     [postId]: !prevLikedPosts[postId], // 현재 상태를 반전시킴
+  //   }));
+  // };
 
   // 채팅룸 만들기 - 준형
   const navigate = useNavigate();
@@ -193,7 +182,9 @@ const PostDetail = (props) => {
           <CoordinatorInfo
             name={post.nickname}
             profileImg={post.profile_image}
-            styles={styleTag} snsLink={post.sns_url} linkState={post.sns_url !== ''} />
+            styles={styleTag} 
+            snsLink={post.sns_url} 
+            linkState={post.sns_url !== ''} />
           <Grades likeCnt={post.like_count} requestCnt={post.request_count} />
           {/* 글 제목 */}
           <CoordinatorTitle>
@@ -208,7 +199,7 @@ const PostDetail = (props) => {
               e.preventDefault(); // 링크 이동을 막음
               likeIncrease(board_id, fillColor); // 하트 클릭 이벤트 처리
             }}
-            fillColor={like ? fillheart : heart} />
+            fillColor={likeStatus ? fillheart : heart} />
           {/* Other Codi */}
           {/* <ReviewText>
             {post.nickname} 님의 다른 코디
