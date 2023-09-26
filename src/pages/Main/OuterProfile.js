@@ -127,6 +127,7 @@ const OuterProfile = () => {
         if(res.data === 'success'){
           setLikeBoardId([...likeBoardId, board_id]);
         }
+        setLike(true);
 
       } catch (error) {
         console.error(error);
@@ -137,10 +138,12 @@ const OuterProfile = () => {
       try {
         axios.defaults.withCredentials = true;
         const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/user/unlike?boardId=" + board_id);
+
         if(res.data === 'possible'){
           setLikeBoardId((oldValue) => {
             return oldValue.filter((id) => id !== board_id)
           });        
+
         }
       } catch (error) {
         console.error(error);
