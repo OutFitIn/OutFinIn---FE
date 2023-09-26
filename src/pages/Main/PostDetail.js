@@ -117,7 +117,7 @@ const PostDetail = (props) => {
           axios.defaults.withCredentials=true;
           const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/user/like?boardId="+board_id);
           if(res.data === 'success') {
-            setLikeStatus(true);
+            setLikeStatus(false);
           }
       }catch(error){
           console.error(error);
@@ -129,14 +129,14 @@ const PostDetail = (props) => {
         const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/user/unlike?boardId="+board_id);
         if(res.data == 'possible'){
           console.log('possible')
-          setLikeStatus(false);
+          setLikeStatus(true);
         }
       } catch (error) {
         console.error(error);
       }
     }
 
-    if (likeStatus) {
+    if (!likeStatus) {
       fetchLikeCancel();
     } else {
       fetchLike();
