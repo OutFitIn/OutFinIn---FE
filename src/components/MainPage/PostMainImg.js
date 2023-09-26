@@ -72,7 +72,7 @@ const PostMainImg = (props) => {
     return(
         <PostMainImgs>
             <Img src={props.image}/>
-            {localStorage.getItem('mode') == 1 ? 
+            {localStorage.getItem('mode') == 2 ? 
             (<Heart src={props.fillColor} 
                 onClick={(e) => props.likeIncrease(props.fillColor, e)} />) 
             : null}

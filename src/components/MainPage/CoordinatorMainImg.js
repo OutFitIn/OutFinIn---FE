@@ -27,7 +27,7 @@ const CoordinatorMainImg = (props) => {
     return(
         <CoordinatorMainImgs>
             <Img src={"https://seumu-s3-bucket.s3.ap-northeast-2.amazonaws.com/"+props.boardImg}/>
-            {localStorage.getItem('mode') == 1 ? 
+            {localStorage.getItem('mode') == 2 ? 
             (<Heart src={props.fillColor} onClick={(e) => props.likeIncrease(props.fillColor, e)} />) 
             : null}
         </CoordinatorMainImgs>
