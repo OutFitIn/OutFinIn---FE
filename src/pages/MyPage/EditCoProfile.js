@@ -142,7 +142,7 @@ const EditCoProfile = () => {
         async function fetchShowData() {
             try {
                 axios.defaults.withCredentials = true;
-                const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/coordinator/info");
+                const res = await axios.get("https://ofi-d5e2473eb437.herokuapp.com/coordinator/info");
                 setInitialInfo(res.data);
                 // 여기서 받아온 정보를 해당 입력창에 설정해줄 수 있습니다.
                 setNickname(res.data.nickname);
@@ -199,7 +199,7 @@ const EditCoProfile = () => {
             async function fetchNickname() {
                 try {
                     axios.defaults.withCredentials = true;
-                    const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/check/nickname?nickname=" + nickname);
+                    const res = await axios.get("https://ofi-d5e2473eb437.herokuapp.com/check/nickname?nickname=" + nickname);
 
                     if (res.data === 'available') {
                         setPass(true);
@@ -274,7 +274,7 @@ const EditCoProfile = () => {
         async function fetchData() {
             try {
                 axios.defaults.withCredentials=true;
-                const res = await axios.post("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/coordinator/edit",
+                const res = await axios.post("https://ofi-d5e2473eb437.herokuapp.com/coordinator/edit",
                     {
                         id: 1,
                         nickname: nickname,

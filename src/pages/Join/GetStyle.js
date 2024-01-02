@@ -44,7 +44,7 @@ const GetStyle = () => {
         async function fetchData(){
             try {
                 axios.defaults.withCredentials=true;
-                const res = await axios.post(`https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/${mode}/styles`,
+                const res = await axios.post(`https://ofi-d5e2473eb437.herokuapp.com/${mode}/styles`,
                 {
                     styles: selectedStyles
                 });

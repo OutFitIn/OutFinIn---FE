@@ -38,7 +38,7 @@ function App() {
             async function fetchData(){
                 try {
                     const res = await axios.post(
-                        "https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/oauth/register/testgoogle", newCode);
+                        "https://ofi-d5e2473eb437.herokuapp.com/oauth/register/testgoogle", newCode);
 
                     if(res.data === 'coordinator') {
                         localStorage.setItem('mode', 1)

@@ -99,7 +99,7 @@ const OuterMainPage = () => {
       async function fetchMainPage(){
         try{
           axios.defaults.withCredentials=true;
-          const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/main/coordinator");
+          const res = await axios.get("https://ofi-d5e2473eb437.herokuapp.com/main/coordinator");
           setMainPage(res.data)
         }catch(error){
           console.error(error);
@@ -113,7 +113,7 @@ const OuterMainPage = () => {
         async function fetchMainPage(){
           try{
             axios.defaults.withCredentials=true;
-            const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/coordinator/mypage");
+            const res = await axios.get("https://ofi-d5e2473eb437.herokuapp.com/coordinator/mypage");
             setOuterMyPage(res.data)
             setFilteredStyle(res.data.styles);
             console.log(filteredStyle);

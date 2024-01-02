@@ -107,7 +107,7 @@ const Search = () => {
     async function fetchSearchPage(){
       try{
         axios.defaults.withCredentials=true;
-        const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/search/main");
+        const res = await axios.get("https://ofi-d5e2473eb437.herokuapp.com/search/main");
         setFirstPage(res.data);
       }catch(error){
         console.error(error);
@@ -161,7 +161,7 @@ const Search = () => {
       async function fetchCodiCheck(){
         try{
           axios.defaults.withCredentials=true;
-          const res = await axios.post("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/search/styleSearch",
+          const res = await axios.post("https://ofi-d5e2473eb437.herokuapp.com/search/styleSearch",
           {
             styles : selectedStyles,
             season : selectedWeather,
@@ -200,7 +200,7 @@ const Search = () => {
         async function fetchLike(){
           try{
               axios.defaults.withCredentials=true;
-              const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/user/like?boardId="+board_id);
+              const res = await axios.get("https://ofi-d5e2473eb437.herokuapp.com/user/like?boardId="+board_id);
               if(res.data == 'success'){
                 setLikeBoardId([...likeBoardId, board_id]);
               }
@@ -212,7 +212,7 @@ const Search = () => {
         async function fetchLikeCancel() {
           try {
             axios.defaults.withCredentials = true;
-            const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/user/unlike?boardId="+board_id);
+            const res = await axios.get("https://ofi-d5e2473eb437.herokuapp.com/user/unlike?boardId="+board_id);
             if(res.data == 'possible'){
               console.log('possible')
               setLikeBoardId((oldValue) => {

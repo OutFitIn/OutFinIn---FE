@@ -83,7 +83,7 @@ const UserInfo = () => {
             async function fetchNickname(){
                 try {
                     axios.defaults.withCredentials=true;
-                    const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/check/nickname?nickname="+ nickname);
+                    const res = await axios.get("https://ofi-d5e2473eb437.herokuapp.com/check/nickname?nickname="+ nickname);
     
                     if(res.data === 'available') {
                         setPass(true);
@@ -154,7 +154,7 @@ const UserInfo = () => {
         async function fetchUser(){
             try {
                 axios.defaults.withCredentials=true;
-                const res = await axios.post("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/user/profile",
+                const res = await axios.post("https://ofi-d5e2473eb437.herokuapp.com/user/profile",
                 {
                     nickname : nickname,
                     height : height,

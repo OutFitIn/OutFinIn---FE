@@ -77,7 +77,7 @@ const UserChatList = () => {
     async function fetchChatRoom() {
       try {
         axios.defaults.withCredentials = true;
-        const res = await axios.get("https://port-0-backend-iciy2almolkc88.sel5.cloudtype.app/chat/main");
+        const res = await axios.get("https://ofi-d5e2473eb437.herokuapp.com/chat/main");
         setChatRoomList(res.data);
         console.log(res.data);
       } catch (error) {
