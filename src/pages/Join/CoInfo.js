@@ -104,7 +104,7 @@ const CoInfo = () => {
             async function fetchNickname(){
                 try {
                     axios.defaults.withCredentials=true;
-                    const res = await axios.get("https://ofi-d5e2473eb437.herokuapp.com/check/nickname?nickname="+ nickname);
+                    const res = await axios.get("https://ofi-ofi.koyeb.app/check/nickname?nickname="+ nickname);
     
                     if(res.data === 'available') {
                         setPass(true);
@@ -178,7 +178,7 @@ const CoInfo = () => {
                 async function fetchData() {
                     try {
                         axios.defaults.withCredentials=true;
-                        const res = await axios.post('https://ofi-d5e2473eb437.herokuapp.com/coordinator/profile',
+                        const res = await axios.post('https://ofi-ofi.koyeb.app/coordinator/profile',
                             {
                                 email: email,
                                 password: password,

@@ -161,7 +161,7 @@ const UserChatRoom = () => {
         async function fetchChatRoom() {
             try {
                 axios.defaults.withCredentials = true;
-                const res = await axios.get("https://ofi-d5e2473eb437.herokuapp.com/chat/messages?roomId=" + chatRoomId + "&nickname=" + otherNickname);
+                const res = await axios.get("https://ofi-ofi.koyeb.app/chat/messages?roomId=" + chatRoomId + "&nickname=" + otherNickname);
                 setChatList(res.data.chatHistories);
                 console.log(res.data.chatHistories);
             } catch (error) {
@@ -217,7 +217,7 @@ const UserChatRoom = () => {
                     case 'confirm':
                         try {
                             // 내부 비지니스 로직(쿠폰, 등급, 할인 같은)
-                            const res = await axios.post("https://ofi-d5e2473eb437.herokuapp.com/pay/confirm", { 
+                            const res = await axios.post("https://ofi-ofi.koyeb.app/pay/confirm", { 
                                 receipt_id: response.receipt_id,
                                 status: response.status,
                                 price: response.price 
@@ -248,7 +248,7 @@ const UserChatRoom = () => {
         });
 
         client.current.webSocketFactory = function () {
-            return new SockJS("https://ofi-d5e2473eb437.herokuapp.com/ws-stomp");
+            return new SockJS("https://ofi-ofi.koyeb.app/ws-stomp");
         };
 
         client.current.activate();

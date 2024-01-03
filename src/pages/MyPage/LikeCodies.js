@@ -79,7 +79,7 @@ const LikeCodies = () => {
             try {
               axios.defaults.withCredentials = true;
               const res = await axios.get(
-                "https://ofi-d5e2473eb437.herokuapp.com/user/board/like"
+                "https://ofi-ofi.koyeb.app/user/board/like"
               );
               setBoardLike(res.data);
               console.log(res.data)
@@ -98,7 +98,7 @@ const LikeCodies = () => {
         async function fetchLike(){
           try{
               axios.defaults.withCredentials=true;
-              const res = await axios.get("https://ofi-d5e2473eb437.herokuapp.com/user/like?boardId="+board_id);
+              const res = await axios.get("https://ofi-ofi.koyeb.app/user/like?boardId="+board_id);
           }catch(error){
               console.error(error);
           }}
@@ -106,7 +106,7 @@ const LikeCodies = () => {
         async function fetchLikeCancel() {
           try {
             axios.defaults.withCredentials = true;
-            const res = await axios.get("https://ofi-d5e2473eb437.herokuapp.com/user/unlike?boardId="+board_id);
+            const res = await axios.get("https://ofi-ofi.koyeb.app/user/unlike?boardId="+board_id);
           } catch (error) {
             console.error(error);
           }

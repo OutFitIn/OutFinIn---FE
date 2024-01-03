@@ -38,7 +38,7 @@ function App() {
             async function fetchData(){
                 try {
                     const res = await axios.post(
-                        "https://ofi-d5e2473eb437.herokuapp.com/naver",
+                        "https://ofi-ofi.koyeb.app/naver",
                         newCode);
 
                     if(res.data === 'coordinator') {

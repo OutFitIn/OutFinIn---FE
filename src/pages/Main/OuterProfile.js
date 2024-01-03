@@ -86,7 +86,7 @@ const OuterProfile = () => {
         try {
           axios.defaults.withCredentials = true;
           const res = await axios.get(
-            "https://ofi-d5e2473eb437.herokuapp.com/coordinator/page?id=" + coordinator_id
+            "https://ofi-ofi.koyeb.app/coordinator/page?id=" + coordinator_id
           );
           setPage(res.data);
           setLikeBoardId(res.data.user_board_id);
@@ -123,7 +123,7 @@ const OuterProfile = () => {
     async function fetchLike() {
       try {
         axios.defaults.withCredentials = true;
-        const res = await axios.get("https://ofi-d5e2473eb437.herokuapp.com/user/like?boardId=" + board_id);
+        const res = await axios.get("https://ofi-ofi.koyeb.app/user/like?boardId=" + board_id);
         if(res.data === 'success'){
           setLikeBoardId([...likeBoardId, board_id]);
         }
@@ -137,7 +137,7 @@ const OuterProfile = () => {
     async function fetchLikeCancel() {
       try {
         axios.defaults.withCredentials = true;
-        const res = await axios.get("https://ofi-d5e2473eb437.herokuapp.com/user/unlike?boardId=" + board_id);
+        const res = await axios.get("https://ofi-ofi.koyeb.app/user/unlike?boardId=" + board_id);
 
         if(res.data === 'possible'){
           setLikeBoardId((oldValue) => {

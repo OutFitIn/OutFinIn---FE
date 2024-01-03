@@ -121,7 +121,7 @@ const Login = () => {
         async function fetchData(){
             try {
                 axios.defaults.withCredentials=true;
-                const res = await axios.post("https://ofi-d5e2473eb437.herokuapp.com/login",
+                const res = await axios.post("https://ofi-ofi.koyeb.app/login",
                 {
                     email : email,
                     password : password

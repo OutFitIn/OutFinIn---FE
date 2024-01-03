@@ -51,7 +51,7 @@ function App() {
 
     useEffect(() => {
         if (token && code) { // token과 code 모두 존재할 때만 요청 보냄
-            const url = 'https://ofi-d5e2473eb437.herokuapp.com/oauth/register/google';
+            const url = 'https://ofi-ofi.koyeb.app/oauth/register/google';
             const headers = {
                 'Authorization': token
             };

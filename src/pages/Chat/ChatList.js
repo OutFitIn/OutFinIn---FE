@@ -77,7 +77,7 @@ const ChatList = () => {
     async function fetchChatRoom() {
       try {
         axios.defaults.withCredentials = true;
-        const res = await axios.get("https://ofi-d5e2473eb437.herokuapp.com/chat/main");
+        const res = await axios.get("https://ofi-ofi.koyeb.app/chat/main");
         setChatRoomList(res.data);
         console.log(res.data);
       } catch (error) {
