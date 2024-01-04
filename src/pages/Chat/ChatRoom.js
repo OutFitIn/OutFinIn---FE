@@ -162,7 +162,7 @@ const ChatRoom = () => {
         async function fetchChatRoom() {
             try {
                 axios.defaults.withCredentials = true;
-                const res = await axios.get("https://ofi-ofi.koyeb.app/chat/messages?roomId=" + chatRoomId + "&nickname=" + otherNickname);
+                const res = await axios.get("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/chat/messages?roomId=" + chatRoomId + "&nickname=" + otherNickname);
                 setChatList(res.data.chatHistories);
                 console.log(res.data.chatHistories);
             } catch (error) {
@@ -187,7 +187,7 @@ const ChatRoom = () => {
         });
 
         client.current.webSocketFactory = function () {
-            return new SockJS("https://ofi-ofi.koyeb.app/ws-stomp");
+            return new SockJS("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/ws-stomp");
         };
 
         client.current.activate();

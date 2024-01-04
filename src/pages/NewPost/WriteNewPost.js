@@ -258,7 +258,7 @@ const WriteNewPost = () => {
     async function fetchData() {
       try {
         axios.defaults.withCredentials = true;
-        const res = await axios.get("https://ofi-ofi.koyeb.app/coordinator/nickname");
+        const res = await axios.get("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/coordinator/nickname");
         setNickname(res.data)
       } catch (error) {
         console.error(error);
@@ -291,7 +291,7 @@ const WriteNewPost = () => {
       async function fetchData() {
         try {
           axios.defaults.withCredentials=true;
-          const res = await axios.post('https://ofi-ofi.koyeb.app/board/create', 
+          const res = await axios.post('https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/board/create', 
             {
               style: selectedStyles,
               like_count: 0,

@@ -81,7 +81,7 @@ const CoAllCodies = () => {
     async function fetchshowCodies(){
       try{
         axios.defaults.withCredentials=true;
-        const res = await axios.get("https://ofi-ofi.koyeb.app/coordinator/board/all"); 
+        const res = await axios.get("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/coordinator/board/all"); 
         setAllCodies(res.data)
       }catch(error){
         console.error(error);

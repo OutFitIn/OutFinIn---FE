@@ -38,7 +38,7 @@ function App() {
             async function fetchData(){
                 try {
                     const res = await axios.post(
-                        "https://ofi-ofi.koyeb.app/naver",
+                        "https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/naver",
                         newCode);
 
                     if(res.data === 'coordinator') {

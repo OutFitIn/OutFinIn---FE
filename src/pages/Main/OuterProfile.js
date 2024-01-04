@@ -86,7 +86,7 @@ const OuterProfile = () => {
         try {
           axios.defaults.withCredentials = true;
           const res = await axios.get(
-            "https://ofi-ofi.koyeb.app/coordinator/page?id=" + coordinator_id
+            "https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/coordinator/page?id=" + coordinator_id
           );
           setPage(res.data);
           setLikeBoardId(res.data.user_board_id);
@@ -123,7 +123,7 @@ const OuterProfile = () => {
     async function fetchLike() {
       try {
         axios.defaults.withCredentials = true;
-        const res = await axios.get("https://ofi-ofi.koyeb.app/user/like?boardId=" + board_id);
+        const res = await axios.get("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/user/like?boardId=" + board_id);
         if(res.data === 'success'){
           setLikeBoardId([...likeBoardId, board_id]);
         }
@@ -137,7 +137,7 @@ const OuterProfile = () => {
     async function fetchLikeCancel() {
       try {
         axios.defaults.withCredentials = true;
-        const res = await axios.get("https://ofi-ofi.koyeb.app/user/unlike?boardId=" + board_id);
+        const res = await axios.get("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/user/unlike?boardId=" + board_id);
 
         if(res.data === 'possible'){
           setLikeBoardId((oldValue) => {

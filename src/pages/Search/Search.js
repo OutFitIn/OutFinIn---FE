@@ -107,7 +107,7 @@ const Search = () => {
     async function fetchSearchPage(){
       try{
         axios.defaults.withCredentials=true;
-        const res = await axios.get("https://ofi-ofi.koyeb.app/search/main");
+        const res = await axios.get("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/search/main");
         setFirstPage(res.data);
       }catch(error){
         console.error(error);
@@ -161,7 +161,7 @@ const Search = () => {
       async function fetchCodiCheck(){
         try{
           axios.defaults.withCredentials=true;
-          const res = await axios.post("https://ofi-ofi.koyeb.app/search/styleSearch",
+          const res = await axios.post("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/search/styleSearch",
           {
             styles : selectedStyles,
             season : selectedWeather,
@@ -200,7 +200,7 @@ const Search = () => {
         async function fetchLike(){
           try{
               axios.defaults.withCredentials=true;
-              const res = await axios.get("https://ofi-ofi.koyeb.app/user/like?boardId="+board_id);
+              const res = await axios.get("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/user/like?boardId="+board_id);
               if(res.data == 'success'){
                 setLikeBoardId([...likeBoardId, board_id]);
               }
@@ -212,7 +212,7 @@ const Search = () => {
         async function fetchLikeCancel() {
           try {
             axios.defaults.withCredentials = true;
-            const res = await axios.get("https://ofi-ofi.koyeb.app/user/unlike?boardId="+board_id);
+            const res = await axios.get("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/user/unlike?boardId="+board_id);
             if(res.data == 'possible'){
               console.log('possible')
               setLikeBoardId((oldValue) => {

@@ -44,7 +44,7 @@ const GetStyle = () => {
         async function fetchData(){
             try {
                 axios.defaults.withCredentials=true;
-                const res = await axios.post(`https://ofi-ofi.koyeb.app/${mode}/styles`,
+                const res = await axios.post(`https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/${mode}/styles`,
                 {
                     styles: selectedStyles
                 });

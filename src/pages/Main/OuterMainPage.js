@@ -99,7 +99,7 @@ const OuterMainPage = () => {
       async function fetchMainPage(){
         try{
           axios.defaults.withCredentials=true;
-          const res = await axios.get("https://ofi-ofi.koyeb.app/main/coordinator");
+          const res = await axios.get("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/main/coordinator");
           setMainPage(res.data)
         }catch(error){
           console.error(error);
@@ -113,7 +113,7 @@ const OuterMainPage = () => {
         async function fetchMainPage(){
           try{
             axios.defaults.withCredentials=true;
-            const res = await axios.get("https://ofi-ofi.koyeb.app/coordinator/mypage");
+            const res = await axios.get("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/coordinator/mypage");
             setOuterMyPage(res.data)
             setFilteredStyle(res.data.styles);
             console.log(filteredStyle);
