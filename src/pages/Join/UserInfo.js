@@ -83,7 +83,7 @@ const UserInfo = () => {
             async function fetchNickname(){
                 try {
                     axios.defaults.withCredentials=true;
-                    const res = await axios.get("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/check/nickname?nickname="+ nickname);
+                    const res = await axios.get("http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/check/nickname?nickname="+ nickname);
     
                     if(res.data === 'available') {
                         setPass(true);
@@ -154,7 +154,7 @@ const UserInfo = () => {
         async function fetchUser(){
             try {
                 axios.defaults.withCredentials=true;
-                const res = await axios.post("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/user/profile",
+                const res = await axios.post("http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/user/profile",
                 {
                     nickname : nickname,
                     height : height,

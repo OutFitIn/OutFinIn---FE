@@ -77,7 +77,7 @@ const ChatList = () => {
     async function fetchChatRoom() {
       try {
         axios.defaults.withCredentials = true;
-        const res = await axios.get("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/chat/main");
+        const res = await axios.get("http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/chat/main");
         setChatRoomList(res.data);
         console.log(res.data);
       } catch (error) {

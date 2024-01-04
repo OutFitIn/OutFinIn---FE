@@ -132,7 +132,7 @@ const OuterMyPage = () => {
     async function fetchMainPage(){
       try{
         axios.defaults.withCredentials=true;
-        const res = await axios.get("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/coordinator/mypage");
+        const res = await axios.get("http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/coordinator/mypage");
         console.log(res.data);
         setOuterMyPage(res.data)
       }catch(error){
@@ -149,7 +149,7 @@ const OuterMyPage = () => {
       async function fetchLogOut(){
         try{
           axios.defaults.withCredentials=true;
-          const res = await axios.post("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/logout");
+          const res = await axios.post("http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/logout");
           navigate('/');
         }catch(error){
           console.error(error);

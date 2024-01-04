@@ -79,7 +79,7 @@ const LikeCodies = () => {
             try {
               axios.defaults.withCredentials = true;
               const res = await axios.get(
-                "https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/user/board/like"
+                "http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/user/board/like"
               );
               setBoardLike(res.data);
               console.log(res.data)
@@ -98,7 +98,7 @@ const LikeCodies = () => {
         async function fetchLike(){
           try{
               axios.defaults.withCredentials=true;
-              const res = await axios.get("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/user/like?boardId="+board_id);
+              const res = await axios.get("http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/user/like?boardId="+board_id);
           }catch(error){
               console.error(error);
           }}
@@ -106,7 +106,7 @@ const LikeCodies = () => {
         async function fetchLikeCancel() {
           try {
             axios.defaults.withCredentials = true;
-            const res = await axios.get("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/user/unlike?boardId="+board_id);
+            const res = await axios.get("http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/user/unlike?boardId="+board_id);
           } catch (error) {
             console.error(error);
           }

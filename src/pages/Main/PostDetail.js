@@ -59,7 +59,7 @@ const PostDetail = (props) => {
     async function fetchPostDetail() {
       try {
         axios.defaults.withCredentials = true;
-        const res = await axios.get("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/board/show?id="+board_id);
+        const res = await axios.get("http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/board/show?id="+board_id);
         setPost(res.data);
         setLikeStatus(res.data.like_status);
       } catch (error) {
@@ -95,7 +95,7 @@ const PostDetail = (props) => {
     async function fetchNickname() {
       try {
         axios.defaults.withCredentials = true;
-        const res = await axios.get("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/user/nickname");
+        const res = await axios.get("http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/user/nickname");
         setUserNickname(res.data);
       } catch (error) {
         console.error(error);
@@ -115,7 +115,7 @@ const PostDetail = (props) => {
     async function fetchLike(){
       try{
           axios.defaults.withCredentials=true;
-          const res = await axios.get("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/user/like?boardId="+board_id);
+          const res = await axios.get("http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/user/like?boardId="+board_id);
           if(res.data === 'success') {
             setLikeStatus(false);
           }
@@ -126,7 +126,7 @@ const PostDetail = (props) => {
     async function fetchLikeCancel() {
       try {
         axios.defaults.withCredentials = true;
-        const res = await axios.get("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/user/unlike?boardId="+board_id);
+        const res = await axios.get("http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/user/unlike?boardId="+board_id);
         if(res.data == 'possible'){
           console.log('possible')
           setLikeStatus(true);
@@ -160,7 +160,7 @@ const PostDetail = (props) => {
         axios.defaults.withCredentials = true;
         // 상대 코디네이터 닉네임 보내기
         // 반환 값은 만들어진 채팅방 ID -> 이걸로 ChatRoom에서 Params 사용해서 불러오자
-        const res = await axios.get("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/chat/room?coordinatorNickname=" + post.nickname);
+        const res = await axios.get("http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/chat/room?coordinatorNickname=" + post.nickname);
         navigate(`/userchatroom/${res.data}/${userNickname}/${post.nickname}`); // 만들어진 채팅방으로 이동
       } catch (error) {
         console.error(error);

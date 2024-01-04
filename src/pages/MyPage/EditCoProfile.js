@@ -142,7 +142,7 @@ const EditCoProfile = () => {
         async function fetchShowData() {
             try {
                 axios.defaults.withCredentials = true;
-                const res = await axios.get("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/coordinator/info");
+                const res = await axios.get("http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/coordinator/info");
                 setInitialInfo(res.data);
                 // 여기서 받아온 정보를 해당 입력창에 설정해줄 수 있습니다.
                 setNickname(res.data.nickname);
@@ -199,7 +199,7 @@ const EditCoProfile = () => {
             async function fetchNickname() {
                 try {
                     axios.defaults.withCredentials = true;
-                    const res = await axios.get("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/check/nickname?nickname=" + nickname);
+                    const res = await axios.get("http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/check/nickname?nickname=" + nickname);
 
                     if (res.data === 'available') {
                         setPass(true);
@@ -274,7 +274,7 @@ const EditCoProfile = () => {
         async function fetchData() {
             try {
                 axios.defaults.withCredentials=true;
-                const res = await axios.post("https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/coordinator/edit",
+                const res = await axios.post("http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/coordinator/edit",
                     {
                         id: 1,
                         nickname: nickname,

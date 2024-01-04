@@ -51,7 +51,7 @@ function App() {
 
     useEffect(() => {
         if (token && code) { // token과 code 모두 존재할 때만 요청 보냄
-            const url = 'https://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/oauth/register/naver';
+            const url = 'http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/oauth/register/naver';
             const headers = {
                 'Authorization': token
             };
