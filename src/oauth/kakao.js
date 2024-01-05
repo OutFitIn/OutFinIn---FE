@@ -35,7 +35,7 @@ function App() {
             async function fetchData(){
                 try {
                     const res = await axios.post(
-                        "http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/kakao",
+                        "https://ofi-d5e2473eb437.herokuapp.com/kakao",
                         newCode);
 
                     if(res.data === 'coordinator') {

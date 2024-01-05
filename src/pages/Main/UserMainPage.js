@@ -77,7 +77,7 @@ const UserMainPage = () => {
     async function fetchMainPage(){
       try{
         axios.defaults.withCredentials=true;
-        const res = await axios.get("http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/main/user");
+        const res = await axios.get("https://ofi-d5e2473eb437.herokuapp.com/main/user");
         setMainPage(res.data);        
         console.log(res.data)
       }catch(error){
@@ -126,7 +126,7 @@ const UserMainPage = () => {
     async function fetchLike(){
       try{
           axios.defaults.withCredentials=true;
-          const res = await axios.get("http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/user/like?boardId="+board_id);
+          const res = await axios.get("https://ofi-d5e2473eb437.herokuapp.com/user/like?boardId="+board_id);
           if(res.data == 'success'){
             setLikeBoardId([...likeBoardId, board_id]);
           }
@@ -138,7 +138,7 @@ const UserMainPage = () => {
     async function fetchLikeCancel() {
       try {
         axios.defaults.withCredentials = true;
-        const res = await axios.get("http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/user/unlike?boardId="+board_id);
+        const res = await axios.get("https://ofi-d5e2473eb437.herokuapp.com/user/unlike?boardId="+board_id);
         if(res.data == 'possible'){
           console.log('possible')
           setLikeBoardId((oldValue) => {

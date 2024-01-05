@@ -192,7 +192,7 @@ const InputEmail = () => {
         async function fetchEmail(){
             try {
                 axios.defaults.withCredentials=true;
-                const res = await axios.get("http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/email/code/send?email="+Email);
+                const res = await axios.get("https://ofi-d5e2473eb437.herokuapp.com/email/code/send?email="+Email);
                 //중복되는 경우
                 if(res.data === 'duplicate') {
                     emailRef.current.value='';
@@ -251,7 +251,7 @@ const InputEmail = () => {
             async function fetchCode(){
                 try {
                     axios.defaults.withCredentials=true;
-                    const res = await axios.post("http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/email/code/auth",
+                    const res = await axios.post("https://ofi-d5e2473eb437.herokuapp.com/email/code/auth",
                     {
                         email : Email,
                         code : code
@@ -273,7 +273,7 @@ const InputEmail = () => {
         async function fetchData(){
             try {
                 axios.defaults.withCredentials=true;
-                const res = await axios.post("http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/register",
+                const res = await axios.post("https://ofi-d5e2473eb437.herokuapp.com/register",
                 {
                     email : email,
                     password : password

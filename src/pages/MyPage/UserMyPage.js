@@ -144,7 +144,7 @@ const UserMyPage = () => {
     async function fetchMainPage(){
       try{
         axios.defaults.withCredentials=true;
-        const res = await axios.get("http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/user/mypage?id="+1);
+        const res = await axios.get("https://ofi-d5e2473eb437.herokuapp.com/user/mypage?id="+1);
         res.data.shape == 'NATURAL' ? setBodyShape('내추럴') : res.data.shape == 'WAVE' ? setBodyShape('웨이브') : setBodyShape('스트레이트');
         setUserMyPage(res.data)
       }catch(error){
@@ -159,7 +159,7 @@ const UserMyPage = () => {
     async function fetchLogOut(){
       try{
         axios.defaults.withCredentials=true;
-        const res = await axios.post("http://ec2-3-35-152-30.ap-northeast-2.compute.amazonaws.com:8080/logout");
+        const res = await axios.post("https://ofi-d5e2473eb437.herokuapp.com/logout");
         navigate('/');
       }catch(error){
         console.error(error);
